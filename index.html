@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>طرق تنصيب Claude Flow</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --panel: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --code-bg: #010409;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    header p { color: var(--muted); margin: 0; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .badge.recommended { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid var(--green); }
+    .badge.alt { background: rgba(88,166,255,0.12); color: var(--accent); border: 1px solid var(--accent); }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+      margin: 0;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.95rem;
+    }
+    .comment { color: var(--muted); }
+    .cmd { color: var(--green); }
+    .desc { color: var(--muted); margin: 0.75rem 0 1rem; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>طرق تنصيب Claude Flow</h1>
+      <p>دليل سريع لتشغيل <code>claude-flow</code> وتهيئة المشروع</p>
+    </header>
+
+    <section class="card">
+      <h2>
+        التشغيل بدون تنصيب دائم
+        <span class="badge recommended">الطريقة المنصوح بيها</span>
+      </h2>
+      <p class="desc">
+        تشغّل أحدث إصدار مباشرة عبر <code>npx</code> دون الحاجة لتنصيب الحزمة على الجهاز.
+        الخيار الأنسب للتجربة السريعة وضمان استخدام آخر نسخة دائمًا.
+      </p>
+      <pre><code><span class="comment"># الطريقة المنصوح بيها — بدون تنصيب دائم</span>
+<span class="cmd">npx claude-flow@latest init</span></code></pre>
+    </section>
+
+    <section class="card">
+      <h2>
+        التنصيب العام (Global)
+        <span class="badge alt">بديل</span>
+      </h2>
+      <p class="desc">
+        تنصيب الحزمة بشكل عام على الجهاز ليصبح الأمر <code>claude-flow</code> متاحًا في أي مكان.
+        مناسب للاستخدام المتكرر.
+      </p>
+      <pre><code><span class="comment"># أو global</span>
+<span class="cmd">npm install -g claude-flow</span>
+<span class="cmd">claude-flow init</span></code></pre>
+    </section>
+
+    <footer>
+      <p>للمزيد حول Claude Code: <a href="https://code.claude.com/docs" target="_blank" rel="noopener">code.claude.com/docs</a></p>
+    </footer>
+  </div>
+</body>
+</html>
