@@ -39,6 +39,22 @@
 كل مشكلة تظهر بأسلوب متوتر (أحمر، تشويش glitch، بدون إيقاع) ثم يُشطب عليها وينزل الإيقاع مع الحل.
 التصدير: `node render/render.mjs --page v2.html` (الموسيقى من `render/soundtrack_v2.py`).
 
+## الإعلان الثالث: الكتاب يقول… وOrin يقول (`v3.html`)
+
+الفيديو: `out/orin-ad-v3-9x16-30fps.mp4` و `out/orin-ad-v3-9x16-60fps.mp4` (27 ثانية)
+
+| الوقت | المشهد |
+|---|---|
+| 0–4.8 ث | الخطّاف: «عندك 3 ثواني تفهم هالتعريف ⏱️» — صفحة كتاب (القصور الذاتي) + عدّاد تنازلي + ختم «خلص الوقت!» + «فهمت شي؟ 😅» |
+| 4.8–7.9 ث | البطاقة تنقلب ← «✨ Orin يقول:» مثال الباص 🚌 ومؤشر الفهم يطلع من 12% إلى 100% |
+| 8.2–13.9 ث | أحياء: الإنزيمات ← «مثل مفتاح 🔑 يفتح قفل واحد بس» |
+| 14.2–19.9 ث | اقتصاد: التضخّم ← «الساندويتش اللي كان بـ5 صار بـ7 🥪» |
+| 20.2–27 ث | «نفس المعلومة… بس بلغتك 😌» ثم الشعار وزر التحميل |
+
+صفحة الكتاب بخط أميري (Amiri) مع تظليل أصفر وملاحظات بقلم أحمر بخط الرقعة (Aref Ruqaa)،
+والموسيقى: «موسيقى تفكير» مع الكتاب، ترومبون حزين لما يستسلم الطالب، ثم إيقاع مع Orin.
+التصدير: `node render/render.mjs --page v3.html` (الموسيقى من `render/soundtrack_v3.py`).
+
 ## المعاينة في المتصفح
 
 ```bash
@@ -74,5 +90,5 @@ node render/render.mjs --from 8 --to 11 --no-audio --out out/f1.mp4   # جزء �
 
 ## الخطوط والتراخيص
 
-- Alexandria، Readex Pro، Outfit — رخصة SIL Open Font License (الملفات في `assets/fonts`).
+- Alexandria، Readex Pro، Outfit، Amiri، Aref Ruqaa — رخصة SIL Open Font License (الملفات في `assets/fonts`).
 - GSAP 3 — [Standard "No Charge" License](https://gsap.com/standard-license).

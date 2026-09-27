@@ -1,0 +1,262 @@
+{
+ "id": "v3",
+ "soundtrack": "soundtrack_v3.py",
+ "duration": 27,
+ "T": {
+  "rounds": [
+   {
+    "s": 0,
+    "flip": 4.8,
+    "end": 7.9,
+    "land": 5.5
+   },
+   {
+    "s": 8.2,
+    "flip": 10.4,
+    "end": 13.9,
+    "land": 11.1
+   },
+   {
+    "s": 14.2,
+    "flip": 16.4,
+    "end": 19.9,
+    "land": 17.1
+   }
+  ],
+  "outro": 20.2,
+  "logo": 22.1
+ },
+ "bpm": 120,
+ "cues": [
+  {
+   "t": 0,
+   "type": "slam"
+  },
+  {
+   "t": 0.35,
+   "type": "tickBig",
+   "k": 0
+  },
+  {
+   "t": 0.7,
+   "type": "marker",
+   "k": 0
+  },
+  {
+   "t": 0.85,
+   "type": "tick"
+  },
+  {
+   "t": 1.15,
+   "type": "marker",
+   "k": 1
+  },
+  {
+   "t": 1.35,
+   "type": "tickBig",
+   "k": 1
+  },
+  {
+   "t": 1.6,
+   "type": "marker",
+   "k": 2
+  },
+  {
+   "t": 1.85,
+   "type": "tick"
+  },
+  {
+   "t": 1.95,
+   "type": "scribble"
+  },
+  {
+   "t": 2.05,
+   "type": "marker",
+   "k": 3
+  },
+  {
+   "t": 2.35,
+   "type": "tickBig",
+   "k": 2
+  },
+  {
+   "t": 2.5,
+   "type": "marker",
+   "k": 4
+  },
+  {
+   "t": 2.85,
+   "type": "tick"
+  },
+  {
+   "t": 3.5,
+   "type": "buzzer"
+  },
+  {
+   "t": 3.9,
+   "type": "wahwah"
+  },
+  {
+   "t": 4.8,
+   "type": "flip"
+  },
+  {
+   "t": 5.5,
+   "type": "drop",
+   "i": 0
+  },
+  {
+   "t": 5.55,
+   "type": "pop"
+  },
+  {
+   "t": 5.6,
+   "type": "meterUp",
+   "until": 6.8
+  },
+  {
+   "t": 6.95,
+   "type": "success"
+  },
+  {
+   "t": 8.15,
+   "type": "swish"
+  },
+  {
+   "t": 8.65,
+   "type": "marker",
+   "k": 0
+  },
+  {
+   "t": 8.93,
+   "type": "marker",
+   "k": 1
+  },
+  {
+   "t": 9.21,
+   "type": "marker",
+   "k": 2
+  },
+  {
+   "t": 9.49,
+   "type": "marker",
+   "k": 3
+  },
+  {
+   "t": 9.6,
+   "type": "scribble"
+  },
+  {
+   "t": 9.77,
+   "type": "marker",
+   "k": 4
+  },
+  {
+   "t": 9.78,
+   "type": "wahwah",
+   "short": true
+  },
+  {
+   "t": 10.4,
+   "type": "flip"
+  },
+  {
+   "t": 11.1,
+   "type": "drop",
+   "i": 1
+  },
+  {
+   "t": 11.15,
+   "type": "pop"
+  },
+  {
+   "t": 11.2,
+   "type": "meterUp",
+   "until": 12.4
+  },
+  {
+   "t": 12.55,
+   "type": "success"
+  },
+  {
+   "t": 14.15,
+   "type": "swish"
+  },
+  {
+   "t": 14.65,
+   "type": "marker",
+   "k": 0
+  },
+  {
+   "t": 14.93,
+   "type": "marker",
+   "k": 1
+  },
+  {
+   "t": 15.21,
+   "type": "marker",
+   "k": 2
+  },
+  {
+   "t": 15.49,
+   "type": "marker",
+   "k": 3
+  },
+  {
+   "t": 15.6,
+   "type": "scribble"
+  },
+  {
+   "t": 15.78,
+   "type": "wahwah",
+   "short": true
+  },
+  {
+   "t": 16.4,
+   "type": "flip"
+  },
+  {
+   "t": 17.1,
+   "type": "drop",
+   "i": 2
+  },
+  {
+   "t": 17.15,
+   "type": "pop"
+  },
+  {
+   "t": 17.2,
+   "type": "meterUp",
+   "until": 18.400000000000002
+  },
+  {
+   "t": 18.55,
+   "type": "success"
+  },
+  {
+   "t": 19.95,
+   "type": "whoosh"
+  },
+  {
+   "t": 20.75,
+   "type": "pop"
+  },
+  {
+   "t": 21,
+   "type": "build",
+   "until": 22.1
+  },
+  {
+   "t": 22.1,
+   "type": "impact"
+  },
+  {
+   "t": 22.95,
+   "type": "chime"
+  },
+  {
+   "t": 23.65,
+   "type": "pop"
+  }
+ ]
+}

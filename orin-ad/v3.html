@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orin — الكتاب يقول… وOrin يقول</title>
+<link rel="stylesheet" href="src/styles.css">
+<link rel="stylesheet" href="src/v3.css">
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="src/logo.js"></script>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+
+  <div id="bg" class="layer">
+    <div id="g1" class="glow"></div>
+    <div id="g2" class="glow warm"></div>
+    <div id="gPaper" class="glow paper"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+  </div>
+
+  <section id="rounds" class="layer">
+    <!-- subject chips -->
+    <div class="rchip" id="rc1">⚛️ فيزياء <span class="ltr">1/3</span></div>
+    <div class="rchip" id="rc2">🧬 أحياء <span class="ltr">2/3</span></div>
+    <div class="rchip" id="rc3">📈 اقتصاد <span class="ltr">3/3</span></div>
+
+    <!-- headlines -->
+    <h2 class="hl2" id="hHook" data-split><span class="line">عندك <span class="accent ltr">3</span> ثواني</span><span class="line">تفهم هالتعريف ⏱️</span></h2>
+    <h2 class="hl2 one" id="hHuh" data-split>فهمت شي؟ 😅</h2>
+    <h2 class="hl2 one" id="hBook2" data-split>📕 الكتاب يقول:</h2>
+    <h2 class="hl2 one" id="hBook3" data-split>📕 الكتاب يقول:</h2>
+    <h2 class="hl2 one hlo" id="hOrin1" data-split>✨ <span class="ltr">Orin</span> يقول:</h2>
+    <h2 class="hl2 one hlo" id="hOrin2" data-split>✨ <span class="ltr">Orin</span> يقول:</h2>
+    <h2 class="hl2 one hlo" id="hOrin3" data-split>✨ <span class="ltr">Orin</span> يقول:</h2>
+
+    <!-- round 1: inertia -->
+    <div class="flip" id="r1"><div class="card3d">
+      <div class="face front paper">
+        <div class="phead"><span>الفصل الثالث · قوانين الحركة</span><span class="ltr">47</span></div>
+        <h3 class="ptitle">القصور الذاتي</h3>
+        <p class="pbody">هو <mark>خاصيةٌ للمادة</mark> <mark>تُمانِع</mark> بها الأجسامُ أيَّ تغييرٍ في <mark>حالتها الحركية</mark>؛ فالجسمُ الساكن يبقى ساكناً، والجسمُ المتحرك يبقى متحركاً <mark>بسرعةٍ ثابتة</mark> وفي خطٍّ مستقيم، ما لم تؤثّر فيه <mark>قوةٌ محصِّلةٌ خارجية</mark>.</p>
+        <div class="pen">شنو يعني؟!</div>
+        <div class="pfoot">صفحة <span class="ltr">47</span></div>
+      </div>
+      <div class="face back orin">
+        <div class="ohead"><span class="avatar" data-logo="44"></span><b>Orin</b><span class="osub">يشرحها بلغتك</span></div>
+        <div class="emoji">🚌</div>
+        <p class="obody" data-stream>لمّا الباص يوقف فجأة وتنزاح لقدّام… هذا هو <u>القصور الذاتي</u>! جسمك <u>يبي يكمّل حركته</u>، وما يوقف إلا إذا شي وقّفه.</p>
+        <div class="ok">فهمتها ✅</div>
+      </div>
+    </div></div>
+
+    <!-- round 2: enzymes -->
+    <div class="flip" id="r2"><div class="card3d">
+      <div class="face front paper">
+        <div class="phead"><span>الوحدة الثانية · كيمياء الخلية</span><span class="ltr">112</span></div>
+        <h3 class="ptitle">الإنزيمات</h3>
+        <p class="pbody">جزيئاتٌ بروتينية تعمل <mark>كعوامل حفزٍ حيوية</mark>، تزيد من سرعة التفاعلات الكيميائية عن طريق خفض <mark>طاقة التنشيط</mark>، وتتميّز <mark>بالتخصص الدقيق</mark> <mark>لمادة التفاعل</mark>، و<mark>لا تُستهلك</mark> خلال التفاعل.</p>
+        <div class="pen">؟؟؟</div>
+        <div class="pfoot">صفحة <span class="ltr">112</span></div>
+      </div>
+      <div class="face back orin">
+        <div class="ohead"><span class="avatar" data-logo="44"></span><b>Orin</b><span class="osub">يشرحها بلغتك</span></div>
+        <div class="emoji">🔑</div>
+        <p class="obody" data-stream>الإنزيم مثل <u>مفتاح</u> يفتح قفل واحد بس. يخلّي التفاعل يصير <u>أسرع بكثير</u>… ويطلع منه سليم يقدر يعيد الشغل مرة ثانية.</p>
+        <div class="ok">فهمتها ✅</div>
+      </div>
+    </div></div>
+
+    <!-- round 3: inflation -->
+    <div class="flip" id="r3"><div class="card3d">
+      <div class="face front paper">
+        <div class="phead"><span>الفصل الخامس · النقود والأسعار</span><span class="ltr">86</span></div>
+        <h3 class="ptitle">التضخّم</h3>
+        <p class="pbody">ارتفاعٌ مستمر ومؤثّر في <mark>المستوى العام للأسعار</mark> خلال <mark>فترةٍ زمنية معيّنة</mark>، يترتّب عليه انخفاضٌ في <mark>القوة الشرائية</mark> <mark>لوحدة النقد</mark>.</p>
+        <div class="pen">أحد يترجم؟!</div>
+        <div class="pfoot">صفحة <span class="ltr">86</span></div>
+      </div>
+      <div class="face back orin">
+        <div class="ohead"><span class="avatar" data-logo="44"></span><b>Orin</b><span class="osub">يشرحها بلغتك</span></div>
+        <div class="emoji">🥪</div>
+        <p class="obody" data-stream>الساندويتش اللي كان بـ<span class="ltr">5</span> صار بـ<span class="ltr">7</span>… يعني <u>فلوسك نفسها صارت تشتري أقل</u>. هذا هو <u>التضخّم</u>!</p>
+        <div class="ok">فهمتها ✅</div>
+      </div>
+    </div></div>
+
+    <!-- countdown + stamp (hook) -->
+    <div id="timer">
+      <svg viewBox="0 0 200 200"><circle class="trk" cx="100" cy="100" r="84"/><circle class="tprog" cx="100" cy="100" r="84" pathLength="100" transform="rotate(-90 100 100)"/></svg>
+      <span class="tn ltr" id="tnum">3</span>
+    </div>
+    <div id="stamp">خلص الوقت! ⏰</div>
+
+    <!-- understanding meter -->
+    <div id="meter">
+      <span class="mlabel">مستوى الفهم</span>
+      <span class="mbar"><span class="mfill"></span><span class="memo">😵</span></span>
+      <span class="mpct ltr">0%</span>
+    </div>
+  </section>
+
+  <section id="outro" class="layer">
+    <h2 id="same" data-split><span class="line">نفس المعلومة…</span><span class="line accent">بس بلغتك 😌</span></h2>
+    <svg id="ringB" class="ring-svg" viewBox="0 0 1080 1920">
+      <circle class="shock" r="100" fill="none" stroke="#FF6B56" stroke-width="5" opacity="0"/>
+      <g class="ring-g"><path class="pw" fill="#F7F7F7"/><path class="pc" fill="#FF6B56"/></g>
+    </svg>
+    <div class="wordmark" id="endWordmark" data-letters>Orin</div>
+    <h2 id="slogan" data-split>يشرح لك أي درس… <span class="accent">بلغتك</span></h2>
+    <div id="cta"><span class="shine"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M6.5 10l5.5 5.5 5.5-5.5M5 20h14"/></svg>حمّل التطبيق الآن</div>
+  </section>
+
+  <div id="vignette" class="layer"></div>
+  <div id="grain" class="layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="27" step="0.001" value="0">
+  <span class="t" id="tlabel">0.00 / 27.00</span>
+  <button id="mute" title="الصوت">🔊</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack-v3.m4a" type="audio/mp4"><source src="out/soundtrack-v3.wav" type="audio/wav"></audio>
+
+<script src="src/v3.js"></script>
+</body>
+</html>
