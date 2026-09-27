@@ -13,6 +13,7 @@
  *   --workers N     parallel browser pages (default 4)
  *   --crf N         x264 quality, lower = better (default 17)
  *   --out FILE      output path (default out/orin-ad-9x16-<fps>fps.mp4)
+ *   --page FILE     composition to render (default index.html; v2.html = problem/solution ad)
  *   --no-audio      skip soundtrack generation and muxing
  *   --keep-frames   keep the PNG frames in out/frames
  *
@@ -29,7 +30,7 @@ const OUT_DIR = path.join(ROOT, 'out');
 
 function args() {
   const a = process.argv.slice(2);
-  const o = { fps: 60, scale: 1, workers: 4, crf: 17, out: null, audio: true, keep: false, cuesOnly: false };
+  const o = { fps: 60, scale: 1, workers: 4, crf: 17, out: null, audio: true, keep: false, cuesOnly: false, page: 'index.html' };
   for (let i = 0; i < a.length; i++) {
     const k = a[i], v = a[i + 1];
     if (k === '--fps') { o.fps = +v; i++; }
@@ -42,9 +43,9 @@ function args() {
     else if (k === '--no-audio') o.audio = false;
     else if (k === '--keep-frames') o.keep = true;
     else if (k === '--cues-only') o.cuesOnly = true;
+    else if (k === '--page') { o.page = v; i++; }
     else { console.error('unknown option ' + k); process.exit(1); }
   }
-  o.out ??= path.join(OUT_DIR, `orin-ad-9x16-${o.fps}fps.mp4`);
   return o;
 }
 
@@ -72,7 +73,7 @@ function run(cmd, argv) {
 async function openPage(browser, o) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: o.scale });
   page.on('pageerror', (e) => console.error('[page error]', e.message));
-  await page.goto(pathToFileURL(path.join(ROOT, 'index.html')).href + '?render=1');
+  await page.goto(pathToFileURL(path.join(ROOT, o.page)).href + '?render=1');
   await page.evaluate(() => window.ORIN.ready);
   return page;
 }
@@ -84,17 +85,23 @@ const browser = await chromium.launch();
 
 // 1) cue sheet for the soundtrack
 const first = await openPage(browser, o);
-const meta = await first.evaluate(() => ({ duration: ORIN.duration, T: ORIN.T, bpm: ORIN.BPM, cues: ORIN.cues }));
-const cuesPath = path.join(OUT_DIR, 'cues.json');
+const meta = await first.evaluate(() => ({
+  id: ORIN.id || '', soundtrack: ORIN.soundtrack || 'soundtrack.py',
+  duration: ORIN.duration, T: ORIN.T, bpm: ORIN.BPM, cues: ORIN.cues,
+}));
+// each composition gets its own files: cues.json / cues-v2.json, soundtrack.wav / soundtrack-v2.wav …
+const sfx = meta.id ? `-${meta.id}` : '';
+o.out ??= path.join(OUT_DIR, `orin-ad${sfx}-9x16-${o.fps}fps.mp4`);
+const cuesPath = path.join(OUT_DIR, `cues${sfx}.json`);
 fs.writeFileSync(cuesPath, JSON.stringify(meta, null, 1));
 console.log(`cues: ${meta.cues.length} events → ${path.relative(ROOT, cuesPath)}`);
 if (o.cuesOnly) { await browser.close(); process.exit(0); }
 
 // 2) soundtrack
-const wav = path.join(OUT_DIR, 'soundtrack.wav');
+const wav = path.join(OUT_DIR, `soundtrack${sfx}.wav`);
 if (o.audio) {
   console.log('soundtrack …');
-  await run('python3', [path.join(ROOT, 'render', 'soundtrack.py'), cuesPath, wav]);
+  await run('python3', [path.join(ROOT, 'render', meta.soundtrack), cuesPath, wav]);
 }
 
 // 3) frames

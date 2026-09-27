@@ -1,0 +1,161 @@
+/* Orin ad v2 — "problem → solution". Builds on styles.css (tokens, stage, chat components). */
+:root { --bad: #FF4D5E; --bad-soft: rgba(255, 77, 94, .14); --amber: #FFBE46; }
+
+.glow.bad {
+  width: 1500px; height: 1500px; margin: -750px 0 0 -750px;
+  background: radial-gradient(circle, rgba(255, 60, 80, .30) 0%, rgba(255, 60, 80, .10) 35%, rgba(255, 60, 80, 0) 66%);
+}
+#redPulse {
+  background: radial-gradient(ellipse 80% 65% at 50% 50%, rgba(255, 40, 60, 0) 45%, rgba(255, 40, 60, .38) 100%);
+  opacity: 0; pointer-events: none;
+}
+.centered { position: absolute; left: 0; right: 0; margin: 0 auto; width: fit-content; }
+
+/* ───────── hook ───────── */
+#stop {
+  position: absolute; left: 0; right: 0; top: 760px; margin: 0; text-align: center;
+  font-family: var(--display); font-weight: 800; font-size: 240px; line-height: 1.1;
+}
+#four {
+  position: absolute; left: 0; right: 0; top: 330px; text-align: center;
+  font-family: var(--latin); font-weight: 700; font-size: 620px; line-height: 1; color: var(--coral);
+  text-shadow: 0 30px 120px rgba(255, 107, 86, .45);
+}
+#fourTxt {
+  position: absolute; left: 30px; right: 30px; top: 1010px; margin: 0; text-align: center;
+  font-family: var(--display); font-weight: 800; font-size: 126px; line-height: 1.18;
+}
+#fourTxt .line, #every .line, .ph .line, .sh .line { display: block; }
+#fourSub {
+  position: absolute; left: 30px; right: 30px; top: 1370px; margin: 0; text-align: center;
+  font-family: var(--ui); font-weight: 500; font-size: 50px; color: #C9C9D2;
+}
+
+/* ───────── shared pair layout ───────── */
+.tag {
+  position: absolute; left: 0; right: 0; top: 235px; margin: 0 auto; width: fit-content;
+  font-family: var(--ui); font-weight: 600; font-size: 40px; padding: 12px 36px 18px; border-radius: 44px;
+}
+.tag.bad { background: var(--bad-soft); border: 2px solid rgba(255, 77, 94, .6); color: #FF7684; }
+.tag.good { background: var(--coral); color: var(--ink); box-shadow: 0 16px 50px rgba(255, 107, 86, .35); }
+.tag.good b { font-family: var(--latin); font-weight: 700; }
+.ph, .sh {
+  position: absolute; left: 36px; right: 36px; top: 340px; margin: 0; text-align: center;
+  font-family: var(--display); font-weight: 700; font-size: 96px; line-height: 1.22;
+}
+.strike { position: absolute; left: 70px; right: 70px; top: 340px; height: 240px; pointer-events: none; }
+.strike i {
+  position: absolute; left: 0; right: 0; height: 14px; border-radius: 7px; background: var(--coral);
+  box-shadow: 0 0 30px rgba(255, 107, 86, .7); transform-origin: 100% 50%; transform: scaleX(0);
+}
+.strike i:nth-child(1) { top: 62px; }
+.strike i:nth-child(2) { top: 178px; }
+
+.illo { position: absolute; left: 0; right: 0; top: 690px; height: 760px; }
+.illo .pt { font-family: var(--ui); font-weight: 600; font-size: 32px; color: #E2E2E8; margin-bottom: 26px; }
+.illo i { display: block; height: 16px; border-radius: 8px; background: rgba(255, 255, 255, .12); margin-top: 22px; }
+.illo i.m { width: 78%; }
+.illo i.s { width: 55%; }
+.chip.bad {
+  position: absolute; left: 0; right: 0; bottom: 30px; margin: 0 auto; width: fit-content;
+  font-family: var(--ui); font-weight: 600; font-size: 42px; padding: 14px 36px 20px; border-radius: 40px;
+  background: var(--bad-soft); border: 2px solid rgba(255, 77, 94, .55); color: #FF8792;
+}
+
+/* 1 — book with question marks */
+.book .page {
+  position: absolute; left: 270px; top: 10px; width: 540px; height: 560px; padding: 44px 46px;
+  border-radius: 36px; background: linear-gradient(180deg, #1D1D23, #131317); border: 2px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, .6);
+}
+.book .q {
+  position: absolute; font-family: var(--display); font-weight: 800; font-size: 170px; line-height: 1; color: var(--bad);
+  text-shadow: 0 10px 50px rgba(255, 77, 94, .5);
+}
+.book .q1 { left: 150px; top: 60px; }
+.book .q2 { left: 820px; top: 150px; font-size: 200px; }
+.book .q3 { left: 190px; top: 390px; font-size: 130px; }
+
+/* 2 — stack of pages + counter */
+.stack .sheet {
+  position: absolute; left: 330px; top: 60px; width: 460px; height: 560px; border-radius: 30px;
+  background: linear-gradient(180deg, #1C1C22, #141418); border: 2px solid rgba(255, 255, 255, .09);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .5); padding: 42px 42px;
+}
+.stack .counter {
+  position: absolute; left: 90px; top: 150px; text-align: center; direction: ltr;
+  font-family: var(--latin); font-weight: 700; font-size: 190px; line-height: 1; color: var(--bad);
+  text-shadow: 0 16px 60px rgba(255, 77, 94, .45);
+}
+.stack .counter small { display: block; font-family: var(--ui); font-weight: 600; font-size: 44px; color: #FF8792; margin-top: 10px; }
+
+/* 3 — ignored group chat */
+.group .gcard {
+  position: absolute; left: 170px; top: 40px; width: 740px; padding: 34px 36px 38px; border-radius: 40px;
+  background: #121216; border: 2px solid rgba(255, 255, 255, .09); box-shadow: 0 40px 90px rgba(0, 0, 0, .6);
+}
+.group .ghead { display: flex; align-items: center; gap: 20px; padding-bottom: 26px; border-bottom: 1.5px solid var(--line); }
+.group .gav { width: 78px; height: 78px; border-radius: 50%; background: #23232A; display: grid; place-items: center; font-size: 40px; }
+.group .gn { font-family: var(--ui); font-weight: 600; font-size: 36px; }
+.group .gm { font-family: var(--ui); font-size: 26px; color: var(--muted); }
+.group .gmsg {
+  margin-top: 34px; margin-left: auto; width: fit-content; padding: 20px 32px 24px; border-radius: 36px 36px 36px 12px;
+  background: #2A2A31; font-family: var(--ui); font-weight: 500; font-size: 38px;
+}
+.group .gmeta { margin-top: 14px; text-align: left; font-family: var(--ui); font-size: 26px; color: var(--muted); }
+.group .seen { color: #6FB6FF; }
+.group .gnone { margin-top: 40px; text-align: center; font-family: var(--ui); font-size: 34px; color: #7C7C86; font-style: italic; }
+
+/* 4 — failed exam paper */
+.exam .paper {
+  position: absolute; left: 280px; top: 20px; width: 520px; height: 600px; padding: 44px 46px; border-radius: 30px;
+  background: linear-gradient(180deg, #1D1D23, #131317); border: 2px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, .6); transform: rotate(-4deg);
+}
+.exam .grade {
+  position: absolute; left: 150px; top: 300px; width: 330px; height: 330px; border-radius: 50%;
+  border: 12px solid var(--bad); display: grid; place-items: center;
+  font-family: var(--latin); font-weight: 700; font-size: 104px; color: var(--bad);
+  background: rgba(8, 8, 10, .6); box-shadow: 0 0 80px rgba(255, 77, 94, .45);
+}
+
+/* ───────── solution demo panels ───────── */
+.demo { position: absolute; left: 110px; top: 650px; width: 860px; }
+.demo-in { width: 688px; transform-origin: 100% 0; transform: scale(1.25); }
+.panel {
+  padding: 30px 30px 34px; border-radius: 40px; background: rgba(17, 17, 21, .94);
+  border: 1.5px solid rgba(255, 255, 255, .09);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, .55), 0 0 140px rgba(255, 107, 86, .16);
+}
+.panel .bubble { opacity: 0; }
+
+.report .rhead { display: flex; align-items: center; gap: 24px; margin-bottom: 20px; }
+.report .ring { position: relative; width: 128px; height: 128px; flex: none; }
+.report .ring svg { width: 100%; height: 100%; }
+.report .pct { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--latin); font-weight: 700; font-size: 32px; }
+.report .rt { font-family: var(--ui); font-weight: 600; font-size: 32px; }
+.report .rs { font-family: var(--ui); font-size: 24px; color: var(--muted); margin-top: 6px; }
+.report .rrow {
+  display: flex; align-items: center; gap: 16px; margin-top: 12px; padding: 18px 20px; border-radius: 22px;
+  background: var(--surface-2); border: 2px solid var(--line); font-size: 28px; font-weight: 500;
+}
+.report .ok2 {
+  flex: none; width: 42px; height: 42px; border-radius: 50%; background: var(--green); color: #06140D;
+  display: grid; place-items: center; font-family: var(--latin); font-weight: 800; font-size: 24px;
+}
+.report .lvl { margin-right: auto; font-size: 24px; font-weight: 600; color: var(--amber); }
+.report .lvl.good { color: var(--green); }
+.report .rrow.warn { border-color: rgba(255, 190, 70, .55); background: rgba(255, 190, 70, .08); }
+.report .rrow.warn .ok2 { background: var(--amber); }
+.report .rbtn {
+  margin-top: 18px; padding: 20px; border-radius: 26px; text-align: center; font-size: 29px; font-weight: 600;
+  background: var(--coral); color: var(--ink);
+}
+
+/* ───────── outro ───────── */
+#every {
+  position: absolute; left: 30px; right: 30px; top: 720px; margin: 0; text-align: center;
+  font-family: var(--display); font-weight: 800; font-size: 140px; line-height: 1.2;
+}
+
+#outro #slogan { font-size: 72px; }

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orin — مشكلة وحل</title>
+<link rel="stylesheet" href="src/styles.css">
+<link rel="stylesheet" href="src/v2.css">
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="src/logo.js"></script>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+
+  <div id="bg" class="layer">
+    <div id="g1" class="glow"></div>
+    <div id="g2" class="glow warm"></div>
+    <div id="gBad" class="glow bad"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+  </div>
+
+  <!-- ═════════ HOOK ═════════ -->
+  <section id="hook" class="layer">
+    <h1 id="stop">وقف! ✋</h1>
+    <div id="four"><span class="ltr">4</span></div>
+    <h2 id="fourTxt" data-split><span class="line">مشاكل تدمّر</span><span class="line">مذاكرتك</span></h2>
+    <h3 id="fourSub" data-split>…وحلّها كلها في تطبيق واحد 👇</h3>
+  </section>
+
+  <!-- ═════════ 1: don't understand the lesson ═════════ -->
+  <section class="pair layer" id="p1">
+    <div class="prob layer">
+      <div class="tag bad">المشكلة <span class="ltr">1/4</span></div>
+      <h2 class="ph" data-split><span class="line">تقرأ الدرس 3 مرات…</span><span class="line">وما تفهم شي 🤯</span></h2>
+      <div class="strike"></div>
+      <div class="illo book">
+        <div class="page"><div class="pt">الفصل 4: قوانين نيوتن</div><i></i><i></i><i class="m"></i><i></i><i></i><i class="s"></i><i></i><i class="m"></i><i></i><i class="s"></i></div>
+        <span class="q q1">؟</span><span class="q q2">؟</span><span class="q q3">؟</span>
+        <div class="chip bad">المحاولة <span class="ltr">3</span> 😵‍💫</div>
+      </div>
+    </div>
+    <div class="sol layer">
+      <div class="tag good">الحل مع <b>Orin</b></div>
+      <h2 class="sh" data-split><span class="line">يشرحه لك بأسلوبك</span><span class="line accent">لين تفهم</span></h2>
+      <div class="demo"><div class="demo-in panel">
+        <div class="msg user"><div class="bubble">اشرح لي قانون نيوتن الثاني كأني بالابتدائي</div></div>
+        <div class="msg ai">
+          <div class="avatar" data-logo="40"></div>
+          <div class="ai-body">
+            <div class="ai-text" data-stream>تخيّل أنك تدفع عربة تسوّق 🛒 كلما دفعتها <b>بقوة أكبر</b> زادت سرعتها، وكلما كانت <b>أثقل</b> احتجت قوة أكبر.</div>
+            <div class="chips-row"><span class="eq out pop"><span class="ltr">F = m × a</span></span><span class="eq pop">القوة = الكتلة × التسارع</span></div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ═════════ 2: 80-page booklet, exam tomorrow ═════════ -->
+  <section class="pair layer" id="p2">
+    <div class="prob layer">
+      <div class="tag bad">المشكلة <span class="ltr">2/4</span></div>
+      <h2 class="ph" data-split><span class="line">ملزمة <span class="ltr">80</span> صفحة…</span><span class="line">والاختبار بكرة 😩</span></h2>
+      <div class="strike"></div>
+      <div class="illo stack">
+        <div class="sheet s5"></div><div class="sheet s4"></div><div class="sheet s3"></div><div class="sheet s2"></div>
+        <div class="sheet s1"><div class="pt">ملزمة الكيمياء</div><i></i><i class="m"></i><i></i><i class="s"></i><i></i><i class="m"></i></div>
+        <div class="counter"><span class="ltr" id="pages">0</span><small>صفحة</small></div>
+        <div class="chip bad">📅 الاختبار: بكرة <span class="ltr">8:00</span></div>
+      </div>
+    </div>
+    <div class="sol layer">
+      <div class="tag good">الحل مع <b>Orin</b></div>
+      <h2 class="sh" data-split><span class="line">يلخّص الملزمة</span><span class="line accent">في دقيقة</span></h2>
+      <div class="demo"><div class="demo-in panel">
+        <div class="msg user"><div class="bubble">
+          <div class="file"><span class="ic">PDF</span><div><div class="nm">ملزمة الكيمياء</div><div class="mt"><span class="ltr">80</span> صفحة</div></div></div>
+          لخّصها لي في نقاط
+        </div></div>
+        <div class="msg ai">
+          <div class="avatar" data-logo="40"></div>
+          <div class="ai-body">
+            <div class="ai-text" data-stream>أهم ما تحتاجه للاختبار ✨</div>
+            <div class="bullets">
+              <div class="bullet pop"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B56" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>الذرة: نواة فيها بروتونات ونيوترونات، وحولها إلكترونات</span></div>
+              <div class="bullet pop"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B56" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>العدد الذري = عدد البروتونات</span></div>
+              <div class="bullet pop"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B56" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>الروابط الكيميائية نوعان: أيونية وتساهمية</span></div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ═════════ 3: stuck at 2 AM, nobody answers ═════════ -->
+  <section class="pair layer" id="p3">
+    <div class="prob layer">
+      <div class="tag bad">المشكلة <span class="ltr">3/4</span></div>
+      <h2 class="ph" data-split><span class="line">علقت في مسألة…</span><span class="line">وما أحد يرد عليك 😶</span></h2>
+      <div class="strike"></div>
+      <div class="illo group">
+        <div class="gcard">
+          <div class="ghead"><span class="gav">📚</span><div><div class="gn">قروب الدفعة</div><div class="gm"><span class="ltr">48</span> عضو</div></div></div>
+          <div class="gmsg">أحد حل سؤال 5؟ 🙏</div>
+          <div class="gmeta"><span class="ltr">2:14</span> ص · <span class="seen">✓✓ شافوها <span class="ltr">23</span></span></div>
+          <div class="gnone">… ولا أحد رد</div>
+        </div>
+        <div class="chip bad">🕑 <span class="ltr">2:14</span> الفجر</div>
+      </div>
+    </div>
+    <div class="sol layer">
+      <div class="tag good">الحل مع <b>Orin</b></div>
+      <h2 class="sh" data-split><span class="line">معك <span class="ltr">24/7</span></span><span class="line accent">ويحلها خطوة بخطوة</span></h2>
+      <div class="demo"><div class="demo-in panel">
+        <div class="msg user"><div class="bubble">كيف أحل: <span class="ltr">3x − 5 = 16</span></div></div>
+        <div class="msg ai">
+          <div class="avatar" data-logo="40"></div>
+          <div class="ai-body">
+            <div class="ai-text" data-stream>ولا يهمك، خلنا نحلها سوا 👇</div>
+            <div class="card pop">
+              <div class="step pop"><span class="badge">1</span><div><div class="txt">نضيف 5 للطرفين</div><span class="math">3x = 21</span></div></div>
+              <div class="step pop"><span class="badge">2</span><div><div class="txt">نقسم الطرفين على 3</div><span class="math">x = 7</span></div></div>
+            </div>
+            <div class="result pop"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#140907" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>الحل: <span class="math">x = 7</span></div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ═════════ 4: feel ready, then the exam hits ═════════ -->
+  <section class="pair layer" id="p4">
+    <div class="prob layer">
+      <div class="tag bad">المشكلة <span class="ltr">4/4</span></div>
+      <h2 class="ph" data-split><span class="line">تحس إنك جاهز…</span><span class="line">وتنصدم بالاختبار 😵</span></h2>
+      <div class="strike"></div>
+      <div class="illo exam">
+        <div class="paper"><div class="pt">اختبار الكيمياء</div><i></i><i class="m"></i><i></i><i class="s"></i><i></i><i class="m"></i><i></i></div>
+        <div class="grade"><span class="ltr">8/20</span></div>
+      </div>
+    </div>
+    <div class="sol layer">
+      <div class="tag good">الحل مع <b>Orin</b></div>
+      <h2 class="sh" data-split><span class="line">يختبرك قبل الاختبار</span><span class="line accent">ويكشف نقاط ضعفك</span></h2>
+      <div class="demo"><div class="demo-in panel report">
+        <div class="rhead pop">
+          <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="12"/><circle class="arc" cx="60" cy="60" r="50" fill="none" stroke="#FF6B56" stroke-width="12" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 60 60)"/></svg><span class="pct ltr" id="score">0/10</span></div>
+          <div><div class="rt">نتيجة الاختبار التجريبي</div><div class="rs">كيمياء · الفصل الأول</div></div>
+        </div>
+        <div class="rrow pop"><span class="ok2">✓</span>تركيب الذرة<span class="lvl good">ممتاز</span></div>
+        <div class="rrow pop"><span class="ok2">✓</span>العدد الذري<span class="lvl good">ممتاز</span></div>
+        <div class="rrow warn pop"><span class="ok2">!</span>الروابط التساهمية<span class="lvl">تحتاج مراجعة</span></div>
+        <div class="rbtn pop">راجعها معي الحين ←</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ═════════ OUTRO ═════════ -->
+  <section id="outro" class="layer">
+    <h2 id="every" data-split><span class="line">كل مشكلة…</span><span class="line accent">لها حل ✅</span></h2>
+    <svg id="ringB" class="ring-svg" viewBox="0 0 1080 1920">
+      <circle class="shock" r="100" fill="none" stroke="#FF6B56" stroke-width="5" opacity="0"/>
+      <g class="ring-g"><path class="pw" fill="#F7F7F7"/><path class="pc" fill="#FF6B56"/></g>
+    </svg>
+    <div class="wordmark" id="endWordmark" data-letters>Orin</div>
+    <h2 id="slogan" data-split>مساعدك الذكي <span class="accent">في الدراسة</span></h2>
+    <div id="cta"><span class="shine"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M6.5 10l5.5 5.5 5.5-5.5M5 20h14"/></svg>حمّل التطبيق الآن</div>
+  </section>
+
+  <div id="vignette" class="layer"></div>
+  <div id="redPulse" class="layer"></div>
+  <div id="grain" class="layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="30" step="0.001" value="0">
+  <span class="t" id="tlabel">0.00 / 30.00</span>
+  <button id="mute" title="الصوت">🔊</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack-v2.m4a" type="audio/mp4"><source src="out/soundtrack-v2.wav" type="audio/wav"></audio>
+
+<script src="src/v2.js"></script>
+</body>
+</html>

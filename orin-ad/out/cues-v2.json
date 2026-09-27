@@ -1,0 +1,256 @@
+{
+ "id": "v2",
+ "soundtrack": "soundtrack_v2.py",
+ "duration": 30,
+ "T": {
+  "hook": 0,
+  "pairs": [
+   2.6,
+   8.2,
+   13.8,
+   19.4
+  ],
+  "sol": 2.3,
+  "pd": 5.6,
+  "outro": 25,
+  "logo": 26.3
+ },
+ "bpm": 120,
+ "cues": [
+  {
+   "t": 0,
+   "type": "slam"
+  },
+  {
+   "t": 0.74,
+   "type": "hit"
+  },
+  {
+   "t": 1.6,
+   "type": "pop"
+  },
+  {
+   "t": 2,
+   "type": "riser",
+   "until": 2.6
+  },
+  {
+   "t": 2.6,
+   "type": "glitch",
+   "i": 0
+  },
+  {
+   "t": 3.15,
+   "type": "blipBad"
+  },
+  {
+   "t": 3.33,
+   "type": "blipBad"
+  },
+  {
+   "t": 3.51,
+   "type": "blipBad"
+  },
+  {
+   "t": 3.75,
+   "type": "buzz"
+  },
+  {
+   "t": 4.32,
+   "type": "swipe"
+  },
+  {
+   "t": 4.9,
+   "type": "drop",
+   "i": 0
+  },
+  {
+   "t": 5.15,
+   "type": "bubble"
+  },
+  {
+   "t": 5.52,
+   "type": "reply"
+  },
+  {
+   "t": 6.45,
+   "type": "blip"
+  },
+  {
+   "t": 6.61,
+   "type": "blip"
+  },
+  {
+   "t": 7.92,
+   "type": "whoosh"
+  },
+  {
+   "t": 8.2,
+   "type": "glitch",
+   "i": 1
+  },
+  {
+   "t": 8.5,
+   "type": "thud"
+  },
+  {
+   "t": 8.5,
+   "type": "count",
+   "until": 9.399999999999999
+  },
+  {
+   "t": 9.4,
+   "type": "buzz"
+  },
+  {
+   "t": 9.92,
+   "type": "swipe"
+  },
+  {
+   "t": 10.5,
+   "type": "drop",
+   "i": 1
+  },
+  {
+   "t": 10.75,
+   "type": "bubble"
+  },
+  {
+   "t": 11.12,
+   "type": "reply"
+  },
+  {
+   "t": 11.45,
+   "type": "blip"
+  },
+  {
+   "t": 11.75,
+   "type": "blip"
+  },
+  {
+   "t": 12.05,
+   "type": "blip"
+  },
+  {
+   "t": 13.52,
+   "type": "whoosh"
+  },
+  {
+   "t": 13.8,
+   "type": "glitch",
+   "i": 2
+  },
+  {
+   "t": 14.3,
+   "type": "bubble"
+  },
+  {
+   "t": 14.6,
+   "type": "seen"
+  },
+  {
+   "t": 14.95,
+   "type": "buzz"
+  },
+  {
+   "t": 15.52,
+   "type": "swipe"
+  },
+  {
+   "t": 16.1,
+   "type": "drop",
+   "i": 2
+  },
+  {
+   "t": 16.35,
+   "type": "bubble"
+  },
+  {
+   "t": 16.72,
+   "type": "reply"
+  },
+  {
+   "t": 17.07,
+   "type": "blip"
+  },
+  {
+   "t": 17.39,
+   "type": "blip"
+  },
+  {
+   "t": 17.75,
+   "type": "ding"
+  },
+  {
+   "t": 19.12,
+   "type": "whoosh"
+  },
+  {
+   "t": 19.4,
+   "type": "glitch",
+   "i": 3
+  },
+  {
+   "t": 20.3,
+   "type": "stamp"
+  },
+  {
+   "t": 20.3,
+   "type": "buzz"
+  },
+  {
+   "t": 21.12,
+   "type": "swipe"
+  },
+  {
+   "t": 21.7,
+   "type": "drop",
+   "i": 3
+  },
+  {
+   "t": 22,
+   "type": "pop"
+  },
+  {
+   "t": 22.7,
+   "type": "blip"
+  },
+  {
+   "t": 22.9,
+   "type": "blip"
+  },
+  {
+   "t": 23.1,
+   "type": "warn"
+  },
+  {
+   "t": 23.5,
+   "type": "pop"
+  },
+  {
+   "t": 24.7,
+   "type": "whoosh"
+  },
+  {
+   "t": 25.35,
+   "type": "build",
+   "until": 26.3
+  },
+  {
+   "t": 25.4,
+   "type": "success"
+  },
+  {
+   "t": 26.3,
+   "type": "impact"
+  },
+  {
+   "t": 27.15,
+   "type": "chime"
+  },
+  {
+   "t": 27.85,
+   "type": "pop"
+  }
+ ]
+}
