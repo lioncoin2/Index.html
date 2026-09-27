@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orin — إعلان موشن جرافيك</title>
+<link rel="stylesheet" href="src/styles.css">
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="src/logo.js"></script>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+
+  <!-- ═════════ Background ═════════ -->
+  <div id="bg" class="layer">
+    <div id="g1" class="glow"></div>
+    <div id="g2" class="glow warm"></div>
+    <div id="g3" class="glow cool"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+  </div>
+
+  <!-- ═════════ 1) Hook: 2 AM exam panic ═════════ -->
+  <section id="hook" class="layer">
+    <div id="chapters">
+      <div class="chapter" id="ch1"><span class="tag">الفصل 1</span><div class="ln"></div><div class="ln m"></div><div class="ln"></div><div class="ln s"></div><span class="pages">32 صفحة</span></div>
+      <div class="chapter" id="ch2"><span class="tag">الفصل 2</span><div class="ln"></div><div class="ln m"></div><div class="ln"></div><div class="ln s"></div><span class="pages">28 صفحة</span></div>
+      <div class="chapter" id="ch3"><span class="tag">الفصل 3</span><div class="ln"></div><div class="ln m"></div><div class="ln"></div><div class="ln s"></div><span class="pages">41 صفحة</span></div>
+    </div>
+    <h1 class="hl" id="h1" data-split style="top:1180px">الساعة 2 الفجر…</h1>
+    <h1 class="hl" id="h2" data-split style="top:860px"><span class="line">والاختبار</span><span class="line">الساعة <span class="accent">8 الصبح</span></span></h1>
+    <h1 class="hl" id="h3" data-split style="top:1160px"><span class="line">وباقي <span class="accent">3 فصول</span></span><span class="line">ما ذاكرتها!</span></h1>
+    <h1 class="hl" id="h4" data-split style="top:1150px">لا تشيل هم…</h1>
+  </section>
+
+  <!-- ═════════ Phone scene: features ═════════ -->
+  <section id="phoneScene" class="layer">
+    <div id="captions">
+      <h2 class="caption" id="c1" data-split><span class="line">يشرح لك أي درس</span><span class="line accent">بأبسط أسلوب</span></h2>
+      <h2 class="caption" id="c2" data-split><span class="line">يحل المسائل</span><span class="line accent">خطوة بخطوة</span></h2>
+      <h2 class="caption" id="c3" data-split><span class="line">يلخّص ملفاتك</span><span class="line accent">في ثواني</span></h2>
+      <h2 class="caption" id="c4" data-split><span class="line">ويختبرك</span><span class="line accent">قبل الاختبار</span></h2>
+    </div>
+
+    <div id="phoneWrap">
+      <div id="phone">
+        <span class="btn a"></span><span class="btn b"></span><span class="btn c"></span>
+        <div id="screen">
+          <div id="island"></div>
+          <div id="statusbar">
+            <span>2:07</span>
+            <span class="icons">
+              <svg width="38" height="24" viewBox="0 0 19 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#fff"/><rect x="5" y="5.5" width="3" height="6.5" rx="1" fill="#fff"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#fff"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#fff"/></svg>
+              <svg width="34" height="24" viewBox="0 0 17 12"><path d="M8.5 11.5l2.3-2.7a3.4 3.4 0 0 0-4.6 0z" fill="#fff"/><path d="M3.7 6.8a6.9 6.9 0 0 1 9.6 0" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M1.1 3.9a10.7 10.7 0 0 1 14.8 0" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+              <svg width="54" height="24" viewBox="0 0 27 12"><rect x=".6" y=".6" width="22.5" height="10.8" rx="3.2" stroke="rgba(255,255,255,.45)" stroke-width="1.2" fill="none"/><rect x="2.2" y="2.2" width="14" height="7.6" rx="1.8" fill="#fff"/><rect x="24.2" y="4" width="2" height="4" rx="1" fill="rgba(255,255,255,.45)"/></svg>
+            </span>
+          </div>
+          <div id="appbar">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 12h11M4 17h16"/></svg>
+            <div class="title"><span id="headerLogo" data-logo="44"></span><span>Orin</span></div>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M17.5 3.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4 8.5-8.5z"/></svg>
+          </div>
+
+          <div id="chatViewport">
+            <div id="welcome">
+              <div class="logo" data-logo="120"></div>
+              <div class="hi">وش نذاكر اليوم؟</div>
+              <div class="sub">اسألني أي سؤال… في أي مادة</div>
+              <div class="chips">
+                <div class="chip"><span class="e">📖</span>اشرح درس</div>
+                <div class="chip"><span class="e">🧮</span>حل مسألة</div>
+                <div class="chip"><span class="e">📄</span>لخّص ملف</div>
+                <div class="chip"><span class="e">✅</span>اختبرني</div>
+              </div>
+            </div>
+
+            <div id="chatCol">
+              <!-- Feature 1: explain -->
+              <div class="block" id="b1" data-prompt="اشرح لي التمثيل الضوئي بطريقة سهلة">
+                <div class="msg user"><div class="bubble">اشرح لي التمثيل الضوئي بطريقة سهلة</div></div>
+                <div class="msg ai">
+                  <div class="avatar" data-logo="40"></div>
+                  <div class="ai-body">
+                    <div class="thinking">يفكّر…</div>
+                    <div class="ai-text" data-stream>ببساطة: النبات <b>يصنع غذاءه بنفسه</b> 🌱 يستخدم ضوء الشمس والماء وثاني أكسيد الكربون ليصنع السكّر، ويطلق الأكسجين 🍃</div>
+                    <div class="chips-row">
+                      <span class="eq pop">☀️ <span class="op">+</span> 💧 <span class="op">+</span> <span class="ltr">CO<sub>2</sub></span></span>
+                      <span class="op pop"><svg width="34" height="24" viewBox="0 0 34 24" fill="none" stroke="#9D9DA7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M31 12H4M12 4l-8 8 8 8"/></svg></span>
+                      <span class="eq out pop">🍬 سكّر <span class="op">+</span> <span class="ltr">O<sub>2</sub></span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 2: math step by step -->
+              <div class="block" id="b2" data-prompt="حل المعادلة: 2x + 6 = 14">
+                <div class="msg user"><div class="bubble">حل المعادلة: <span class="ltr">2x + 6 = 14</span></div></div>
+                <div class="msg ai">
+                  <div class="avatar" data-logo="40"></div>
+                  <div class="ai-body">
+                    <div class="thinking">يفكّر…</div>
+                    <div class="ai-text" data-stream>بكل سرور! لنحلها <b>خطوة بخطوة</b> 👇</div>
+                    <div class="card pop">
+                      <div class="step pop"><span class="badge">1</span><div><div class="txt">نطرح 6 من الطرفين</div><span class="math">2x = 8</span></div></div>
+                      <div class="step pop"><span class="badge">2</span><div><div class="txt">نقسم الطرفين على 2</div><span class="math">x = 4</span></div></div>
+                    </div>
+                    <div class="result pop"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#140907" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>الحل: <span class="math">x = 4</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 3: summarise a file -->
+              <div class="block" id="b3" data-prompt="لخّص لي هذا الفصل" data-file="الدولة العباسية.pdf">
+                <div class="msg user"><div class="bubble">
+                  <div class="file"><span class="ic">PDF</span><div><div class="nm">الدولة العباسية</div><div class="mt">24 صفحة • <span class="ltr">3.2 MB</span></div></div></div>
+                  لخّص لي هذا الفصل
+                </div></div>
+                <div class="msg ai">
+                  <div class="avatar" data-logo="40"></div>
+                  <div class="ai-body">
+                    <div class="thinking">يقرأ الملف…</div>
+                    <div class="ai-text" data-stream>إليك <b>أهم النقاط</b> في الفصل ✨</div>
+                    <div class="bullets">
+                      <div class="bullet pop"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B56" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>تأسست الدولة العباسية عام <span class="ltr">750</span>م</span></div>
+                      <div class="bullet pop"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B56" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>بنى أبو جعفر المنصور بغداد وجعلها العاصمة</span></div>
+                      <div class="bullet pop"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B56" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>ازدهرت العلوم والترجمة في بيت الحكمة</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature 4: quiz -->
+              <div class="block" id="b4" data-prompt="اختبرني في الفصل 🔥">
+                <div class="msg user"><div class="bubble">اختبرني في الفصل 🔥</div></div>
+                <div class="msg ai">
+                  <div class="avatar" data-logo="40"></div>
+                  <div class="ai-body">
+                    <div class="thinking">يجهّز الأسئلة…</div>
+                    <div class="ai-text" data-stream>تحدّي سريع! 💪</div>
+                    <div class="card quiz pop">
+                      <div class="qhead"><span>سؤال 1 من 5</span><span class="bar"><i></i></span></div>
+                      <div class="q">من الذي بنى مدينة بغداد؟</div>
+                      <div class="opt pop"><span class="l">أ</span>هارون الرشيد</div>
+                      <div class="opt pop" id="correct"><span class="ripple"></span><span class="tapdot"></span><span class="l">ب</span>أبو جعفر المنصور<span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#06140D" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+                      <div class="opt pop"><span class="l">ج</span>المأمون</div>
+                      <div class="verdict">إجابة صحيحة! 🎉</div>
+                    </div>
+                    <div id="confetti"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="composer">
+            <span class="plus"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            <span class="field">
+              <span class="ph">اسأل Orin أي سؤال…</span>
+              <span class="inner"><span class="fchip"><b>PDF</b>الدولة العباسية</span><span class="typed"></span><span class="caret"></span></span>
+            </span>
+            <span class="send"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5.5 11.5L12 5l6.5 6.5"/></svg></span>
+          </div>
+          <div id="homebar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ Ring (hook timer → logo) ═════════ -->
+  <svg id="ringA" class="ring-svg" viewBox="0 0 1080 1920">
+    <circle class="shock" r="100" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0"/>
+    <g class="ring-g">
+      <circle class="track" r="100" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/>
+      <circle class="prog" r="100" fill="none" stroke="#FF6B56" stroke-width="10" stroke-linecap="round" pathLength="1000" transform="rotate(-90)"/>
+      <path class="pw" fill="#F7F7F7"/>
+      <path class="pc" fill="#FF6B56"/>
+    </g>
+  </svg>
+  <div id="clock">
+    <div class="digits">
+      <span class="cell"><span class="strip"><span>0</span></span></span>
+      <span class="cell"><span class="strip" id="dg1"><span>1</span><span>2</span></span></span>
+      <span class="colon" id="colon">:</span>
+      <span class="cell"><span class="strip" id="dg2"><span>5</span><span>0</span></span></span>
+      <span class="cell"><span class="strip" id="dg3"><span>9</span><span>0</span></span></span>
+    </div>
+    <div class="ampm">AM</div>
+  </div>
+
+  <!-- ═════════ Logo lockup ═════════ -->
+  <section id="lockup" class="layer">
+    <div class="wordmark" id="wordmark" data-letters>Orin</div>
+    <div id="tagline" data-split>ذكاء اصطناعي مصمّم <span class="accent">للطلاب</span></div>
+  </section>
+
+  <!-- ═════════ Subjects montage ═════════ -->
+  <section id="montage" class="layer">
+    <div id="wipeCoral" class="wipe"></div>
+    <svg id="ringM" class="ring-svg" viewBox="0 0 1080 1920">
+      <g class="ring-g"><path class="pw" fill="rgba(8,8,10,.14)"/><path class="pc" fill="rgba(8,8,10,.14)"/></g>
+    </svg>
+    <div class="mword">رياضيات</div>
+    <div class="mword outline">فيزياء</div>
+    <div class="mword">كيمياء</div>
+    <div class="mword light">أحياء</div>
+    <div class="mword outline">تاريخ</div>
+    <div class="mword">جغرافيا</div>
+    <div class="mword light">إنجليزي</div>
+    <div class="mword">برمجة</div>
+    <div id="mcount"></div>
+    <div id="allInOne">
+      <div class="l1" data-split>كل موادك…</div>
+      <div class="l2wrap"><span class="l2">في تطبيق واحد</span></div>
+    </div>
+  </section>
+
+  <!-- ═════════ End card ═════════ -->
+  <div id="wipeDark" class="wipe"></div>
+  <section id="end" class="layer">
+    <svg id="ringB" class="ring-svg" viewBox="0 0 1080 1920">
+      <circle class="shock" r="100" fill="none" stroke="#FF6B56" stroke-width="5" opacity="0"/>
+      <g class="ring-g"><path class="pw" fill="#F7F7F7"/><path class="pc" fill="#FF6B56"/></g>
+    </svg>
+    <div class="wordmark" id="endWordmark" data-letters>Orin</div>
+    <h2 id="slogan" data-split>ذاكر <span class="accent">بذكاء</span>… مو بتعب</h2>
+    <div id="cta"><span class="shine"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M6.5 10l5.5 5.5 5.5-5.5M5 20h14"/></svg>حمّل التطبيق الآن</div>
+  </section>
+
+  <div id="vignette" class="layer"></div>
+  <div id="grain" class="layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="30" step="0.001" value="0">
+  <span class="t" id="tlabel">0.00 / 30.00</span>
+  <button id="mute" title="الصوت">🔊</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack.m4a" type="audio/mp4"><source src="out/soundtrack.wav" type="audio/wav"></audio>
+
+<script src="src/timeline.js"></script>
+</body>
+</html>

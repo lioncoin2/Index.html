@@ -1,0 +1,15 @@
+{
+  "name": "orin-ad",
+  "private": true,
+  "description": "Orin — 30s vertical motion-graphics ad (HTML + GSAP, rendered with Playwright + ffmpeg)",
+  "type": "module",
+  "scripts": {
+    "preview": "python3 -m http.server 8000",
+    "render": "node render/render.mjs",
+    "render:30": "node render/render.mjs --fps 30",
+    "audio": "node render/render.mjs --cues-only && python3 render/soundtrack.py out/cues.json out/soundtrack.wav"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
+}
