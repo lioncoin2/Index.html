@@ -8,7 +8,8 @@
     "render": "node render/render.mjs",
     "render:30": "node render/render.mjs --fps 30",
     "audio": "node render/render.mjs --cues-only && python3 render/soundtrack.py out/cues.json out/soundtrack.wav",
-    "render:v4": "node render/render.mjs --page v4.html --shutter 5"
+    "render:v4": "node render/render.mjs --page v4.html --shutter 5",
+    "render:v5": "node render/render.mjs --page v5.html --shutter 5"
   },
   "devDependencies": {
     "sharp": "^0.35.0"
