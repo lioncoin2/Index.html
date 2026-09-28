@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orin — تحدّي 3 أسئلة (باللهجة العراقية)</title>
+<link rel="stylesheet" href="src/styles.css">
+<link rel="stylesheet" href="src/cinema.css">
+<link rel="stylesheet" href="src/v5.css">
+<style>
+  /* Readex has no گ / چ glyphs — these two spots use Alexandria so the Iraqi letters match */
+  #hkB { font-family: var(--display); font-weight: 600; }
+  .choice .ct { font-family: var(--display); font-weight: 600; }
+</style>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/CustomEase.min.js"></script>
+<script src="src/logo.js"></script>
+<script src="src/cinema.js"></script>
+</head>
+<body data-ad="v5-iq">
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+
+  <div id="bg" class="layer">
+    <div id="g1" class="glow"></div>
+    <div id="g2" class="glow warm"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+    <div id="alarm" class="layer"></div>
+  </div>
+
+  <!-- #rig = handheld drift (updater-owned) › #push = push-ins during each countdown (GSAP-owned) -->
+  <div id="rig" class="layer"><div id="push" class="layer">
+
+    <!-- ═════════ Hook ═════════ -->
+    <section id="hook" class="layer">
+      <div id="sticker"><span>⚠️ هواية ناس يغلطون بالثالث</span></div>
+      <div id="big3"><i class="g3"></i><span class="ltr">3</span></div>
+      <h1 id="hkA" data-split>أسئلة بس…</h1>
+      <h2 id="hkB" data-split>جاوب گبل لا يخلص الوكت ⏱️</h2>
+    </section>
+
+    <!-- ═════════ HUD: question counter + "stories" progress ═════════ -->
+    <div id="hud">
+      <div class="hlabel">سؤال <span class="num ltr"><span class="clipn"><span class="roll"><i>1</i><i>2</i><i>3</i></span></span>/3</span></div>
+      <div class="segs"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    </div>
+
+    <!-- ═════════ Q1 ═════════ -->
+    <section class="q layer" id="q1" data-correct="2">
+      <div class="lvl easy">سهل 🟢</div>
+      <h2 class="qtext" data-split>ريشة وچاكوچ يوگعون بالفراغ<br>(بلا هوا)… منو يوصل أول؟</h2>
+      <div class="stack">
+        <div class="choice"><i class="cglow"></i><span class="let">أ</span><span class="ct">الچاكوچ 🔨</span><span class="mark"></span></div>
+        <div class="choice"><i class="cglow"></i><span class="let">ب</span><span class="ct">الريشة 🪶</span><span class="mark"></span></div>
+        <div class="choice"><i class="cglow"></i><span class="let">ج</span><span class="ct">يوصلون سوية</span><span class="mark"></span></div>
+        <div class="xcard">
+          <div class="xhead"><span class="avatar xav" data-logo="46"></span><b class="ltr">Orin</b><span class="xsub">يشرحلك ✨</span></div>
+          <p class="xtext" data-stream>بلا هوا ماكو مقاومة… والجاذبية تسرّع <u>كلشي بنفس المقدار</u> 🌍</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ Q2 ═════════ -->
+    <section class="q layer" id="q2" data-correct="1">
+      <div class="lvl mid">متوسط 🟡</div>
+      <h2 class="qtext fit" data-split><span class="ltr">5</span> مكاين تسوي <span class="ltr">5</span> قطع بـ<span class="ltr">5</span> دقايق…<br><span class="ltr">100</span> مكينة تسوي <span class="ltr">100</span> قطعة بشگد؟</h2>
+      <div class="stack">
+        <div class="choice"><i class="cglow"></i><span class="let">أ</span><span class="ct"><span class="ltr">100</span> دقيقة</span><span class="mark"></span></div>
+        <div class="choice"><i class="cglow"></i><span class="let">ب</span><span class="ct"><span class="ltr">5</span> دقايق</span><span class="mark"></span></div>
+        <div class="choice"><i class="cglow"></i><span class="let">ج</span><span class="ct"><span class="ltr">20</span> دقيقة</span><span class="mark"></span></div>
+        <div class="xcard">
+          <div class="xhead"><span class="avatar xav" data-logo="46"></span><b class="ltr">Orin</b><span class="xsub">يشرحلك ✨</span></div>
+          <p class="xtext" data-stream>كل مكينة تسوي قطعة وحدة بـ<span class="ltr">5</span> دقايق… <u>العدد ما يغيّر الوكت</u> ⏱️</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ Q3 (the trap) ═════════ -->
+    <section class="q layer" id="q3" data-correct="1" data-trap="0">
+      <div class="lvl hard">صعب 🔥</div>
+      <h2 class="qtext" data-split>مضرب وطوبة سعرهم <span class="ltr">1.10</span> دولار…<br>المضرب أغلى من الطوبة بدولار<br>بيش الطوبة؟ ⚾</h2>
+      <div class="stack">
+        <div class="choice"><i class="cglow"></i><span class="let">أ</span><span class="ct num ltr">0.10</span><span class="mark"></span><span class="crowd">هواية ناس اختاروها 👀</span></div>
+        <div class="choice"><i class="cglow"></i><span class="let">ب</span><span class="ct num ltr">0.05</span><span class="mark"></span></div>
+        <div class="choice"><i class="cglow"></i><span class="let">ج</span><span class="ct num ltr">0.15</span><span class="mark"></span></div>
+        <div class="xcard">
+          <div class="xhead"><span class="avatar xav" data-logo="46"></span><b class="ltr">Orin</b><span class="xsub">يشرحلك ✨</span></div>
+          <p class="xtext" data-stream>لو الطوبة <span class="ltr">0.10</span> يصير المضرب <span class="ltr">1.10</span><br>يعني المجموع <span class="ltr">1.20</span> ❌<br>الصح: <u><span class="ltr">0.05 + 1.05 = 1.10</span></u> ✅</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- countdown ring (becomes the Orin logo on every reveal) + digits -->
+    <svg id="ringQ" class="ring-svg" viewBox="0 0 1080 1920">
+      <circle class="shock" r="100" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0"/>
+      <g class="ring-g">
+        <circle class="halo" r="100" fill="none" stroke="#FF4D5E" stroke-width="26" opacity="0"/>
+        <circle class="track" r="100" fill="none" stroke="rgba(255,255,255,.13)" stroke-width="12"/>
+        <circle class="prog" r="100" fill="none" stroke="#F7F7F7" stroke-width="12" stroke-linecap="round" pathLength="1000" transform="rotate(-90)"/>
+        <path class="pw" fill="#F7F7F7"/>
+        <path class="pc" fill="#FF6B56"/>
+      </g>
+    </svg>
+    <div id="count" class="ltr"><span>3</span><span>2</span><span>1</span><span class="tu">⏰</span></div>
+
+    <!-- ═════════ Score ═════════ -->
+    <section id="score" class="layer">
+      <h2 id="scTitle" data-split>شگد جبت؟ 🤔</h2>
+      <div class="tier" id="t3"><span class="pts ltr">3/3</span><span class="tl">فلتة 🧠</span></div>
+      <div class="tier" id="t2"><span class="pts ltr">2/3</span><span class="tl">بطل 😎</span></div>
+      <div class="tier" id="t1"><span class="pts ltr">1/3</span><span class="tl">يرادلك مراجعة 😅</span></div>
+      <div class="tier hot" id="t0"><span class="pts ltr">0/3</span><span class="tl">يرادلك <span class="ltr">Orin</span> هسة 💀</span></div>
+      <div id="scCta"><span id="scCtaT" data-split>اكتبلنا نتيجتك بالتعليقات</span><span id="point">👇</span></div>
+    </section>
+  </div></div>
+
+  <!-- ═════════ End card ═════════ -->
+  <div id="camPost" class="layer">
+    <section id="end" class="layer">
+      <div id="pitch">
+        <h2 id="p1" data-split><span class="ltr">Orin</span> يسويلك<br>اختبارات هيچ…</h2>
+        <h2 id="p2" data-split>من <span class="accent">دروسك إنت</span> 🎯</h2>
+      </div>
+      <svg id="ringB" class="ring-svg" viewBox="0 0 1080 1920">
+        <circle class="shock" r="100" fill="none" stroke="#FF6B56" stroke-width="5" opacity="0"/>
+        <g class="ring-g"><path class="pw" fill="#F7F7F7"/><path class="pc" fill="#FF6B56"/></g>
+      </svg>
+      <div class="wordmark" id="endWordmark" data-letters>Orin</div>
+      <div id="cta"><span class="shine"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M6.5 10l5.5 5.5 5.5-5.5M5 20h14"/></svg>نزّل التطبيق هسة</div>
+    </section>
+  </div>
+
+  <div class="vignette-cinematic layer"></div>
+  <div id="vignette" class="layer"></div>
+  <div id="grain" class="grain-layer layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="34.5" step="0.001" value="0">
+  <span class="t" id="tlabel">0.00 / 34.50</span>
+  <button id="mute" title="الصوت">🔊</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack-v5.m4a" type="audio/mp4"><source src="out/soundtrack-v5.wav" type="audio/wav"></audio>
+
+<script src="src/v5.js"></script>
+</body>
+</html>

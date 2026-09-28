@@ -559,7 +559,10 @@
     return true;
   })();
 
-  window.ORIN = { id: 'v5', soundtrack: 'soundtrack_v5.py', ready, seek, cues, T, W, H, FPS, BPM, get duration() { return DURATION; } };
+  // v5.html and its dialect variants (e.g. v5-iq.html, <body data-ad="v5-iq">) share this timeline;
+  // the id names their output files (cues-<id>.json, orin-ad-<id>-9x16-…mp4)
+  const AD_ID = document.body.dataset.ad || 'v5';
+  window.ORIN = { id: AD_ID, soundtrack: 'soundtrack_v5.py', ready, seek, cues, T, W, H, FPS, BPM, get duration() { return DURATION; } };
 
   if (RENDER) return;
 
