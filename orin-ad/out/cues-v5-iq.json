@@ -1,0 +1,335 @@
+{
+ "id": "v5-iq",
+ "soundtrack": "soundtrack_v5.py",
+ "duration": 34.5,
+ "T": {
+  "hook": 0,
+  "zoom": 1.95,
+  "q": [
+   {
+    "s": 2.5,
+    "c0": 4,
+    "r": 7,
+    "rv": 7,
+    "end": 10
+   },
+   {
+    "s": 10,
+    "c0": 11.5,
+    "r": 14.5,
+    "rv": 14.5,
+    "end": 17.5
+   },
+   {
+    "s": 17.5,
+    "c0": 19.5,
+    "r": 22.5,
+    "rv": 23.5,
+    "end": 27.5,
+    "trap": true
+   }
+  ],
+  "score": 27.5,
+  "end": 30.75,
+  "logo": 32.15
+ },
+ "bpm": 120,
+ "cues": [
+  {
+   "t": 0,
+   "type": "slam",
+   "big": true
+  },
+  {
+   "t": 0.22,
+   "type": "word"
+  },
+  {
+   "t": 0.72,
+   "type": "tickTock",
+   "until": 1.95
+  },
+  {
+   "t": 1.46,
+   "type": "slap"
+  },
+  {
+   "t": 1.95,
+   "type": "zoom",
+   "until": 2.5
+  },
+  {
+   "t": 2.5,
+   "type": "qIn",
+   "i": 0
+  },
+  {
+   "t": 3.12,
+   "type": "opt",
+   "k": 0
+  },
+  {
+   "t": 3.23,
+   "type": "opt",
+   "k": 1
+  },
+  {
+   "t": 3.34,
+   "type": "opt",
+   "k": 2
+  },
+  {
+   "t": 3.6,
+   "type": "charge"
+  },
+  {
+   "t": 4,
+   "type": "count",
+   "n": 3
+  },
+  {
+   "t": 5,
+   "type": "count",
+   "n": 2
+  },
+  {
+   "t": 6,
+   "type": "count",
+   "n": 1
+  },
+  {
+   "t": 6,
+   "type": "heart"
+  },
+  {
+   "t": 6.5,
+   "type": "heart"
+  },
+  {
+   "t": 7,
+   "type": "correct",
+   "big": false
+  },
+  {
+   "t": 7.5,
+   "type": "collapse"
+  },
+  {
+   "t": 7.95,
+   "type": "card"
+  },
+  {
+   "t": 8,
+   "type": "fly"
+  },
+  {
+   "t": 8.5,
+   "type": "land"
+  },
+  {
+   "t": 9.64,
+   "type": "whip"
+  },
+  {
+   "t": 10,
+   "type": "qIn",
+   "i": 1
+  },
+  {
+   "t": 10.3,
+   "type": "opt",
+   "k": 0
+  },
+  {
+   "t": 10.41,
+   "type": "opt",
+   "k": 1
+  },
+  {
+   "t": 10.52,
+   "type": "opt",
+   "k": 2
+  },
+  {
+   "t": 11.1,
+   "type": "charge"
+  },
+  {
+   "t": 11.5,
+   "type": "count",
+   "n": 3
+  },
+  {
+   "t": 12.5,
+   "type": "count",
+   "n": 2
+  },
+  {
+   "t": 13.5,
+   "type": "count",
+   "n": 1
+  },
+  {
+   "t": 13.5,
+   "type": "heart"
+  },
+  {
+   "t": 14,
+   "type": "heart"
+  },
+  {
+   "t": 14.5,
+   "type": "correct",
+   "big": false
+  },
+  {
+   "t": 15,
+   "type": "collapse"
+  },
+  {
+   "t": 15.45,
+   "type": "card"
+  },
+  {
+   "t": 15.5,
+   "type": "fly"
+  },
+  {
+   "t": 16,
+   "type": "land"
+  },
+  {
+   "t": 17.14,
+   "type": "whip"
+  },
+  {
+   "t": 17.5,
+   "type": "qIn",
+   "i": 2
+  },
+  {
+   "t": 17.5,
+   "type": "hard"
+  },
+  {
+   "t": 17.8,
+   "type": "opt",
+   "k": 0
+  },
+  {
+   "t": 17.91,
+   "type": "opt",
+   "k": 1
+  },
+  {
+   "t": 18.02,
+   "type": "opt",
+   "k": 2
+  },
+  {
+   "t": 19.1,
+   "type": "charge"
+  },
+  {
+   "t": 19.5,
+   "type": "count",
+   "n": 3
+  },
+  {
+   "t": 20.5,
+   "type": "count",
+   "n": 2
+  },
+  {
+   "t": 21.5,
+   "type": "count",
+   "n": 1
+  },
+  {
+   "t": 21.5,
+   "type": "heart"
+  },
+  {
+   "t": 22,
+   "type": "heart"
+  },
+  {
+   "t": 22.5,
+   "type": "trapPick"
+  },
+  {
+   "t": 23,
+   "type": "wrong"
+  },
+  {
+   "t": 23.5,
+   "type": "correct",
+   "big": true
+  },
+  {
+   "t": 24,
+   "type": "collapse"
+  },
+  {
+   "t": 24.45,
+   "type": "card"
+  },
+  {
+   "t": 24.5,
+   "type": "fly"
+  },
+  {
+   "t": 25,
+   "type": "land"
+  },
+  {
+   "t": 27.5,
+   "type": "scoreIn"
+  },
+  {
+   "t": 27.92,
+   "type": "tier",
+   "n": 0
+  },
+  {
+   "t": 28.12,
+   "type": "tier",
+   "n": 1
+  },
+  {
+   "t": 28.32,
+   "type": "tier",
+   "n": 2
+  },
+  {
+   "t": 28.8,
+   "type": "rimshot"
+  },
+  {
+   "t": 29.1,
+   "type": "prompt"
+  },
+  {
+   "t": 30.75,
+   "type": "endIn",
+   "until": 32.15
+  },
+  {
+   "t": 31.11,
+   "type": "pop"
+  },
+  {
+   "t": 32.15,
+   "type": "impact",
+   "big": true
+  },
+  {
+   "t": 32.95,
+   "type": "cta"
+  },
+  {
+   "t": 33,
+   "type": "chime"
+  }
+ ]
+}
