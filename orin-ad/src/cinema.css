@@ -1,0 +1,24 @@
+/* Orin — shared cinema toolkit styles. Pairs with src/cinema.js. */
+
+.grain-layer {
+  position: absolute; inset: 0; mix-blend-mode: overlay; pointer-events: none;
+  background-size: 256px 256px; will-change: opacity;
+}
+
+/* Slightly cooler at the corners, a hair warm centre — the "graded" vignette rather
+   than a flat darken-to-black. Layer this above the grade filter, below the flash. */
+.vignette-cinematic {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 46% at 50% 46%, rgba(255, 200, 170, .05) 0%, rgba(255, 200, 170, 0) 60%),
+    radial-gradient(ellipse 88% 74% at 50% 48%, rgba(0, 0, 0, 0) 52%, rgba(5, 4, 10, .5) 82%, rgba(3, 2, 6, .82) 100%);
+}
+
+#world.graded { will-change: filter; }
+
+.flare, .flare i { will-change: transform, opacity; }
+
+/* A camera rig wraps everything the "lens" should see; the handheld() helper writes
+   its transform every tick. Keeping it a dedicated layer means grading/flare/CA can
+   sit outside it (screen-space) while content shakes convincingly inside it. */
+#rig { position: absolute; inset: 0; will-change: transform; }

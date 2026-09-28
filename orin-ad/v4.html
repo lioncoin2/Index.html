@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orin — نفس الطالب، فرق واحد</title>
+<link rel="stylesheet" href="src/styles.css">
+<link rel="stylesheet" href="src/cinema.css">
+<link rel="stylesheet" href="src/v4.css">
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/CustomEase.min.js"></script>
+<script src="src/logo.js"></script>
+<script src="src/cinema.js"></script>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+
+  <div id="bg" class="layer">
+    <div id="g1" class="glow"></div>
+    <div id="g2" class="glow warm"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+  </div>
+
+  <!-- ═════════ Hook ═════════ -->
+  <section id="hook" class="layer">
+    <h1 class="hookline" id="hk1" data-split>نفس الطالب…</h1>
+    <h1 class="hookline" id="hk2" data-split>و<span class="accent">الفرق</span>؟ 👀</h1>
+  </section>
+
+  <!-- ═════════ Split scene ═════════ -->
+  <section id="splitScene" class="layer">
+    <div id="divider"><i class="dglow"></i></div>
+
+    <!-- right = بدون Orin (read first in RTL) -->
+    <div class="panel chaos" id="panelChaos">
+      <div class="pcam"><div class="pshake">
+        <div class="ptag bad">بدون <span class="ltr">Orin</span></div>
+
+        <div class="beat" id="cA">
+          <h2 class="bline" data-split>ضايع بالوقت ⏰</h2>
+          <div class="clock bad">
+            <div class="hand hh"></div><div class="hand mm"></div><div class="pin"></div>
+          </div>
+        </div>
+
+        <div class="beat" id="cB">
+          <h2 class="bline" data-split>معلومات مكدّسة 📚</h2>
+          <div class="pile">
+            <div class="sheet s3"></div><div class="sheet s2"></div>
+            <div class="sheet s1"><i></i><i class="m"></i><i></i><i class="s"></i><i></i></div>
+          </div>
+        </div>
+
+        <div class="beat" id="cC">
+          <h2 class="bline" data-split>النتيجة: إحباط 😞</h2>
+          <div class="badge bad">
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" pathLength="100"/><path class="x" d="M32 32L68 68M68 32L32 68"/></svg>
+            <span class="grade ltr">5<small>/20</small></span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- left = مع Orin -->
+    <div class="panel calm" id="panelCalm">
+      <div class="pcam"><div class="pshake">
+        <div class="ptag good"><span class="ltr">Orin</span> معك ✨</div>
+
+        <div class="beat" id="oA">
+          <h2 class="bline" data-split>وقتك مرتّب ⏱️</h2>
+          <div class="clock good">
+            <div class="hand hh"></div><div class="hand mm"></div><div class="pin"></div>
+          </div>
+        </div>
+
+        <div class="beat" id="oB">
+          <h2 class="bline" data-split>كل شي واضح ✨</h2>
+          <div class="card">
+            <div class="chead"><span class="avatar" data-logo="36"></span><b>Orin</b></div>
+            <p class="ctext" data-stream>خلّنا نبسّطها <u>سوا</u> خطوة بخطوة.</p>
+            <span class="ok-chip">فهمتها ✅</span>
+          </div>
+        </div>
+
+        <div class="beat" id="oC">
+          <h2 class="bline" data-split>النتيجة: ثقة 🔥</h2>
+          <div class="badge good">
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" pathLength="100"/><path class="ck" d="M32 52l13 13 25-27"/></svg>
+            <span class="grade ltr">18<small>/20</small></span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ═════════ Wipe + unified message + end card ═════════ -->
+  <div id="wipeCoral" class="wipe"></div>
+  <div id="camPost" class="layer">
+    <section id="unified" class="layer">
+      <h2 id="uni1" data-split>الفرق كله…</h2>
+      <h2 id="uni2" data-split><span class="accent">مساعد ذكي وحد</span> 🤝</h2>
+    </section>
+
+    <section id="end" class="layer">
+      <svg id="ringB" class="ring-svg" viewBox="0 0 1080 1920">
+        <circle class="shock" r="100" fill="none" stroke="#FF6B56" stroke-width="5" opacity="0"/>
+        <g class="ring-g"><path class="pw" fill="#F7F7F7"/><path class="pc" fill="#FF6B56"/></g>
+      </svg>
+      <div class="wordmark" id="endWordmark" data-letters>Orin</div>
+      <h2 id="slogan" data-split>نفس المجهود… <span class="accent">نتيجة أحسن</span> 📈</h2>
+      <div id="cta"><span class="shine"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M6.5 10l5.5 5.5 5.5-5.5M5 20h14"/></svg>حمّل التطبيق الآن</div>
+    </section>
+  </div>
+
+  <div class="vignette-cinematic layer"></div>
+  <div id="vignette" class="layer"></div>
+  <div id="grain" class="grain-layer layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="25" step="0.001" value="0">
+  <span class="t" id="tlabel">0.00 / 25.00</span>
+  <button id="mute" title="الصوت">🔊</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack-v4.m4a" type="audio/mp4"><source src="out/soundtrack-v4.wav" type="audio/wav"></audio>
+
+<script src="src/v4.js"></script>
+</body>
+</html>

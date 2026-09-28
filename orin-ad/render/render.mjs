@@ -13,24 +13,29 @@
  *   --workers N     parallel browser pages (default 4)
  *   --crf N         x264 quality, lower = better (default 17)
  *   --out FILE      output path (default out/orin-ad-9x16-<fps>fps.mp4)
- *   --page FILE     composition to render (default index.html; v2.html = problem/solution ad)
+ *   --page FILE     composition to render (default index.html; v2/v3/v4.html = other ads)
+ *   --shutter K     motion-blur sub-samples per frame, binomial-weighted (default 1 = off;
+ *                   5 is a good cinematic default — see render/blend.mjs)
+ *   --shutterAngle  exposure as a fraction of the frame, in degrees (default 180, classic film)
  *   --no-audio      skip soundtrack generation and muxing
  *   --keep-frames   keep the PNG frames in out/frames
  *
- * Needs: Playwright (Chromium) and ffmpeg with libx264. Set FFMPEG=/path/to/ffmpeg
- * if ffmpeg is not on PATH (pip's imageio-ffmpeg binary is picked up automatically).
+ * Needs: Playwright (Chromium), ffmpeg with libx264, and sharp (motion blur only).
+ * Set FFMPEG=/path/to/ffmpeg if ffmpeg is not on PATH (pip's imageio-ffmpeg binary is
+ * picked up automatically).
  */
 import { spawn, spawnSync, execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { binomialWeights, shutterSamples, captureBlended } from './blend.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(ROOT, 'out');
 
 function args() {
   const a = process.argv.slice(2);
-  const o = { fps: 60, scale: 1, workers: 4, crf: 17, out: null, audio: true, keep: false, cuesOnly: false, page: 'index.html' };
+  const o = { fps: 60, scale: 1, workers: 4, crf: 17, out: null, audio: true, keep: false, cuesOnly: false, page: 'index.html', shutter: 1, shutterAngle: 180 };
   for (let i = 0; i < a.length; i++) {
     const k = a[i], v = a[i + 1];
     if (k === '--fps') { o.fps = +v; i++; }
@@ -44,6 +49,8 @@ function args() {
     else if (k === '--keep-frames') o.keep = true;
     else if (k === '--cues-only') o.cuesOnly = true;
     else if (k === '--page') { o.page = v; i++; }
+    else if (k === '--shutter') { o.shutter = +v; i++; }
+    else if (k === '--shutterAngle') { o.shutterAngle = +v; i++; }
     else { console.error('unknown option ' + k); process.exit(1); }
   }
   return o;
@@ -115,6 +122,10 @@ fs.mkdirSync(framesDir, { recursive: true });
 const pages = [first];
 for (let i = 1; i < o.workers; i++) pages.push(await openPage(browser, o));
 
+const blurOn = o.shutter > 1;
+const blurWeights = blurOn ? binomialWeights(o.shutter) : null;
+if (blurOn) console.log(`motion blur: ${o.shutter} samples, ${o.shutterAngle}° shutter`);
+
 let done = 0;
 const started = Date.now();
 const chunk = Math.ceil(total / pages.length);
@@ -122,10 +133,17 @@ await Promise.all(pages.map(async (page, w) => {
   const cdp = await page.context().newCDPSession(page);
   const a = n0 + w * chunk, b = Math.min(n1, a + chunk);
   for (let f = a; f < b; f++) {
-    await page.evaluate((t) => ORIN.seek(t), f / o.fps);
-    const { data } = await cdp.send('Page.captureScreenshot', { format: 'png', optimizeForSpeed: true, captureBeyondViewport: false });
-    fs.writeFileSync(path.join(framesDir, `${String(f - n0).padStart(5, '0')}.png`), Buffer.from(data, 'base64'));
-    if (++done % 60 === 0 || done === total) {
+    const outPath = path.join(framesDir, `${String(f - n0).padStart(5, '0')}.png`);
+    if (blurOn) {
+      const times = shutterSamples(f / o.fps, o.fps, o.shutterAngle, o.shutter);
+      const img = await captureBlended(page, cdp, times, blurWeights);
+      await img.toFile(outPath);
+    } else {
+      await page.evaluate((t) => ORIN.seek(t), f / o.fps);
+      const { data } = await cdp.send('Page.captureScreenshot', { format: 'png', optimizeForSpeed: true, captureBeyondViewport: false });
+      fs.writeFileSync(outPath, Buffer.from(data, 'base64'));
+    }
+    if (++done % 30 === 0 || done === total) {
       const fps = done / ((Date.now() - started) / 1000);
       process.stdout.write(`\rframes ${done}/${total}  (${fps.toFixed(1)} fps)   `);
     }

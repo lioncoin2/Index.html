@@ -1,0 +1,124 @@
+/* Orin ad v4 — split screen "same student, one difference". Builds on styles.css
+   (tokens, wordmark/slogan/cta, ring) and cinema.css (grade/vignette/rig). */
+:root { --bad: #FF4D5E; --bad-soft: rgba(255, 77, 94, .16); }
+
+/* ───────── hook ───────── */
+.hookline {
+  position: absolute; left: 40px; right: 40px; margin: 0; text-align: center;
+  font-family: var(--display); font-weight: 800; font-size: 118px; line-height: 1.2;
+}
+#hk1 { top: 800px; }
+#hk2 { top: 960px; }
+
+/* ───────── split scene ───────── */
+#splitScene { overflow: hidden; }
+#divider {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; margin-left: -2px; z-index: 6;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.9) 15%, rgba(255,255,255,.9) 85%, rgba(255,255,255,0));
+  transform: scaleY(0); transform-origin: 50% 50%;
+}
+#divider .dglow {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 90px; margin-left: -45px;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,255,255,.5), rgba(255,255,255,0) 70%);
+  filter: blur(4px);
+}
+.panel {
+  position: absolute; top: 0; bottom: 0; width: 540px; overflow: hidden;
+}
+.panel.chaos { right: 0; }
+.panel.calm { left: 0; }
+/* .pcam: GSAP-owned (the slide-in-from-edge entrance). .pshake: updater-owned
+   (continuous handheld noise) — two separate layers so nothing fights over one
+   element's transform; nesting composes both into the final camera motion. */
+.panel .pcam { position: absolute; inset: 0; will-change: transform; }
+.panel .pshake { position: absolute; inset: 0; will-change: transform; }
+.panel.chaos .pcam { filter: var(--grade-chaos, contrast(1.18) saturate(1.2) brightness(.96)); }
+.panel.calm .pcam { filter: var(--grade-calm, contrast(1.05) saturate(1.05)); }
+
+.ptag {
+  position: absolute; left: 0; right: 0; top: 175px; margin: 0 auto; width: fit-content;
+  font-family: var(--ui); font-weight: 600; font-size: 30px; padding: 10px 26px 14px; border-radius: 32px;
+  white-space: nowrap;
+}
+.ptag.bad { background: var(--bad-soft); border: 2px solid rgba(255,77,94,.55); color: #FF8792; }
+.ptag.good { background: var(--coral); color: var(--ink); box-shadow: 0 12px 34px rgba(255,107,86,.35); }
+
+.beat { position: absolute; left: 30px; right: 30px; top: 620px; text-align: center; opacity: 0; }
+.bline {
+  margin: 0 0 46px; font-family: var(--display); font-weight: 800; font-size: 56px; line-height: 1.28;
+}
+.panel.chaos .bline { color: #FFD9DC; }
+
+/* clock */
+.clock {
+  position: relative; width: 300px; height: 300px; margin: 0 auto; border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #202027, #101013 70%);
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,.08), 0 20px 60px rgba(0,0,0,.5);
+}
+.clock.bad { box-shadow: inset 0 0 0 3px rgba(255,77,94,.4), 0 0 70px rgba(255,77,94,.35), inset 0 0 40px rgba(255,77,94,.2); }
+.clock.good { box-shadow: inset 0 0 0 3px rgba(255,107,86,.4), 0 0 70px rgba(255,107,86,.3), inset 0 0 40px rgba(255,107,86,.15); }
+.clock .hand { position: absolute; left: 50%; bottom: 50%; width: 10px; border-radius: 5px; transform-origin: 50% 100%; background: #fff; }
+.clock .hh { height: 82px; margin-left: -5px; background: #F7F7F7; }
+.clock .mm { height: 112px; width: 7px; margin-left: -3.5px; background: var(--coral); }
+.clock.bad .mm { background: var(--bad); }
+.clock .pin { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: #fff; }
+
+/* messy pile (chaos) */
+.pile { position: relative; width: 440px; height: 420px; margin: 0 auto; }
+.pile .sheet {
+  position: absolute; left: 50%; top: 0; width: 380px; height: 400px; margin-left: -190px;
+  border-radius: 26px; background: linear-gradient(180deg, #1C1C22, #131317);
+  border: 2px solid rgba(255, 77, 94, .28); box-shadow: 0 24px 60px rgba(0,0,0,.55); padding: 32px;
+}
+.pile .sheet i { display: block; height: 12px; border-radius: 6px; background: rgba(255,255,255,.12); margin-top: 18px; }
+.pile .sheet i.m { width: 78%; } .pile .sheet i.s { width: 55%; }
+
+/* clean card (calm) */
+.card {
+  width: 420px; margin: 0 auto; padding: 30px 30px 34px; border-radius: 32px; text-align: right;
+  background: rgba(17,17,21,.9); border: 1.5px solid rgba(255,107,86,.3);
+  box-shadow: 0 24px 70px rgba(0,0,0,.5), 0 0 90px rgba(255,107,86,.14);
+}
+.card .chead { display: flex; align-items: center; gap: 12px; font-family: var(--latin); font-weight: 600; font-size: 26px; margin-bottom: 14px; }
+.card .chead .avatar { width: 46px; height: 46px; }
+.card .ctext { margin: 0; font-family: var(--ui); font-size: 27px; line-height: 1.5; color: #EDEDF1; }
+.card .ctext u { text-decoration: none; color: var(--coral); font-weight: 600; }
+.card .ok-chip {
+  display: inline-block; margin-top: 16px; font-family: var(--ui); font-weight: 600; font-size: 22px;
+  padding: 8px 18px 11px; border-radius: 18px; background: rgba(255,107,86,.14); color: var(--coral);
+}
+
+/* result badge */
+.badge { position: relative; width: 220px; height: 220px; margin: 10px auto 26px; }
+.badge svg { width: 100%; height: 100%; overflow: visible; }
+.badge circle { fill: none; stroke-width: 7; }
+.badge.bad circle { stroke: var(--bad); }
+.badge.good circle { stroke: var(--coral); }
+.badge .x, .badge .ck { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 9; }
+.badge .x { stroke: var(--bad); }
+.badge .ck { stroke: var(--coral); }
+.badge .grade {
+  position: absolute; left: 0; right: 0; bottom: -58px; text-align: center;
+  font-family: var(--latin); font-weight: 700; font-size: 46px; color: #fff;
+}
+.badge .grade small { font-size: 26px; color: var(--muted); font-weight: 500; }
+
+/* ───────── wipe + post-wipe camera ───────── */
+.wipe {
+  position: absolute; left: 540px; top: 960px; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px;
+  border-radius: 50%; transform: scale(0);
+}
+#wipeCoral { background: radial-gradient(circle, #FF7E66 0%, var(--coral) 45%, #F45A44 100%); }
+#camPost { will-change: transform; }
+
+/* ───────── unified message ───────── */
+#unified h2 {
+  position: absolute; left: 30px; right: 30px; margin: 0; text-align: center;
+  font-family: var(--display); font-weight: 800; font-size: 108px; line-height: 1.25;
+}
+#uni1 { top: 780px; } #uni2 { top: 960px; }
+
+/* ───────── end card ───────── (spacing matches v3's proven ring/wordmark/slogan rhythm) */
+#end { text-align: center; }
+#endWordmark { top: 905px; font-size: 170px; }
+#end #slogan { font-size: 66px; }
