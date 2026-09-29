@@ -11,7 +11,9 @@
     "render:v4": "node render/render.mjs --page v4.html --shutter 5",
     "render:v5": "node render/render.mjs --page v5.html --shutter 5",
     "render:v5-iq": "node render/render.mjs --page v5-iq.html --shutter 5",
-    "render:v6": "node render/render.mjs --page v6.html --shutter 5"
+    "render:v6": "node render/render.mjs --page v6.html --shutter 5",
+    "render:v7": "node render/render.mjs --page v7.html --shutter 5",
+    "vo:v7": "python3 render/add_vo.py"
   },
   "devDependencies": {
     "sharp": "^0.35.0"
