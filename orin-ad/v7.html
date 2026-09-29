@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orin — إنت تذاكر غلط 😬</title>
+<link rel="stylesheet" href="src/styles.css">
+<link rel="stylesheet" href="src/cinema.css">
+<link rel="stylesheet" href="src/v7.css">
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/CustomEase.min.js"></script>
+<script src="src/logo.js"></script>
+<script src="src/cinema.js"></script>
+</head>
+<body data-ad="v7">
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+
+  <div id="bg" class="layer">
+    <div id="g1" class="glow"></div>
+    <div id="g2" class="glow warm"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+    <div id="alarm" class="layer"></div>
+  </div>
+
+  <div id="rig" class="layer"><div id="push" class="layer">
+
+    <!-- ═════════ Hook: the brain crashes ═════════ -->
+    <section id="hook" class="layer">
+      <div id="errs">
+        <div class="err"><div class="eh"><i></i><i></i><i></i><b>تحذير</b></div><div class="eb"><span class="ei">⚠️</span><p>الذاكرة ممتلئة 🧠</p></div><div class="ef"><span>حسناً</span></div></div>
+        <div class="err"><div class="eh"><i></i><i></i><i></i><b>خطأ</b></div><div class="eb"><span class="ei">❌</span><p>فشل تحميل المعادلة</p></div><div class="ef"><span>إعادة</span></div></div>
+        <div class="err"><div class="eh"><i></i><i></i><i></i><b>تنبيه</b></div><div class="eb"><span class="ei">🪫</span><p>طاقة التركيز: <span class="ltr">3%</span></p></div><div class="ef"><span>حسناً</span></div></div>
+        <div class="err"><div class="eh"><i></i><i></i><i></i><b>خطأ</b></div><div class="eb"><span class="ei">⛔</span><p>الدماغ لا يستجيب</p></div><div class="ef"><span>انتظار</span></div></div>
+        <div class="err"><div class="eh"><i></i><i></i><i></i><b>تم</b></div><div class="eb"><span class="ei">🙃</span><p>تم نسيان الدرس بنجاح</p></div><div class="ef"><span>حسناً</span></div></div>
+        <div class="err"><div class="eh"><i></i><i></i><i></i><b>خطأ</b></div><div class="eb"><span class="ei">❌</span><p><span class="ltr">Error 404</span>: المعلومة مو موجودة</p></div><div class="ef"><span>حسناً</span></div></div>
+      </div>
+      <div id="scrim" class="layer"></div>
+      <div id="bigline">
+        <h1 id="hkA" data-split>✋ وقف!</h1>
+        <h1 id="hkB" data-split>إنت تذاكر</h1>
+        <div id="stamp"><span>غلط</span><i>😬</i></div>
+      </div>
+      <h2 id="hkC" class="cap" data-split>وأغلب الطلاب مثلك…</h2>
+      <h2 id="hkD" class="cap" data-split>خلّيني أثبتلك 👇</h2>
+    </section>
+
+    <!-- ═════════ Mistake 1: read ×10 → forget  ⟶  quick quizzes ═════════ -->
+    <section class="scene layer" id="m1">
+      <div class="chip bad"><span class="ltr">1</span> غلط</div><div class="chip good">✅ الحل</div>
+      <h2 class="cap c1" data-split>تقرا الدرس <span class="ltr">10</span> مرات… وبعد يومين تنساه</h2>
+      <h2 class="cap c2" data-split><span class="ltr">Orin</span> يختبرك بأسئلة سريعة… والمعلومة تثبت</h2>
+      <div class="pane chartc">
+        <div class="chead"><b>🧠 المعلومة براسك</b><span class="readout ltr"><span class="pct">100</span>%</span></div>
+        <div class="reads"><span class="ltr">📖 ×<span class="rn">1</span></span></div>
+        <svg class="chart" viewBox="0 0 860 560">
+          <g class="axes"><path d="M60 40 L60 480 L840 480"/><path class="gl" d="M60 260 L840 260"/><path class="gl" d="M60 40 L840 40"/></g>
+          <g class="ylab"><text x="48" y="48">100%</text><text x="48" y="268">50%</text><text x="48" y="488">0%</text></g>
+          <path class="fc bad" pathLength="100" d="M70 44 C 150 170, 220 300, 330 360 S 610 420, 830 430"/>
+          <path class="fc good" pathLength="100" d="M70 44 C 120 90, 160 130, 200 150 L 206 50 C 280 80, 330 110, 400 122 L 406 48 C 520 62, 600 80, 690 88 L 696 46 C 750 52, 800 58, 830 62"/>
+        </svg>
+        <div class="xlab"><span>يوم 1</span><span>يوم 2</span><span>يوم 3</span><span>يوم 4</span><span>يوم 5</span><span>يوم 6</span><span>يوم 7</span></div>
+        <span class="tag tb">بدون مراجعة 📉</span><span class="tag tg">ويا <span class="ltr">Orin</span> 📈</span>
+        <span class="qz" style="left:252px;top:152px">❓</span><span class="qz" style="left:452px;top:128px">❓</span><span class="qz" style="left:742px;top:96px">❓</span>
+      </div>
+    </section>
+
+    <!-- ═════════ Mistake 2: memorise without understanding  ⟶  analogies from your life ═════════ -->
+    <section class="scene layer" id="m2">
+      <div class="chip bad"><span class="ltr">2</span> غلط</div><div class="chip good">✅ الحل</div>
+      <h2 class="cap c1" data-split>تحفظ بدون ما تفهم 🦜</h2>
+      <h2 class="cap c2" data-split><span class="ltr">Orin</span> يشرحلك بأمثلة من حياتك</h2>
+      <div class="pane defn">
+        <p class="book" data-stream>الميتوكوندريا: عُضيّة غشائية مزدوجة تقوم بعملية التنفّس الخلوي لإنتاج جزيئات الطاقة داخل الخلية…</p>
+        <span class="parrot">حفظ بدون فهم 🦜</span>
+      </div>
+      <div class="pane city">
+        <div class="xhead"><span class="avatar" data-logo="40"></span><b class="ltr">Orin</b><span class="xsub">تخيّل الخلية مدينة 🏙️</span></div>
+        <div class="an"><span class="ic">🏛️</span><p><b>النواة</b> = الإدارة… هي اللي تقرّر كلشي</p></div>
+        <div class="an hot"><span class="ic">⚡</span><p><b>الميتوكوندريا</b> = محطة الكهرباء… بس ما تطفي 😂</p></div>
+        <div class="an"><span class="ic">🏭</span><p><b>الرايبوسوم</b> = المعمل اللي يسوّي البروتين</p></div>
+      </div>
+    </section>
+
+    <!-- ═════════ Mistake 3: everything the night before  ⟶  a plan across the week ═════════ -->
+    <section class="scene layer" id="m3">
+      <div class="chip bad"><span class="ltr">3</span> غلط</div><div class="chip good">✅ الحل</div>
+      <h2 class="cap c1" data-split>تخلّي كلشي لليلة الامتحان 🌙</h2>
+      <h2 class="cap c2" data-split><span class="ltr">Orin</span> يقسّملك المنهج على أيام</h2>
+      <div class="pane week">
+        <div class="days"><span>سبت</span><span>أحد</span><span>اثنين</span><span>ثلاثاء</span><span>أربعاء</span><span>خميس</span><span class="exam">جمعة 🔥</span></div>
+        <div class="cols"><i></i><i></i><i></i><i></i><i></i><i></i><i class="exam"></i></div>
+        <div class="tasks">
+          <span class="task">فصل <span class="ltr">1</span></span><span class="task">فصل <span class="ltr">2</span></span><span class="task">فصل <span class="ltr">3</span></span><span class="task">فصل <span class="ltr">4</span></span><span class="task">فصل <span class="ltr">5</span></span><span class="task">فصل <span class="ltr">6</span></span><span class="task rev">مراجعة</span>
+        </div>
+        <div class="clock3"><span class="ltr t1">3:00 AM</span><span class="ltr t2">10:30 PM</span><i class="e1">😵</i><i class="e2">😴</i></div>
+      </div>
+      <h3 class="cap c3" data-split>…وتدخل الامتحان مرتاح 😎</h3>
+    </section>
+
+    <!-- ═════════ Payoff: the three mistakes flip to fixes ═════════ -->
+    <section class="scene layer" id="pay">
+      <div class="flip" id="f1"><span class="fb">📖 تقرا وتنسى</span><span class="ff">❓ اختبارات سريعة</span></div>
+      <div class="flip" id="f2"><span class="fb">🦜 تحفظ بدون فهم</span><span class="ff">💡 أمثلة من حياتك</span></div>
+      <div class="flip" id="f3"><span class="fb">🌙 كلشي بليلة وحدة</span><span class="ff">📅 خطة على أيام</span></div>
+      <h2 id="payline" data-split>ذاكر <span class="accent">أذكى</span>… مو أكثر 🧠</h2>
+    </section>
+
+    <!-- ═════════ End card ═════════ -->
+    <section id="end" class="layer">
+      <svg id="ringB" class="ring-svg" viewBox="0 0 1080 1920">
+        <circle class="shock" r="100" fill="none" stroke="#FF6B56" stroke-width="5" opacity="0"/>
+        <g class="ring-g"><path class="pw" fill="#F7F7F7"/><path class="pc" fill="#FF6B56"/></g>
+      </svg>
+      <div class="wordmark" id="endWordmark" data-letters>Orin</div>
+      <h2 id="slogan" data-split>مساعدك الذكي <span class="accent">بالدراسة</span> 🎓</h2>
+      <div id="cta"><span class="shine"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M6.5 10l5.5 5.5 5.5-5.5M5 20h14"/></svg>نزّل التطبيق هسة</div>
+    </section>
+  </div></div>
+
+  <div class="vignette-cinematic layer"></div>
+  <div id="vignette" class="layer"></div>
+  <div id="grain" class="grain-layer layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="33" step="0.001" value="0">
+  <span class="t" id="tlabel">0.00 / 33.00</span>
+  <button id="mute" title="الصوت">🔊</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack-v7.m4a" type="audio/mp4"><source src="out/soundtrack-v7.wav" type="audio/wav"></audio>
+
+<script src="src/v7.js"></script>
+</body>
+</html>
