@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orin — دزّ أي شي… Orin يفهّمك ياه</title>
+<link rel="stylesheet" href="src/styles.css">
+<link rel="stylesheet" href="src/cinema.css">
+<link rel="stylesheet" href="src/v6.css">
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/CustomEase.min.js"></script>
+<script src="src/logo.js"></script>
+<script src="src/cinema.js"></script>
+</head>
+<body data-ad="v6">
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+
+  <div id="bg" class="layer">
+    <div id="g1" class="glow"></div>
+    <div id="g2" class="glow warm"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+  </div>
+
+  <!-- #rig = handheld drift (updater-owned) › #push = zooms / push-ins (GSAP-owned) -->
+  <div id="rig" class="layer"><div id="push" class="layer">
+
+    <!-- ═════════ Hook: a pile of files → sucked into Orin ═════════ -->
+    <section id="hook" class="layer">
+      <h1 id="hk1" class="hline" data-split>ملازم… سلايدات… صور 🤯</h1>
+      <h2 id="hk2" class="hline sub" data-split>وما فاهم منها شي؟</h2>
+      <h2 id="hk3" class="hline" data-split>دزّها كلها لـ <span class="ltr">Orin</span> ✨</h2>
+      <div id="pile">
+        <div class="fslot"><div class="fcard" style="--c:#E5484D"><i class="tag">PDF</i><b>ملزمة فيزياء</b><s></s><s class="m"></s><s></s><s class="s"></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#F76B15"><i class="tag">PPTX</i><b>سلايدات أحياء</b><s></s><s class="s"></s><s class="m"></s><s></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#3E7BFA"><i class="tag">DOCX</i><b>بحث التخرج</b><s class="m"></s><s></s><s></s><s class="s"></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#8E4EC6"><i class="tag">JPG</i><b>صورة السبورة</b><s></s><s class="m"></s><s class="s"></s><s></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#30A46C"><i class="tag">XLSX</i><b>جدول الدرجات</b><s></s><s></s><s class="m"></s><s class="s"></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#D6409F"><i class="tag">MP3</i><b>محاضرة مسجّلة</b><s class="s"></s><s></s><s class="m"></s><s></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#E5484D"><i class="tag">PDF</i><b>أسئلة وزارية</b><s></s><s class="m"></s><s></s><s class="s"></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#3E7BFA"><i class="tag">DOCX</i><b>واجب رياضيات</b><s class="m"></s><s></s><s class="s"></s><s></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#8E4EC6"><i class="tag">PNG</i><b>ملخص كيمياء</b><s></s><s class="s"></s><s></s><s class="m"></s></div></div>
+        <div class="fslot"><div class="fcard" style="--c:#F76B15"><i class="tag">PPTX</i><b>محاضرة تاريخ</b><s></s><s class="m"></s><s class="s"></s><s></s></div></div>
+      </div>
+      <svg id="ringV" class="ring-svg" viewBox="0 0 1080 1920">
+        <circle class="shock" r="100" fill="none" stroke="#FF6B56" stroke-width="6" opacity="0"/>
+        <g class="ring-g"><path class="pw" fill="#F7F7F7"/><path class="pc" fill="#FF6B56"/></g>
+      </svg>
+    </section>
+
+    <!-- ═════════ 01 · Files: any type, explained every way ═════════ -->
+    <section id="sFiles" class="scene layer">
+      <div class="sbadge"><span class="ltr">01</span></div>
+      <h2 class="stitle" id="t1a" data-split>دزّ أي ملف 📂</h2>
+      <h2 class="stitle" id="t1b" data-split>نفس الملف… بكل الطرق 🔄</h2>
+      <div class="types">
+        <span class="tchip" style="--c:#E5484D">PDF</span><span class="tchip" style="--c:#3E7BFA">DOCX</span><span class="tchip" style="--c:#F76B15">PPTX</span><span class="tchip" style="--c:#30A46C">XLSX</span><span class="tchip ar" style="--c:#8E4EC6">صور</span><span class="tchip ar" style="--c:#D6409F">صوت</span>
+      </div>
+      <div class="ubub upl" id="upFile">
+        <div class="ficon" style="--c:#E5484D">PDF</div>
+        <div class="fmeta"><b>محاضرة الفيزياء</b><span><span class="ltr">48</span> صفحة · <span class="ltr">6.2 MB</span></span><i class="bar"><i></i></i></div>
+        <i class="done">✓</i>
+      </div>
+      <div class="orow" id="oReply"><span class="avatar" data-logo="40"></span><p data-stream>وصلتني 👌 شلون تحب أشرحها؟</p></div>
+      <div class="modes">
+        <span class="mchip"><i class="rip"></i>📝 ملخص</span>
+        <span class="mchip"><i class="rip"></i>💡 شرح مبسّط</span>
+        <span class="mchip"><i class="rip"></i>🧠 خريطة ذهنية</span>
+        <span class="mchip"><i class="rip"></i>❓ اختبرني</span>
+        <span class="mchip"><i class="rip"></i>🪜 خطوة بخطوة</span>
+        <span class="mchip"><i class="rip"></i>🎴 بطاقات حفظ</span>
+      </div>
+      <div class="ocard" id="out">
+        <div class="mode" id="mSum">
+          <h3>📝 الملخص</h3>
+          <ul>
+            <li data-stream>الجسم يبقى على حاله إلا إذا أثّرت عليه قوة</li>
+            <li data-stream>القوة = الكتلة × التسارع</li>
+            <li data-stream>لكل فعل ردّ فعل مساوٍ ومعاكس</li>
+          </ul>
+        </div>
+        <div class="mode" id="mEasy">
+          <h3>💡 ببساطة</h3>
+          <p data-stream>تخيّل نفسك بالكيا والسايق دعس بريك فجأة… جسمك يكمّل لقدّام! هذا هو <u>القصور الذاتي</u> 😄</p>
+          <div class="road"><i class="lane"></i><span class="bus">🚐</span></div>
+        </div>
+        <div class="mode" id="mMap">
+          <h3>🧠 خريطة ذهنية</h3>
+          <svg class="links" viewBox="0 0 900 420"><path pathLength="100" d="M450 250 C 360 250, 330 120, 205 120"/><path pathLength="100" d="M450 250 C 540 250, 570 120, 695 120"/><path pathLength="100" d="M450 250 C 450 290, 450 320, 450 362"/></svg>
+          <span class="node core" style="left:450px;top:350px">قوانين نيوتن</span>
+          <span class="node" style="left:205px;top:220px">القصور الذاتي</span>
+          <span class="node ltr-node" style="left:695px;top:220px"><span class="ltr">F = m × a</span></span>
+          <span class="node" style="left:450px;top:462px">الفعل وردّ الفعل</span>
+        </div>
+        <div class="mode" id="mQuiz">
+          <h3>❓ اختبرني</h3>
+          <p class="q" data-stream>ليش تندفع لقدّام من توقف السيارة فجأة؟</p>
+          <div class="qopt"><span class="l">أ</span>بسبب الجاذبية</div>
+          <div class="qopt ok"><span class="l">ب</span>بسبب القصور الذاتي<i class="ck">✓</i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ 02 · Photos: snap a question ═════════ -->
+    <section id="sImg" class="scene layer">
+      <div class="sbadge"><span class="ltr">02</span></div>
+      <h2 class="stitle" id="t2" data-split>صوّر أي سؤال 📸</h2>
+      <div id="photo">
+        <div class="pframe">
+          <div class="paper">
+            <p class="hw">جد قيمة الزاوية <span class="ltr">x</span> :</p>
+            <svg class="tri" viewBox="0 0 600 360">
+              <path d="M110 330 L490 330 L231 71 Z" fill="none" stroke="#1D2B6B" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M170 330 A60 60 0 0 0 135.4 275.6" fill="none" stroke="#1D2B6B" stroke-width="3"/>
+              <path d="M430 330 A60 60 0 0 1 447.6 287.6" fill="none" stroke="#1D2B6B" stroke-width="3"/>
+              <path d="M212 111.8 A45 45 0 0 0 262.8 102.8" fill="none" stroke="#1D2B6B" stroke-width="3"/>
+            </svg>
+            <span class="ang a1 ltr">65°</span><span class="ang a2 ltr">45°</span><span class="ang a3 ltr">x</span><span class="ang a3s ltr">70°</span>
+          </div>
+          <i class="scan"></i>
+          <i class="dbox d1"></i><i class="dbox d2"></i><i class="dbox d3"></i>
+        </div>
+      </div>
+      <div class="vf"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><i class="focus"></i></div>
+      <div class="ocard" id="sol">
+        <div class="mode" id="solSteps">
+          <h3>🪜 الحل خطوة بخطوة</h3>
+          <div class="st"><span class="n ltr">1</span><p data-stream>مجموع زوايا المثلث = <span class="ltr">180°</span></p></div>
+          <div class="st"><span class="n ltr">2</span><p data-stream><span class="ltr">x = 180 − 65 − 45</span></p></div>
+          <div class="st"><span class="n ltr">3</span><p class="ans" data-stream><span class="ltr">x = 70°</span> ✅</p></div>
+        </div>
+        <div class="mode" id="solIdea">
+          <h3>💡 الفكرة</h3>
+          <p data-stream>بأي مثلث، الزوايا الثلاث مجموعها دائماً <span class="ltr">180°</span>… فإذا تعرف ثنتين، الثالثة تطلع بالطرح 📐</p>
+        </div>
+      </div>
+      <div class="chips2"><span class="mchip" id="cIdea"><i class="rip"></i>💡 اشرحلي الفكرة</span><span class="mchip" id="cSim"><i class="rip"></i>🔁 انطيني سؤال مشابه</span></div>
+    </section>
+
+    <!-- ═════════ 03 · Honest opinion: outfit + work ═════════ -->
+    <section id="sOp" class="scene layer">
+      <div class="sbadge"><span class="ltr">03</span></div>
+      <h2 class="stitle" id="t3" data-split>وحتى… يعطيك رأيه بصراحة 👀</h2>
+
+      <div class="case" id="caseA">
+        <div class="pcard" id="outfit">
+          <svg viewBox="0 0 600 600">
+            <defs>
+              <radialGradient id="bgA" cx="50%" cy="42%" r="75%"><stop offset="0" stop-color="#F1EBE0"/><stop offset="1" stop-color="#DDD3C3"/></radialGradient>
+            </defs>
+            <rect width="600" height="600" fill="url(#bgA)"/>
+            <!-- flat-lay shadows (offset copies, no blur: cheap and crisp) -->
+            <g fill="rgba(60,45,30,.16)" transform="translate(9 11)">
+              <path d="M170 70 L232 50 L288 50 L350 70 L402 112 L428 300 L382 306 L352 160 L350 330 L170 330 L168 160 L138 306 L92 300 L118 112 Z"/>
+              <path d="M150 350 L330 350 L332 368 L324 590 L270 590 L240 392 L210 590 L156 590 L148 368 Z"/>
+              <path d="M380 440 C 392 408, 440 398, 470 410 L 520 428 C 546 436, 556 448, 556 460 L 556 482 L 374 482 Z"/>
+              <path d="M392 520 C 404 488, 452 478, 482 490 L 532 508 C 558 516, 568 528, 568 540 L 568 562 L 386 562 Z"/>
+            </g>
+            <!-- overshirt with a white tee under it -->
+            <g>
+              <path d="M170 70 L232 50 L288 50 L350 70 L402 112 L428 300 L382 306 L352 160 L350 330 L170 330 L168 160 L138 306 L92 300 L118 112 Z" fill="#2F4063"/>
+              <path d="M238 52 L282 52 L260 96 Z" fill="#F6F3EC"/>
+              <path d="M232 52 L258 112 L212 80 Z M288 52 L262 112 L308 80 Z" fill="#26344F"/>
+              <path d="M260 100 L260 330" stroke="#22304A" stroke-width="4"/>
+              <g fill="#D6DCE8"><circle cx="260" cy="140" r="5"/><circle cx="260" cy="192" r="5"/><circle cx="260" cy="244" r="5"/><circle cx="260" cy="296" r="5"/></g>
+              <rect x="282" y="128" width="46" height="40" rx="5" fill="none" stroke="#22304A" stroke-width="4"/>
+              <path d="M92 300 L138 306 M382 306 L428 300" stroke="#22304A" stroke-width="10" stroke-linecap="round"/>
+            </g>
+            <!-- chinos -->
+            <g>
+              <path d="M150 350 L330 350 L332 368 L324 590 L270 590 L240 392 L210 590 L156 590 L148 368 Z" fill="#CDB48C"/>
+              <path d="M150 350 L330 350 L331 368 L149 368 Z" fill="#B99E75"/>
+              <path d="M240 368 L240 392" stroke="#A98F68" stroke-width="3"/>
+              <path d="M178 380 C 190 400, 205 402, 214 384 M302 380 C 290 400, 275 402, 266 384" fill="none" stroke="#B99E75" stroke-width="3"/>
+            </g>
+            <!-- sneakers: the uppers are recoloured by the timeline ("try white shoes") -->
+            <g id="shoes">
+              <g transform="translate(372 400)">
+                <path class="sole" d="M8 42 C 20 10, 68 0, 98 12 L 148 30 C 174 38, 184 50, 184 62 L 184 64 L 8 64 Z" fill="#2F2F35"/>
+                <path d="M4 62 L186 62 Q192 62 192 70 L192 76 Q192 84 184 84 L10 84 Q2 84 2 76 L2 70 Q2 62 10 62 Z" fill="#F4F4F2"/>
+                <path class="rim" d="M60 20 L78 32 M74 15 L92 27 M88 13 L104 23" stroke="#8C8C94" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path class="rim" d="M104 40 C 128 30, 150 36, 168 52" stroke="#8C8C94" stroke-width="5" fill="none" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(384 480)">
+                <path class="sole" d="M8 42 C 20 10, 68 0, 98 12 L 148 30 C 174 38, 184 50, 184 62 L 184 64 L 8 64 Z" fill="#2F2F35"/>
+                <path d="M4 62 L186 62 Q192 62 192 70 L192 76 Q192 84 184 84 L10 84 Q2 84 2 76 L2 70 Q2 62 10 62 Z" fill="#F4F4F2"/>
+                <path class="rim" d="M60 20 L78 32 M74 15 L92 27 M88 13 L104 23" stroke="#8C8C94" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path class="rim" d="M104 40 C 128 30, 150 36, 168 52" stroke="#8C8C94" stroke-width="5" fill="none" stroke-linecap="round"/>
+              </g>
+            </g>
+            <!-- watch -->
+            <g transform="translate(488 176)">
+              <rect x="-13" y="-66" width="26" height="132" rx="11" fill="#6B5A48"/>
+              <circle r="31" fill="#D9DDE3"/><circle r="24" fill="#FAFAFA"/>
+              <path d="M0 0 L0 -15 M0 0 L11 7" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+        <div class="ubub txt" id="capA">رايح للجامعة، شلون طقمي؟ 👔</div>
+        <div class="ocard rate" id="rateA">
+          <div class="gauge"><svg viewBox="0 0 120 120"><circle class="gt" cx="60" cy="60" r="50" pathLength="100"/><circle class="gp" cx="60" cy="60" r="50" pathLength="100" transform="rotate(-90 60 60)"/></svg><b class="ltr"><span id="score">0.0</span><small>/10</small></b><i class="fire">🔥</i></div>
+          <div class="tips">
+            <p class="tip" id="tipA1">👌 الألوان متناسقة وهادئة</p>
+            <p class="tip" id="tipA2">✨ جرّب حذاء أبيض… راح يطلع أحلى</p>
+          </div>
+        </div>
+        <svg class="callout" id="arrA" viewBox="0 0 1080 1920"><path pathLength="100" d="M600 1318 C 760 1300, 860 1180, 812 1020"/><path pathLength="100" d="M790 1042 L812 1020 L836 1044"/></svg>
+      </div>
+
+      <div class="case" id="caseB">
+        <div class="pcard" id="poster">
+          <div class="pv before">
+            <p class="pt">مشروع التخرج: تطبيق للطلاب</p>
+            <div class="bars"><i style="height:40%;background:#FF3DD6"></i><i style="height:70%;background:#2EE6A8"></i><i style="height:55%;background:#FFD23D"></i><i style="height:85%;background:#3D8BFF"></i><i style="height:62%;background:#FF7A3D"></i></div>
+            <div class="ln"><s></s><s></s><s class="m"></s><s class="s"></s></div>
+            <span class="st1">★</span><span class="st2">★</span><span class="st3">✦</span>
+          </div>
+          <div class="pv after">
+            <p class="pt">مشروع التخرج</p>
+            <p class="ps">تطبيق للطلاب</p>
+            <div class="bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:85%"></i><i style="height:62%"></i></div>
+            <div class="ln"><s></s><s class="m"></s></div>
+          </div>
+          <i class="wipe-line"></i>
+          <i class="ring-note n1"></i><i class="ring-note n2"></i>
+        </div>
+        <div class="ubub txt" id="capB">هذا بوستر مشروعي، شرايك؟ 🎨</div>
+        <div class="ocard fb" id="fbB">
+          <div class="xhead"><span class="avatar" data-logo="40"></span><b class="ltr">Orin</b></div>
+          <p data-stream>حلو 👍 بس كبّر العنوان<br>وخفّف الألوان، خلّي لونين بس 🎨</p>
+        </div>
+        <div class="better" id="better">✨ هيچ أحسن!</div>
+      </div>
+    </section>
+
+    <!-- ═════════ Recap + end card ═════════ -->
+    <section id="end" class="layer">
+      <div id="recap">
+        <span class="rchip" id="r1">📂 ملفاتك</span>
+        <span class="rchip" id="r2">📸 صورك</span>
+        <span class="rchip" id="r3">💬 رأيه الصريح</span>
+        <h2 id="rline" data-split>كلشي بمكان واحد ✨</h2>
+      </div>
+      <svg id="ringB" class="ring-svg" viewBox="0 0 1080 1920">
+        <circle class="shock" r="100" fill="none" stroke="#FF6B56" stroke-width="5" opacity="0"/>
+        <g class="ring-g"><path class="pw" fill="#F7F7F7"/><path class="pc" fill="#FF6B56"/></g>
+      </svg>
+      <div class="wordmark" id="endWordmark" data-letters>Orin</div>
+      <h2 id="slogan" data-split>مساعدك الذكي <span class="accent">بالدراسة</span> 🎓</h2>
+      <div id="cta"><span class="shine"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M6.5 10l5.5 5.5 5.5-5.5M5 20h14"/></svg>نزّل التطبيق هسة</div>
+    </section>
+  </div></div>
+
+  <div class="vignette-cinematic layer"></div>
+  <div id="vignette" class="layer"></div>
+  <div id="grain" class="grain-layer layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="34" step="0.001" value="0">
+  <span class="t" id="tlabel">0.00 / 34.00</span>
+  <button id="mute" title="الصوت">🔊</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack-v6.m4a" type="audio/mp4"><source src="out/soundtrack-v6.wav" type="audio/wav"></audio>
+
+<script src="src/v6.js"></script>
+</body>
+</html>
