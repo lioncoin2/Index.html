@@ -195,11 +195,13 @@ python3 -m http.server 8000     # ثم افتح http://localhost:8000
 
 ## إعادة التصدير (Render)
 
-المتطلبات: Node 18+ مع Playwright (Chromium)، Python 3 مع `numpy scipy pyloudnorm`، و ffmpeg
-(أو `pip install imageio-ffmpeg`).
+المتطلبات: Node 20.9+ (مجرّب على Node 22) مع Playwright (Chromium)، Python 3 مع `numpy scipy pyloudnorm`، و ffmpeg
+(أو `pip install imageio-ffmpeg`). لا يحتاج كرت شاشة (GPU)؛ الرندر كله على المعالج.
+يعمل على Linux وmacOS، وعلى Windows عن طريق WSL. الإيموجي تُرسم بخط النظام: على Linux ثبّت
+`fonts-noto-color-emoji` (نفس شكل الإيموجي في الفيديوهات).
 
 ```bash
-npm install                                   # playwright
+npm install                                   # playwright + sharp
 npx playwright install chromium
 pip install numpy scipy pyloudnorm imageio-ffmpeg
 
