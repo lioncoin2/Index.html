@@ -202,7 +202,8 @@ python3 -m http.server 8000     # ثم افتح http://localhost:8000
 
 ```bash
 npm install                                   # playwright + sharp
-npx playwright install chromium
+npx playwright install --with-deps chromium   # --with-deps: مكتبات النظام على Linux
+python3 -m venv .venv && source .venv/bin/activate
 pip install numpy scipy pyloudnorm imageio-ffmpeg
 
 node render/render.mjs                        # 60fps + صوت → out/orin-ad-9x16-60fps.mp4

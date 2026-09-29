@@ -4,3 +4,4 @@ out/*.wav
 out/draft*.mp4
 out/frames/
 package-lock.json
+.venv/
