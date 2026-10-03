@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نظارة فلتر الضوء الأزرق — إعلان</title>
+<link rel="stylesheet" href="../orin-ad/src/cinema.css">
+<link rel="stylesheet" href="src/glasses.css">
+<script src="../orin-ad/assets/vendor/gsap.min.js"></script>
+<script src="../orin-ad/assets/vendor/CustomEase.min.js"></script>
+<script src="../orin-ad/src/cinema.js"></script>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+
+  <div id="bg" class="layer">
+    <div id="gCold" class="glow cold"></div>
+    <div id="gWarm" class="glow warm"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+  </div>
+
+  <div id="rig" class="layer"><div id="push" class="layer">
+
+    <!-- ═════════ Hook: screen time ═════════ -->
+    <section id="hook" class="layer">
+      <div id="phGlow"></div>
+      <div id="raysCold" class="rays"></div>
+      <div id="raysWarm" class="rays"></div>
+      <div id="phone" class="phone">
+        <div class="body"><div class="screen">
+          <div class="island"></div>
+          <div class="st-head">⏳ وقت الشاشة اليوم</div>
+          <div class="st-time"><span class="hh">0</span><small>h</small> <span class="mm">00</span><small>m</small></div>
+          <div class="st-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="st-apps">
+            <div class="app"><span class="ai">🎬</span>فيديوهات<span class="at">3h 10m</span></div>
+            <div class="app"><span class="ai">💬</span>دردشة<span class="at">2h 25m</span></div>
+            <div class="app"><span class="ai">🎮</span>ألعاب<span class="at">1h 50m</span></div>
+          </div>
+          <div class="glare"></div>
+        </div></div>
+      </div>
+      <div id="parts" class="layer"></div>
+      <h1 id="hk1" class="hl" data-split>شگد ساعة تباوع<br>موبايلك باليوم؟ 📱</h1>
+      <div id="stamp"><span>هواية! <i>😅</i></span></div>
+      <h1 id="hk2" class="hl" data-split>وعيونك گبال<br><span class="blue">الضوء الأزرق</span> 🔵</h1>
+      <h1 id="hk3" class="hl" data-split>خلّي بين عيونك<br>والشاشة <span class="amber">فلتر</span> 👓</h1>
+    </section>
+
+    <!-- ═════════ Product ═════════ -->
+    <section id="prod" class="layer">
+      <h2 id="pTitle" class="cap" data-split>نظارة فلتر<br><span class="blue">الضوء الأزرق</span></h2>
+      <h3 id="pSub" class="cap" data-split>بإطار أسود أنيق 🖤</h3>
+    </section>
+
+    <!-- ═════════ Demo: the lens and the blue light ═════════ -->
+    <section id="demo" class="layer">
+      <h2 id="dCap" class="cap" data-split>عدساتها تقلل الضوء الأزرق<br>اللي يوصل لعيونك 👁️</h2>
+      <div id="dGlow"></div>
+      <div id="dPhone" class="phone">
+        <div class="body"><div class="screen">
+          <div class="island"></div>
+          <div class="ui" style="top:50px;width:60%"></div>
+          <div class="ui" style="top:84px"></div>
+          <div class="ui" style="top:118px;width:80%"></div>
+          <div class="ui" style="top:170px;height:90px;border-radius:14px"></div>
+          <div class="ui" style="top:276px;width:50%"></div>
+          <div class="glare"></div>
+        </div></div>
+      </div>
+      <svg id="rayLayer" viewBox="0 0 1080 1920"></svg>
+      <div id="eye"></div>
+    </section>
+
+    <!-- ═════════ Uses ═════════ -->
+    <section id="uses" class="layer">
+      <h2 id="uCap" class="cap" data-split>وياك بكل شاشة</h2>
+      <div class="use" id="u1"><span class="ui">📱</span>الموبايل</div>
+      <div class="use" id="u2"><span class="ui">💻</span>الكمبيوتر</div>
+      <div class="use" id="u3"><span class="ui">📺</span>التلفزيون</div>
+      <div class="use" id="u4"><span class="ui">🎮</span>الألعاب</div>
+    </section>
+
+    <!-- ═════════ Offer: price + free delivery ═════════ -->
+    <section id="offer" class="layer">
+      <h2 id="oCap" class="cap" data-split>وسعرها؟</h2>
+      <div id="tag">
+        <div class="string"></div>
+        <div class="tb">
+          <div class="hole"></div>
+          <div class="t1">السعر</div>
+          <div class="t2"><span class="num ltr">20</span><span class="unit">ألف</span></div>
+          <div class="t3">دينار عراقي</div>
+        </div>
+      </div>
+      <div id="bas">بس!</div>
+      <div id="road"></div>
+      <div id="van">🚚<div id="vanFx"><i style="top:30px;width:300px"></i><i style="top:76px;width:220px"></i><i style="top:122px;width:270px"></i></div></div>
+      <div id="freeBadge">ببلاش! 🎉</div>
+      <h2 id="fCap" class="cap" data-split>والتوصيل <span class="green">مجاني!</span></h2>
+    </section>
+
+    <!-- ═════════ End card ═════════ -->
+    <section id="end" class="layer">
+      <h2 id="eName" class="cap" data-split>نظارة فلتر الضوء الأزرق</h2>
+      <div id="chips">
+        <span class="chip price">💰 <b class="ltr">20</b> ألف</span>
+        <span class="chip free">🚚 التوصيل مجاني</span>
+      </div>
+      <div id="ctaGlow"></div>
+      <div id="cta">اطلبها هسة <span id="finger">👇</span></div>
+    </section>
+
+    <!-- the hero product: one element that travels through every scene -->
+    <div id="glasses"><div id="gBob"><div id="gFlip"></div></div></div>
+
+  </div></div>
+
+  <div class="vignette-cinematic layer"></div>
+  <div id="vignette" class="layer"></div>
+  <div id="grain" class="grain-layer layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="24" step="0.001" value="0">
+  <span class="t" id="tlabel">0.00 / 24.00</span>
+  <button id="mute" title="الصوت">🔇</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack.m4a" type="audio/mp4"><source src="out/soundtrack.wav" type="audio/wav"></audio>
+
+<script src="src/glasses.js"></script>
+</body>
+</html>

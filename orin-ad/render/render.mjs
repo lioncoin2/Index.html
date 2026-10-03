@@ -20,6 +20,10 @@
  *   --no-audio      skip soundtrack generation and muxing
  *   --keep-frames   keep the PNG frames in out/frames
  *
+ * A page in another folder (e.g. --page ../glasses-ad/index.html) is its own project: its cue
+ * sheet, soundtrack, frames and video go to that folder's out/, and its soundtrack script is
+ * looked up in that folder's render/ first. ORIN.prefix names the video (default "orin-ad").
+ *
  * Needs: Playwright (Chromium), ffmpeg with libx264, and sharp (motion blur only).
  * Set FFMPEG=/path/to/ffmpeg if ffmpeg is not on PATH (pip's imageio-ffmpeg binary is
  * picked up automatically).
@@ -31,7 +35,6 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { binomialWeights, shutterSamples, captureBlended } from './blend.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT_DIR = path.join(ROOT, 'out');
 
 function args() {
   const a = process.argv.slice(2);
@@ -80,12 +83,15 @@ function run(cmd, argv) {
 async function openPage(browser, o) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: o.scale });
   page.on('pageerror', (e) => console.error('[page error]', e.message));
-  await page.goto(pathToFileURL(path.join(ROOT, o.page)).href + '?render=1');
+  await page.goto(pathToFileURL(path.resolve(ROOT, o.page)).href + '?render=1');
   await page.evaluate(() => window.ORIN.ready);
   return page;
 }
 
 const o = args();
+// the folder that holds the page is the project: outputs and its soundtrack script live there
+const PROJECT = path.dirname(path.resolve(ROOT, o.page));
+const OUT_DIR = path.join(PROJECT, 'out');
 fs.mkdirSync(OUT_DIR, { recursive: true });
 const { chromium } = await loadPlaywright();
 const browser = await chromium.launch();
@@ -93,22 +99,23 @@ const browser = await chromium.launch();
 // 1) cue sheet for the soundtrack
 const first = await openPage(browser, o);
 const meta = await first.evaluate(() => ({
-  id: ORIN.id || '', soundtrack: ORIN.soundtrack || 'soundtrack.py',
+  id: ORIN.id || '', prefix: ORIN.prefix || 'orin-ad', soundtrack: ORIN.soundtrack || 'soundtrack.py',
   duration: ORIN.duration, T: ORIN.T, bpm: ORIN.BPM, cues: ORIN.cues,
 }));
 // each composition gets its own files: cues.json / cues-v2.json, soundtrack.wav / soundtrack-v2.wav …
 const sfx = meta.id ? `-${meta.id}` : '';
-o.out ??= path.join(OUT_DIR, `orin-ad${sfx}-9x16-${o.fps}fps.mp4`);
+o.out ??= path.join(OUT_DIR, `${meta.prefix}${sfx}-9x16-${o.fps}fps.mp4`);
 const cuesPath = path.join(OUT_DIR, `cues${sfx}.json`);
 fs.writeFileSync(cuesPath, JSON.stringify(meta, null, 1));
-console.log(`cues: ${meta.cues.length} events → ${path.relative(ROOT, cuesPath)}`);
+console.log(`cues: ${meta.cues.length} events → ${path.relative(process.cwd(), cuesPath)}`);
 if (o.cuesOnly) { await browser.close(); process.exit(0); }
 
 // 2) soundtrack
 const wav = path.join(OUT_DIR, `soundtrack${sfx}.wav`);
 if (o.audio) {
   console.log('soundtrack …');
-  await run('python3', [path.join(ROOT, 'render', meta.soundtrack), cuesPath, wav]);
+  const own = path.join(PROJECT, 'render', meta.soundtrack);
+  await run('python3', [fs.existsSync(own) ? own : path.join(ROOT, 'render', meta.soundtrack), cuesPath, wav]);
 }
 
 // 3) frames

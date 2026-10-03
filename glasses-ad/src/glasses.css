@@ -1,0 +1,239 @@
+/* Blue-light glasses ad — 1080×1920, Iraqi dialect. Fonts, GSAP and the cinema toolkit are
+   shared with ../orin-ad (see README.md). */
+
+@font-face {
+  font-family: 'Alexandria';
+  src: url(../../orin-ad/assets/fonts/alexandria-arabic-wght-normal.woff2) format('woff2');
+  font-weight: 100 900;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
+}
+@font-face {
+  font-family: 'Alexandria';
+  src: url(../../orin-ad/assets/fonts/alexandria-latin-wght-normal.woff2) format('woff2');
+  font-weight: 100 900;
+  unicode-range: U+0000-00FF, U+2000-206F, U+2190-21FF, U+2212;
+}
+@font-face {
+  font-family: 'Outfit';
+  src: url(../../orin-ad/assets/fonts/outfit-latin-wght-normal.woff2) format('woff2');
+  font-weight: 100 900;
+}
+
+:root {
+  --bg: #050811;
+  --white: #F4F7FB;
+  --muted: #8E98AE;
+  --blue: #3EA2FF;
+  --blue-hi: #9AD3FF;
+  --amber: #FFB547;
+  --amber-hi: #FFD683;
+  --orange: #FF7A2F;
+  --red: #FF4D5E;
+  --green: #2EE59D;
+  --display: 'Alexandria', sans-serif;
+  --latin: 'Outfit', 'Alexandria', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #000; -webkit-font-smoothing: antialiased; }
+
+/* ───────── stage ───────── */
+#viewport { position: fixed; inset: 0; display: grid; place-items: center; }
+#stage {
+  position: relative; width: 1080px; height: 1920px; overflow: hidden; flex: none;
+  background: var(--bg); color: var(--white); font-family: var(--display); direction: rtl;
+}
+body.render #viewport { place-items: start; }
+/* Deterministic raster: nothing in the stage gets its own compositor layer (see build()). */
+#stage, #stage * { will-change: auto !important; }
+.layer { position: absolute; inset: 0; }
+.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+.blue { color: var(--blue-hi); }
+.amber { color: var(--amber); }
+.green { color: var(--green); }
+
+/* ───────── background ───────── */
+#bg { overflow: hidden; background: radial-gradient(ellipse 90% 70% at 50% 42%, #0B1427 0%, #050811 72%); }
+.glow { position: absolute; left: 0; top: 0; border-radius: 50%; }
+.glow.cold {
+  width: 1500px; height: 1500px; margin: -750px 0 0 -750px;
+  background: radial-gradient(circle, rgba(62, 162, 255, .42) 0%, rgba(62, 162, 255, .14) 34%, rgba(62, 162, 255, 0) 66%);
+}
+.glow.warm {
+  width: 1400px; height: 1400px; margin: -700px 0 0 -700px;
+  background: radial-gradient(circle, rgba(255, 181, 71, .30) 0%, rgba(255, 140, 60, .10) 36%, rgba(255, 140, 60, 0) 66%);
+}
+#grid {
+  position: absolute; inset: -60px;
+  background-image: radial-gradient(rgba(255, 255, 255, .07) 1.6px, transparent 1.9px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, rgba(0, 0, 0, .5) 45%, transparent 80%);
+          mask-image: radial-gradient(ellipse 70% 55% at 50% 45%, #000 0%, rgba(0, 0, 0, .5) 45%, transparent 80%);
+}
+#vignette { background: radial-gradient(ellipse 85% 70% at 50% 48%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, .55) 100%); pointer-events: none; }
+#flash { background: #fff; opacity: 0; mix-blend-mode: screen; }
+
+/* ───────── split text (mask reveal) ───────── */
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: .16em .06em .30em; margin: -.16em -.06em -.30em; }
+.wi { display: inline-block; }
+
+.hl, .cap {
+  position: absolute; left: 40px; right: 40px; margin: 0; text-align: center;
+  font-weight: 800; line-height: 1.24;
+}
+.hl { top: 250px; font-size: 100px; }
+
+/* ───────── hook: the phone ───────── */
+#phGlow {
+  position: absolute; left: 540px; top: 1110px; width: 1300px; height: 1300px; margin: -650px 0 0 -650px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(130, 195, 255, .55) 0%, rgba(62, 162, 255, .22) 30%, rgba(62, 162, 255, 0) 62%);
+}
+.rays {
+  position: absolute; left: 540px; top: 1110px; width: 2000px; height: 2000px; margin: -1000px 0 0 -1000px; border-radius: 50%; opacity: 0;
+  -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, .65) 28%, transparent 60%);
+          mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, .65) 28%, transparent 60%);
+}
+#raysCold { background: repeating-conic-gradient(from 0deg, rgba(140, 200, 255, .22) 0deg 4deg, rgba(140, 200, 255, 0) 4deg 15deg); }
+#raysWarm { background: repeating-conic-gradient(from 7deg, rgba(255, 196, 110, .16) 0deg 4deg, rgba(255, 196, 110, 0) 4deg 15deg); }
+
+.phone { position: absolute; }
+.phone .body {
+  position: absolute; inset: 0; border-radius: 76px; padding: 16px;
+  background: linear-gradient(155deg, #3A404C 0%, #161A22 22%, #0A0D13 60%, #1D222C 100%);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .55), inset 0 0 0 2px rgba(255, 255, 255, .08);
+}
+.phone .screen {
+  position: relative; width: 100%; height: 100%; border-radius: 62px; overflow: hidden;
+  background: linear-gradient(180deg, #F1F7FF 0%, #DCEBFF 40%, #B9D9FF 100%); color: #0E1626;
+}
+.phone .island { position: absolute; left: 50%; top: 22px; width: 150px; height: 42px; margin-left: -75px; border-radius: 21px; background: #06080C; z-index: 3; }
+.phone .glare { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(225, 242, 255, .8)); opacity: 0; z-index: 2; }
+#phone { left: 290px; top: 610px; width: 500px; height: 1000px; }
+.st-head { position: absolute; top: 112px; left: 0; right: 0; text-align: center; font-weight: 700; font-size: 36px; color: #33415C; }
+.st-time {
+  position: absolute; top: 168px; left: 0; right: 0; text-align: center; direction: ltr;
+  font-family: var(--latin); font-weight: 800; font-size: 124px; letter-spacing: -.02em; color: #0B1220;
+}
+.st-time small { font-size: .46em; font-weight: 700; color: #3B4A66; margin: 0 .14em 0 .03em; }
+.st-bars {
+  position: absolute; left: 46px; right: 46px; top: 352px; height: 250px; display: flex; align-items: flex-end; gap: 10px;
+  direction: ltr; border-bottom: 3px solid rgba(20, 40, 80, .14);
+}
+.st-bars i { flex: 1; height: 100%; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, #5AB4FF, #2F7CF6); transform-origin: 50% 100%; transform: scaleY(0); }
+.st-apps { position: absolute; left: 36px; right: 36px; top: 640px; }
+.app {
+  display: flex; align-items: center; gap: 18px; height: 86px; padding: 0 24px; margin-bottom: 14px; border-radius: 26px;
+  background: rgba(255, 255, 255, .7); font-weight: 700; font-size: 33px; color: #1B2740;
+}
+.app .ai { font-size: 42px; line-height: 1; }
+.app .at { margin-right: auto; direction: ltr; font-family: var(--latin); font-weight: 700; font-size: 31px; color: #4A5A78; }
+
+#parts i {
+  position: absolute; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; opacity: 0;
+  background: radial-gradient(circle, rgba(225, 242, 255, 1) 0%, rgba(90, 170, 255, .9) 35%, rgba(62, 162, 255, 0) 70%);
+}
+#parts i.pw { background: radial-gradient(circle, rgba(255, 240, 210, 1) 0%, rgba(255, 181, 71, .85) 35%, rgba(255, 150, 60, 0) 70%); }
+
+#stamp { position: absolute; left: 0; right: 0; top: 960px; text-align: center; }
+#stamp span {
+  display: inline-block; padding: 4px 54px 26px; border: 14px solid var(--red); border-radius: 40px;
+  color: var(--red); background: rgba(10, 12, 18, .86); font-weight: 800; font-size: 168px; line-height: 1.16;
+  transform: rotate(-8deg);
+}
+#stamp i { font-style: normal; font-size: 128px; margin-right: 18px; vertical-align: 8px; }
+
+/* ───────── the glasses (one element that travels through every scene) ───────── */
+#glasses { position: absolute; left: 0; top: 0; width: 860px; height: 404px; margin: -202px 0 0 -430px; }
+#gBob, #gFlip { position: absolute; inset: 0; }
+#glasses svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+/* ───────── product ───────── */
+#pTitle { top: 262px; font-size: 112px; line-height: 1.2; }
+#pSub { top: 1296px; font-size: 70px; font-weight: 700; color: var(--amber-hi); }
+
+/* ───────── demo ───────── */
+#dCap { top: 200px; font-size: 62px; line-height: 1.32; }
+#dGlow {
+  position: absolute; left: 540px; top: 640px; width: 800px; height: 800px; margin: -400px 0 0 -400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(130, 195, 255, .45) 0%, rgba(62, 162, 255, .16) 32%, rgba(62, 162, 255, 0) 64%);
+}
+#dPhone { left: 450px; top: 452px; width: 180px; height: 340px; }
+#dPhone .body { border-radius: 34px; padding: 7px; }
+#dPhone .screen { border-radius: 28px; background: linear-gradient(180deg, #F4F9FF 0%, #CFE6FF 55%, #A3CEFF 100%); }
+#dPhone .island { top: 10px; width: 56px; height: 16px; margin-left: -28px; border-radius: 8px; }
+#dPhone .ui { position: absolute; left: 16px; right: 16px; height: 18px; border-radius: 9px; background: rgba(40, 90, 170, .18); }
+#rayLayer { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+#eye { position: absolute; left: 340px; top: 1318px; width: 400px; height: 230px; }
+#eye svg { width: 100%; height: 100%; overflow: visible; }
+
+/* ───────── uses ───────── */
+#uCap { top: 252px; font-size: 100px; }
+.use {
+  position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 16px; height: 136px; padding: 0 44px 6px;
+  border-radius: 68px; background: linear-gradient(180deg, rgba(32, 38, 56, .94), rgba(16, 20, 31, .94));
+  border: 2px solid rgba(255, 181, 71, .5); font-weight: 700; font-size: 56px; white-space: nowrap;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .4);
+}
+.use .ui { font-size: 62px; line-height: 1; }
+
+/* ───────── offer ───────── */
+#oCap { top: 292px; font-size: 112px; }
+#tag { position: absolute; left: 250px; top: 600px; width: 580px; height: 400px; transform-origin: 290px -120px; }
+#tag .string { position: absolute; left: 288px; top: -120px; width: 4px; height: 152px; border-radius: 2px; background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .7)); }
+#tag .tb {
+  position: absolute; inset: 0; border-radius: 50px; text-align: center; color: #1C1205;
+  background: linear-gradient(160deg, #FFE39A 0%, #FFB547 46%, #FF8A2F 100%);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .45), inset 0 -10px 0 rgba(120, 50, 0, .16);
+}
+#tag .hole { position: absolute; left: 270px; top: 18px; width: 40px; height: 40px; border-radius: 50%; background: #050811; box-shadow: inset 0 4px 6px rgba(0, 0, 0, .45); }
+#tag .t1 { position: absolute; top: 62px; left: 0; right: 0; font-weight: 700; font-size: 46px; opacity: .78; }
+#tag .t2 { position: absolute; top: 112px; left: 0; right: 0; display: flex; align-items: baseline; justify-content: center; gap: 22px; }
+#tag .num { font-family: var(--latin); font-weight: 900; font-size: 214px; line-height: 1; letter-spacing: -.03em; }
+#tag .unit { font-weight: 800; font-size: 100px; line-height: 1; }
+#tag .t3 { position: absolute; bottom: 30px; left: 0; right: 0; font-weight: 700; font-size: 40px; opacity: .72; }
+#bas {
+  position: absolute; left: 150px; top: 520px; width: 230px; height: 230px; display: grid; place-items: center;
+  background: var(--red); color: #fff; font-weight: 800; font-size: 66px; padding-bottom: 10px;
+  clip-path: polygon(50% 0%, 61% 14%, 79% 9%, 82% 27%, 99% 33%, 90% 50%, 99% 67%, 82% 73%, 79% 91%, 61% 86%, 50% 100%, 39% 86%, 21% 91%, 18% 73%, 1% 67%, 10% 50%, 1% 33%, 18% 27%, 21% 9%, 39% 14%);
+}
+#road { position: absolute; left: -60px; right: -60px; top: 1236px; height: 8px; border-radius: 4px; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .38) 0 64px, rgba(255, 255, 255, 0) 64px 118px); }
+#van { position: absolute; left: 0; top: 0; font-size: 250px; line-height: 1; width: 300px; height: 260px; margin: -250px 0 0 -150px; text-align: center; transform-origin: 50% 100%; }
+#vanFx { position: absolute; left: 250px; top: 70px; width: 360px; height: 160px; opacity: 0; }
+#vanFx i { position: absolute; right: 0; height: 8px; border-radius: 4px; background: linear-gradient(90deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0)); }
+#freeBadge {
+  position: absolute; left: 0; top: 0; padding: 4px 34px 16px; border-radius: 30px; white-space: nowrap;
+  background: var(--green); color: #052016; font-weight: 800; font-size: 56px; transform-origin: 50% 50%;
+}
+#fCap { top: 1318px; font-size: 96px; }
+
+/* ───────── end card ───────── */
+#eName { top: 890px; font-size: 68px; }
+#chips { position: absolute; left: 0; right: 0; top: 1024px; display: flex; justify-content: center; gap: 24px; }
+.chip { display: inline-flex; align-items: center; gap: 12px; height: 106px; padding: 0 34px 6px; border-radius: 53px; font-weight: 800; font-size: 48px; white-space: nowrap; }
+.chip b { font-family: var(--latin); font-weight: 800; }
+.chip.price { background: rgba(255, 181, 71, .14); border: 2px solid rgba(255, 181, 71, .62); color: var(--amber-hi); }
+.chip.free { background: rgba(46, 229, 157, .12); border: 2px solid rgba(46, 229, 157, .56); color: #8FF3C9; }
+#ctaGlow {
+  position: absolute; left: 540px; top: 1290px; width: 1100px; height: 520px; margin: -260px 0 0 -550px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 150, 60, .32) 0%, rgba(255, 150, 60, 0) 64%);
+}
+#cta {
+  position: absolute; left: 150px; right: 150px; top: 1210px; height: 160px; border-radius: 80px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  background: linear-gradient(180deg, #FFD571 0%, #FFA941 55%, #FF7A2F 100%); color: #1C1205;
+  font-weight: 800; font-size: 76px; padding-bottom: 8px;
+  box-shadow: 0 24px 60px rgba(255, 122, 47, .35), inset 0 -8px 0 rgba(120, 40, 0, .18);
+}
+#finger { display: inline-block; }
+
+/* ───────── preview controls ───────── */
+#controls {
+  position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 100;
+  display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 14px;
+  background: rgba(20, 20, 24, .88); border: 1px solid rgba(255, 255, 255, .1); color: #eee;
+  font: 13px/1 system-ui, sans-serif; direction: ltr; backdrop-filter: blur(8px);
+}
+#controls button { background: var(--amber); color: #1C1205; border: 0; border-radius: 8px; padding: 7px 12px; font-weight: 600; cursor: pointer; }
+#controls input[type=range] { width: min(46vw, 420px); accent-color: var(--amber); }
+#controls .t { font-variant-numeric: tabular-nums; min-width: 92px; }
+body.render #controls { display: none; }
