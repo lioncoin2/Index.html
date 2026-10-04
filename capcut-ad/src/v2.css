@@ -1,0 +1,80 @@
+/* كاب كات برو — ad v2: giant kinetic typography, black / acid lime, beat-synced cuts. */
+@font-face { font-family: 'Alexandria'; src: url(../../orin-ad/assets/fonts/alexandria-arabic-wght-normal.woff2) format('woff2'); font-weight: 100 900; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Alexandria'; src: url(../../orin-ad/assets/fonts/alexandria-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; unicode-range: U+0000-00FF, U+2000-206F, U+2190-21FF, U+2212; }
+@font-face { font-family: 'Outfit'; src: url(../../orin-ad/assets/fonts/outfit-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; }
+
+:root { --ink: #0A0A0A; --lime: #D4FF00; --white: #FFFFFF; --red: #FF2D2D; --green: #25D366;
+  --display: 'Alexandria', sans-serif; --latin: 'Outfit', 'Alexandria', sans-serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #000; -webkit-font-smoothing: antialiased; }
+#viewport { position: fixed; inset: 0; display: grid; place-items: center; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; flex: none; background: var(--ink); color: var(--white); font-family: var(--display); direction: rtl; }
+body.render #viewport { place-items: start; }
+#stage, #stage * { will-change: auto !important; }
+.layer { position: absolute; inset: 0; }
+.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; font-family: var(--latin); }
+
+#bgc { background: var(--ink); }
+#flash { background: #fff; opacity: 0; mix-blend-mode: screen; }
+
+/* every scene is a full-screen stack of words */
+.slide { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.wd { display: block; font-weight: 900; line-height: 1.08; white-space: nowrap; transform-origin: 50% 55%; }
+.s300 { font-size: 300px; } .s240 { font-size: 240px; } .s200 { font-size: 200px; } .s170 { font-size: 170px; }
+.s150 { font-size: 150px; } .s130 { font-size: 130px; } .s110 { font-size: 110px; }
+.red { color: var(--red); } .lime { color: var(--lime); } .ink { color: var(--ink); } .white { color: var(--white); }
+.emo { display: block; line-height: 1; transform-origin: 50% 50%; }
+
+/* hook */
+#ban { font-size: 260px; margin-bottom: 30px; }
+#eyes { font-size: 300px; margin-top: 20px; }
+
+/* price */
+#six { display: flex; align-items: baseline; justify-content: center; gap: 30px; direction: rtl; }
+#six .num { font-family: var(--latin); font-weight: 900; font-size: 640px; line-height: .86; color: var(--lime); letter-spacing: -.04em; transform-origin: 50% 60%; display: inline-block; }
+#six .unit { font-weight: 900; font-size: 190px; line-height: 1; transform-origin: 50% 60%; display: inline-block; }
+#basS { margin-top: 40px; display: inline-block; padding: 10px 70px 34px; border-radius: 40px; background: var(--red); color: #fff; font-weight: 900; font-size: 150px; line-height: 1.05; transform: rotate(-4deg); }
+
+/* without pro: struck-through rows */
+.row { position: relative; display: inline-block; font-weight: 900; font-size: 128px; line-height: 1.25; margin: 14px 0; white-space: nowrap; }
+.row .strike { position: absolute; left: -24px; right: -24px; top: 50%; height: 26px; margin-top: -4px; border-radius: 13px; background: var(--red); transform-origin: 100% 50%; transform: scaleX(0) rotate(-3deg); }
+#noPro { font-weight: 900; font-size: 120px; color: var(--red); margin-bottom: 40px; padding: 6px 50px 26px; border: 10px solid var(--red); border-radius: 36px; }
+
+/* before / after */
+#capTop { position: absolute; left: 0; right: 0; top: 190px; text-align: center; font-weight: 900; font-size: 130px; line-height: 1.1; }
+#frame { position: absolute; left: 160px; top: 470px; width: 760px; height: 960px; border-radius: 44px; overflow: hidden; border: 8px solid var(--white); }
+.art { position: absolute; inset: 0; }
+.art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+#wmTiles { position: absolute; inset: -40%; display: grid; grid-template-columns: repeat(3, 1fr); align-content: center; gap: 80px 20px; transform: rotate(-24deg); }
+#wmTiles span { font-weight: 900; font-size: 64px; color: rgba(255,255,255,.6); text-align: center; white-space: nowrap; }
+.ui { position: absolute; left: 34px; right: 34px; bottom: 34px; height: 10px; border-radius: 5px; background: rgba(255,255,255,.35); }
+.ui i { position: absolute; right: 0; top: 0; bottom: 0; width: 36%; border-radius: 5px; background: #fff; }
+#after { clip-path: inset(0 0 0 100%); }
+#swipe { position: absolute; top: -20px; bottom: -20px; width: 26px; margin-left: -13px; left: 0; background: var(--lime); box-shadow: 0 0 40px 10px rgba(212,255,0,.55); opacity: 0; }
+#proSticker { position: absolute; left: 50%; top: 60px; width: 360px; margin-left: -180px; padding: 8px 0 22px; border-radius: 34px; background: var(--lime); color: var(--ink); font-weight: 900; font-size: 84px; text-align: center; transform: rotate(-5deg); }
+#cleanSticker { position: absolute; left: 0; right: 0; top: 1330px; text-align: center; }
+#cleanSticker span { display: inline-block; padding: 8px 46px 24px; border-radius: 30px; background: var(--white); color: var(--ink); font-weight: 900; font-size: 78px; transform: rotate(3deg); }
+
+/* marquee bands */
+.band { position: absolute; left: -200px; right: -200px; height: 124px; overflow: hidden; display: flex; align-items: center; }
+.band .track { display: flex; white-space: nowrap; font-weight: 900; font-size: 78px; padding-bottom: 14px; }
+.band.a { background: var(--ink); color: var(--lime); }
+.band.b { background: var(--white); color: var(--ink); }
+
+/* CTA */
+.btn2 { position: absolute; left: 150px; right: 150px; height: 176px; border-radius: 88px; display: flex; align-items: center; justify-content: center; gap: 22px;
+  font-weight: 900; font-size: 76px; border: 8px solid var(--ink); box-shadow: 0 16px 0 var(--ink); overflow: hidden; padding-bottom: 10px; }
+#wa2 { background: var(--green); color: var(--ink); }
+#ig2 { background: linear-gradient(90deg, #F9CE34, #EE2A7B 50%, #6228D7); color: #fff; }
+.btn2 .bi { font-size: 84px; line-height: 1; }
+#recap { position: absolute; left: 0; right: 0; top: 1330px; text-align: center; }
+#recap span { display: inline-block; padding: 8px 40px 22px; border-radius: 26px; background: var(--white); color: var(--ink); font-weight: 900; font-size: 60px; }
+#recap .ltr { font-weight: 900; }
+#ctaTitle { position: absolute; left: 0; right: 0; top: 330px; text-align: center; }
+#finger2 { position: absolute; left: 0; right: 0; top: 600px; text-align: center; font-size: 150px; line-height: 1; }
+
+#controls { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 14px;
+  background: rgba(20,20,24,.88); border: 1px solid rgba(255,255,255,.1); color: #eee; font: 13px/1 system-ui, sans-serif; direction: ltr; }
+#controls button { background: var(--lime); color: #111; border: 0; border-radius: 8px; padding: 7px 12px; font-weight: 600; cursor: pointer; }
+#controls input[type=range] { width: min(46vw, 420px); accent-color: var(--lime); }
+body.render #controls { display: none; }

@@ -1,0 +1,314 @@
+{
+ "id": "v2",
+ "prefix": "capcut-ad",
+ "soundtrack": "soundtrack_capcut2.py",
+ "duration": 22,
+ "T": {
+  "hook": 0,
+  "look": 2,
+  "reveal": 3,
+  "price": 4.5,
+  "nopro": 6,
+  "demo": 8,
+  "perks": 11,
+  "recap": 15,
+  "cta": 17,
+  "vo": [
+   {
+    "t0": 0,
+    "t1": 1.9,
+    "line": "لا تشترك بكاب كات برو…"
+   },
+   {
+    "t0": 2,
+    "t1": 2.9,
+    "line": "گبل ما تشوف هذا!"
+   },
+   {
+    "t0": 3,
+    "t1": 4.4,
+    "line": "حساب كاب كات برو جاهز…"
+   },
+   {
+    "t0": 4.5,
+    "t1": 5.9,
+    "line": "بستة آلاف بس!"
+   },
+   {
+    "t0": 6,
+    "t1": 7.9,
+    "line": "بدون برو: علامة مائية… وأدوات مقفولة."
+   },
+   {
+    "t0": 8,
+    "t1": 10.9,
+    "line": "ويا حسابنا: كلشي مفتوح… وبلا علامة مائية."
+   },
+   {
+    "t0": 11,
+    "t1": 14.9,
+    "line": "بلا فيزا، تسليم فوري، مضمون شهر كامل… لجهاز واحد."
+   },
+   {
+    "t0": 15,
+    "t1": 16.9,
+    "line": "شهر كامل بستة آلاف!"
+   },
+   {
+    "t0": 17,
+    "t1": 19.5,
+    "line": "اطلبه هسة من الواتساب أو الانستغرام."
+   }
+  ]
+ },
+ "bpm": 120,
+ "cues": [
+  {
+   "t": 0,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 0.5,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 1,
+   "type": "slam",
+   "size": "ban"
+  },
+  {
+   "t": 1,
+   "type": "ban"
+  },
+  {
+   "t": 2,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 2.1,
+   "type": "rise",
+   "until": 3
+  },
+  {
+   "t": 2.25,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 3,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 3,
+   "type": "drop"
+  },
+  {
+   "t": 3.25,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 3.5,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 4.5,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 4.75,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 5,
+   "type": "slam",
+   "size": "stamp"
+  },
+  {
+   "t": 5,
+   "type": "stamp"
+  },
+  {
+   "t": 6,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 6.5,
+   "type": "slam",
+   "size": "small"
+  },
+  {
+   "t": 6.85,
+   "type": "strike"
+  },
+  {
+   "t": 7.1,
+   "type": "slam",
+   "size": "small"
+  },
+  {
+   "t": 7.45,
+   "type": "strike"
+  },
+  {
+   "t": 8,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 8.55,
+   "type": "swipe",
+   "until": 9.25
+  },
+  {
+   "t": 9.3,
+   "type": "pop"
+  },
+  {
+   "t": 9.6,
+   "type": "slam",
+   "size": "small"
+  },
+  {
+   "t": 11,
+   "type": "slam",
+   "size": "small"
+  },
+  {
+   "t": 11,
+   "type": "perk",
+   "k": 0
+  },
+  {
+   "t": 11.25,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 12,
+   "type": "slam",
+   "size": "small"
+  },
+  {
+   "t": 12,
+   "type": "perk",
+   "k": 1
+  },
+  {
+   "t": 12.25,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 13,
+   "type": "slam",
+   "size": "small"
+  },
+  {
+   "t": 13,
+   "type": "perk",
+   "k": 2
+  },
+  {
+   "t": 13.25,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 14,
+   "type": "slam",
+   "size": "small"
+  },
+  {
+   "t": 14,
+   "type": "perk",
+   "k": 3
+  },
+  {
+   "t": 14.25,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 15,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 15.25,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 15.25,
+   "type": "price"
+  },
+  {
+   "t": 15.5,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 17,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 17,
+   "type": "cta"
+  },
+  {
+   "t": 17.5,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 17.5,
+   "type": "btn",
+   "k": 0
+  },
+  {
+   "t": 17.75,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 17.75,
+   "type": "btn",
+   "k": 1
+  },
+  {
+   "t": 18.25,
+   "type": "slam",
+   "size": "small"
+  },
+  {
+   "t": 19,
+   "type": "pulse"
+  },
+  {
+   "t": 19.5,
+   "type": "pulse"
+  },
+  {
+   "t": 20,
+   "type": "pulse"
+  },
+  {
+   "t": 20.5,
+   "type": "pulse"
+  },
+  {
+   "t": 21.5,
+   "type": "final"
+  }
+ ]
+}

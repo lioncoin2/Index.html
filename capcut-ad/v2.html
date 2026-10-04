@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>حساب كاب كات برو — إعلان ٢</title>
+<link rel="stylesheet" href="../orin-ad/src/cinema.css">
+<link rel="stylesheet" href="src/v2.css">
+<script src="../orin-ad/assets/vendor/gsap.min.js"></script>
+<script src="../orin-ad/assets/vendor/CustomEase.min.js"></script>
+<script src="../orin-ad/src/cinema.js"></script>
+</head>
+<body data-ad="v2">
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+<div id="rig" class="layer">
+  <div id="bgc" class="layer"></div>
+  <div id="bands" class="layer">
+    <div class="band a" id="bandA"><div class="track"></div></div>
+    <div class="band b" id="bandB"><div class="track"></div></div>
+  </div>
+
+  <!-- 1 · hook -->
+  <section class="slide" id="s1">
+    <span class="emo" id="ban">🚫</span>
+    <span class="wd s240 white" id="h1">لا تشترك</span>
+    <span class="wd s150 lime" id="h2">بكاب كات برو</span>
+  </section>
+  <section class="slide" id="s2">
+    <span class="wd s150 white" id="h3">گبل ما تشوف</span>
+    <span class="wd s240 lime" id="h4">هذا</span>
+    <span class="emo" id="eyes">👀</span>
+  </section>
+
+  <!-- 2 · the reveal -->
+  <section class="slide" id="s3">
+    <span class="wd s150 ink" id="r1">حساب كاب كات</span>
+    <span class="wd s300 ink" id="r2">برو 👑</span>
+    <span class="wd s200 ink" id="r3">جاهز</span>
+  </section>
+  <section class="slide" id="s4">
+    <div id="six"><span class="num ltr">6</span><span class="unit">آلاف</span></div>
+    <div><span id="basS">بس!</span></div>
+  </section>
+
+  <!-- 3 · without pro vs with the account -->
+  <section class="slide" id="s5">
+    <span id="noPro">بدون برو؟</span>
+    <span class="row" id="x1">علامة مائية 😒<i class="strike"></i></span>
+    <span class="row" id="x2">أدوات مقفولة 🔒<i class="strike"></i></span>
+  </section>
+  <section class="slide" id="s6">
+    <div id="capTop">ويا حسابنا <span class="lime">✅</span></div>
+    <div id="frame">
+      <div class="art" id="before"><svg viewBox="0 0 760 960"></svg><div id="wmTiles"></div><div class="ui"><i></i></div></div>
+      <div class="art" id="after"><svg viewBox="0 0 760 960"></svg><div class="ui"><i></i></div><div id="proSticker">برو 👑</div></div>
+      <div id="swipe"></div>
+    </div>
+    <div id="cleanSticker"><span>بلا علامة مائية</span></div>
+  </section>
+
+  <!-- 4 · perks, one per two beats -->
+  <section class="slide" id="b1"><span class="emo s240">💳</span><span class="wd s200 lime">بلا فيزا</span></section>
+  <section class="slide" id="b2"><span class="emo s240">⚡</span><span class="wd s200 ink">تسليم فوري</span></section>
+  <section class="slide" id="b3"><span class="emo s240">🛡️</span><span class="wd s170 ink">مضمون<br>شهر كامل</span></section>
+  <section class="slide" id="b4"><span class="emo s240">📱</span><span class="wd s200 white">لجهاز واحد</span></section>
+
+  <!-- 5 · price recap -->
+  <section class="slide" id="s8">
+    <span class="wd s150 ink" id="p1">شهر كامل</span>
+    <div id="six2" style="display:flex;align-items:baseline;gap:30px"><span class="ltr" id="p2" style="font-weight:900;font-size:560px;line-height:.86;color:#0A0A0A;letter-spacing:-.04em;display:inline-block;transform-origin:50% 60%">6</span><span id="p3" style="font-weight:900;font-size:180px;color:#0A0A0A;display:inline-block;transform-origin:50% 60%">آلاف</span></div>
+  </section>
+
+  <!-- 6 · call to action -->
+  <section class="slide" id="s9">
+    <div id="ctaTitle"><span class="wd s200 lime" id="cta1">اطلبه هسة</span></div>
+    <div id="finger2">👇</div>
+    <div class="btn2" id="wa2" style="top:820px"><span class="bi">💬</span>واتساب</div>
+    <div class="btn2" id="ig2" style="top:1060px"><span class="bi">📸</span>انستغرام</div>
+    <div id="recap"><span>حساب برو · شهر كامل · <span class="ltr">6</span> آلاف</span></div>
+  </section>
+
+</div>
+<div class="vignette-cinematic layer" style="opacity:.6"></div>
+<div id="grain" class="grain-layer layer"></div>
+<div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="22" step="0.001" value="0">
+  <span id="tlabel">0.00 / 22.00</span>
+  <button id="mute">🔇</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack-v2.m4a" type="audio/mp4"></audio>
+<script src="src/v2.js"></script>
+</body>
+</html>
