@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>حساب كاب كات برو — إعلان</title>
+<link rel="stylesheet" href="../orin-ad/src/cinema.css">
+<link rel="stylesheet" href="src/ad.css">
+<script src="../orin-ad/assets/vendor/gsap.min.js"></script>
+<script src="../orin-ad/assets/vendor/CustomEase.min.js"></script>
+<script src="../orin-ad/src/cinema.js"></script>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+<div id="world" class="layer">
+  <div id="bg" class="layer">
+    <div id="gCyan" class="glow"></div><div id="gRed" class="glow"></div><div id="gGold" class="glow"></div>
+    <div id="grid"></div>
+    <div id="dust" class="layer"></div>
+  </div>
+  <div id="rig" class="layer"><div id="push" class="layer">
+
+    <!-- the editor on a phone -->
+    <div id="phone"><div class="body"><div class="screen">
+      <div class="island"></div>
+      <div class="topbar"><span class="x">✕</span><span id="exportBtn">تصدير ⬆</span></div>
+      <div id="preview">
+        <div class="sun"></div>
+        <svg class="hills" viewBox="0 0 600 200" preserveAspectRatio="none"><path d="M0,120 C120,60 220,140 330,90 C430,45 520,110 600,80 L600,200 L0,200 Z" fill="#3B2466"/><path d="M0,160 C140,120 260,180 380,140 C480,110 560,150 600,135 L600,200 L0,200 Z" fill="#1E1440"/></svg>
+        <svg class="person" viewBox="0 0 90 190"><circle cx="45" cy="26" r="22" fill="#14102A"/><path d="M45,50 L45,120 M45,70 L12,40 M45,70 L80,96 M45,120 L20,186 M45,120 L72,186" stroke="#14102A" stroke-width="14" stroke-linecap="round" fill="none"/></svg>
+        <div id="wm"></div>
+        <div id="wmBig"><span>علامة مائية 😒</span></div>
+        <div id="exportProg"><b>جاري التصدير…</b><div class="bar"><div class="fill"></div></div></div>
+      </div>
+      <div id="tools">
+        <div class="tool"><span class="ti">✨</span>تأثيرات برو<div class="dim"></div><span class="lock">🔒</span><span class="ok">✓</span></div>
+        <div class="tool"><span class="ti">🎨</span>فلاتر برو<div class="dim"></div><span class="lock">🔒</span><span class="ok">✓</span></div>
+        <div class="tool"><span class="ti">🎬</span>قوالب برو<div class="dim"></div><span class="lock">🔒</span><span class="ok">✓</span></div>
+        <div class="tool"><span class="ti">🤖</span>أدوات الذكاء<div class="dim"></div><span class="lock">🔒</span><span class="ok">✓</span></div>
+      </div>
+      <div id="tracks">
+        <i style="left:0;width:300px;top:0;background:#6D5BF7"></i><i style="left:306px;width:240px;top:0;background:#8B7BFF"></i>
+        <i style="left:40px;width:420px;top:62px;background:#2EB8A8"></i>
+        <i style="left:0;width:540px;top:124px;background:#C8467A"></i>
+        <div id="playhead"></div>
+      </div>
+      <div id="toast">🔒 هاي الأداة تحتاج برو</div>
+      <div id="crown">برو 👑</div>
+    </div></div></div>
+    <div id="pointer">👆</div>
+
+    <!-- payment declined -->
+    <section id="payScene" class="layer">
+      <div id="card"><div class="chip"></div><div class="num">•••• •••• •••• 4821</div><div class="nm">VISA CARD</div></div>
+      <div id="pay"><div id="spin"></div>جاري الدفع…</div>
+      <div id="declined"><span>مرفوض ❌</span></div>
+    </section>
+
+    <!-- offer -->
+    <section id="offer" class="layer">
+      <div class="perk hot" id="p1"><span class="pi">💰</span>بس <span class="ltr">6</span> آلاف</div>
+      <div class="perk" id="p2"><span class="pi">🛡️</span>مضمون شهر كامل</div>
+      <div class="perk" id="p3"><span class="pi">⚡</span>تسليم فوري</div>
+      <div class="perk" id="p4"><span class="pi">📱</span>لجهاز واحد بس</div>
+    </section>
+
+    <!-- CTA -->
+    <section id="end" class="layer">
+      <div id="priceTag" style="top:760px"><span>شهر كامل بـ <span class="ltr">6</span> آلاف</span></div>
+      <div class="btn" id="wa" style="top:960px"><span class="bi">💬</span>واتساب</div>
+      <div class="btn" id="ig" style="top:1160px"><span class="bi">📸</span>انستغرام</div>
+    </section>
+
+    <!-- captions -->
+    <h1 id="c1" class="cap" data-split style="font-size:66px">خلصت المونتاج…<br><span class="r">وطلعتلك العلامة المائية؟</span> 😤</h1>
+    <h2 id="c2" class="cap" data-split>وكل الأدوات الحلوة…<br><span class="r">مقفولة</span> 🔒</h2>
+    <h2 id="c3" class="cap" data-split>والاشتراك يريد فيزا 💳<br><span class="r">ومنين تجيبها؟</span> 🤷</h2>
+    <h2 id="c4" class="cap" data-split style="top:820px;font-size:110px">لا تحتار…<br><span class="g">الحل عدنا</span> 👇</h2>
+    <h2 id="c5" class="cap" data-split style="font-size:60px">حساب <span class="g">كاب كات برو</span> 👑<br>كل شي مفتوح… وبلا علامة مائية</h2>
+    <h2 id="c6" class="cap" data-split>شهر كامل…<br>بـ <span class="g ltr">6</span> <span class="g">آلاف بس!</span></h2>
+    <h2 id="c7" class="cap" data-split style="top:300px;font-size:100px">اطلبه هسة 👇</h2>
+
+  </div></div>
+  <div id="redFlash" class="layer"></div>
+  <div class="vignette-cinematic layer"></div>
+  <div id="vignette" class="layer"></div>
+  <div id="grain" class="grain-layer layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div>
+</div>
+
+<div id="controls">
+  <button id="play">⏸</button>
+  <input id="scrub" type="range" min="0" max="24" step="0.001" value="0">
+  <span id="tlabel">0.00 / 24.00</span>
+  <button id="mute">🔇</button>
+</div>
+<audio id="music" preload="auto"><source src="out/soundtrack.m4a" type="audio/mp4"></audio>
+<script src="src/ad.js"></script>
+</body>
+</html>

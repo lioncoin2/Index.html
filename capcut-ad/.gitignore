@@ -1,0 +1,4 @@
+out/*.wav
+out/frames/
+out/draft*.mp4
+__pycache__/
