@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>شلون يشتغل محرك السيارة</title>
+<link rel="stylesheet" href="../orin-ad/src/cinema.css">
+<style>
+@font-face { font-family: 'Alexandria'; src: url(../orin-ad/assets/fonts/alexandria-arabic-wght-normal.woff2) format('woff2'); font-weight: 100 900; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Alexandria'; src: url(../orin-ad/assets/fonts/alexandria-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; unicode-range: U+0000-00FF, U+2000-206F, U+2190-21FF, U+2212; }
+@font-face { font-family: 'Outfit'; src: url(../orin-ad/assets/fonts/outfit-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; }
+:root { --bg: #071426; --cyan: #5CE1FF; --orange: #FF8A2A; --white: #EEF6FF; --muted: #7FA0C2; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #000; -webkit-font-smoothing: antialiased; }
+#viewport { position: fixed; inset: 0; display: grid; place-items: center; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; flex: none; background: var(--bg); color: var(--white); font-family: 'Alexandria', sans-serif; direction: rtl; }
+body.render #viewport { place-items: start; }
+#stage, #stage * { will-change: auto !important; }
+.layer { position: absolute; inset: 0; }
+#bg { background: radial-gradient(ellipse 80% 60% at 50% 55%, #0E2442 0%, #071426 70%); }
+#grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(92,225,255,.07) 2px, transparent 2px), linear-gradient(90deg, rgba(92,225,255,.07) 2px, transparent 2px), linear-gradient(rgba(92,225,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(92,225,255,.035) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px; }
+#flash { background: #FFD08A; opacity: 0; mix-blend-mode: screen; }
+#engine { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 1100px; }
+.cap { position: absolute; left: 50px; right: 50px; top: 150px; margin: 0; text-align: center; font-weight: 800; line-height: 1.3; }
+.cap .o { color: var(--orange); } .cap .c { color: var(--cyan); }
+.cap .num { display: inline-block; width: 120px; height: 120px; line-height: 112px; border-radius: 50%; border: 6px solid currentColor; font-family: 'Outfit'; font-weight: 800; font-size: 74px; margin-left: 18px; vertical-align: middle; }
+.sub { display: block; font-weight: 600; font-size: 52px; line-height: 1.45; color: #CFE3F7; margin-top: 18px; }
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: .16em .06em .30em; margin: -.16em -.06em -.30em; }
+.wi { display: inline-block; }
+.ln { white-space: nowrap; }
+.lbl { position: absolute; top: 0; padding: 8px 26px 14px; border-radius: 20px; border: 3px solid var(--cyan); background: rgba(7,20,38,.9); color: var(--white); font-weight: 700; font-size: 40px; white-space: nowrap; opacity: 0; }
+#strip { position: absolute; left: 60px; right: 60px; top: 1700px; display: flex; justify-content: space-between; direction: rtl; opacity: 0; }
+#strip span { flex: 1; margin: 0 8px; padding: 12px 0 18px; border-radius: 22px; text-align: center; font-weight: 800; font-size: 40px; border: 3px solid rgba(92,225,255,.3); color: var(--muted); }
+#strip span.on { border-color: var(--orange); color: #fff; background: rgba(255,138,42,.22); }
+#gauge { position: absolute; left: 790px; top: 1580px; width: 240px; height: 240px; opacity: 0; }
+#controls { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 14px; background: rgba(20,20,24,.88); color: #eee; font: 13px/1 system-ui; direction: ltr; }
+body.render #controls { display: none; }
+</style>
+<script src="../orin-ad/assets/vendor/gsap.min.js"></script>
+<script src="../orin-ad/assets/vendor/CustomEase.min.js"></script>
+<script src="../orin-ad/src/cinema.js"></script>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="world" class="layer">
+  <div id="bg" class="layer"><div id="grid"></div></div>
+  <div id="rig" class="layer">
+    <svg id="wheel" class="layer" viewBox="0 0 1080 1920" style="opacity:0"></svg>
+    <svg id="engine" viewBox="0 0 1080 1920"></svg>
+    <div id="labels" class="layer">
+      <div class="lbl" id="lPlug">البوجي ⚡</div>
+      <div class="lbl" id="lIn">بلف السحب</div>
+      <div class="lbl" id="lEx">بلف العادم</div>
+      <div class="lbl" id="lPis">البستن</div>
+      <div class="lbl" id="lRod">ذراع التوصيل</div>
+      <div class="lbl" id="lCr">الكرنك</div>
+    </div>
+    <svg id="leaders" class="layer" viewBox="0 0 1080 1920" style="pointer-events:none"></svg>
+
+    <h1 class="cap" id="c0" data-split style="font-size:78px"><span class="ln">بمحرك سيارتك تصير…</span><br><span class="o ln" style="font-size:104px">عشرات الانفجارات</span><br><span class="ln">بالثانية 💥</span></h1>
+    <h2 class="cap" id="c1" data-split style="font-size:86px">خلّي نفتح المحرك… <span class="c">ونشوف</span> 👇</h2>
+    <h2 class="cap" id="s1" data-split style="font-size:80px"><span class="c"><span class="num">1</span>السحب</span><span class="sub">البستن ينزل وبلف السحب ينفتح… فيدخل هوا وبانزين</span></h2>
+    <h2 class="cap" id="s2" data-split style="font-size:80px"><span class="c"><span class="num">2</span>الضغط</span><span class="sub">البلوف تتسكر… والبستن يصعد ويضغط الخليط</span></h2>
+    <h2 class="cap" id="s3" data-split style="font-size:80px"><span class="o"><span class="num">3</span>الانفجار</span><span class="sub">البوجي يقدح شرارة ⚡ والخليط ينفجر ويدفع البستن لجوه بقوة</span></h2>
+    <h2 class="cap" id="s4" data-split style="font-size:80px"><span class="c"><span class="num">4</span>العادم</span><span class="sub">بلف العادم ينفتح… والبستن يصعد ويطلّع الدخان</span></h2>
+    <h2 class="cap" id="c5" data-split style="font-size:78px">وهالدورة تتكرر… <span class="o">مئات وحتى آلاف</span><br>المرات بالدقيقة 🔁</h2>
+    <h2 class="cap" id="c6" data-split style="font-size:76px">والكرنك يحوّل هالحركة لدوران…<br><span class="c">يوصل للعجلات</span> 🛞</h2>
+
+    <div id="strip"><span>سحب</span><span>ضغط</span><span>انفجار</span><span>عادم</span></div>
+    <svg id="gauge" viewBox="0 0 240 240"></svg>
+  </div>
+  <div class="vignette-cinematic layer"></div>
+  <div id="grain" class="grain-layer layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+</div></div>
+<div id="controls"><button id="play">⏸</button><input id="scrub" type="range" min="0" max="33" step="0.001" value="0"><span id="tlabel"></span></div>
+<script src="src/engine.js"></script>
+</body>
+</html>
