@@ -1,0 +1,266 @@
+{
+ "id": "",
+ "prefix": "engine-video",
+ "soundtrack": "soundtrack_engine.py",
+ "duration": 33,
+ "T": {
+  "hook": 0,
+  "open": 3.1,
+  "parts": 5.8,
+  "strokes": 8,
+  "fast": 24.8,
+  "wheels": 29,
+  "vo": [
+   {
+    "t0": 0.1,
+    "t1": 2.9,
+    "line": "بمحرك سيارتك تصير… عشرات الانفجارات بالثانية!"
+   },
+   {
+    "t0": 3.2,
+    "t1": 5.5,
+    "line": "خلّي نفتح المحرك… ونشوف."
+   },
+   {
+    "t0": 8.1,
+    "t1": 12,
+    "line": "أول شي السحب: البستن ينزل، وبلف السحب ينفتح… فيدخل هوا وبانزين."
+   },
+   {
+    "t0": 12.3,
+    "t1": 16.2,
+    "line": "بعدين الضغط: البلوف تتسكر، والبستن يصعد ويضغط الخليط."
+   },
+   {
+    "t0": 16.5,
+    "t1": 20.4,
+    "line": "وهنا الانفجار: البوجي يقدح شرارة، والخليط ينفجر ويدفع البستن لجوه بقوة."
+   },
+   {
+    "t0": 20.7,
+    "t1": 24.6,
+    "line": "وآخر شي العادم: بلف العادم ينفتح، والبستن يطلّع الدخان."
+   },
+   {
+    "t0": 24.9,
+    "t1": 28.8,
+    "line": "وهالدورة تتكرر… مئات وحتى آلاف المرات بالدقيقة."
+   },
+   {
+    "t0": 29.1,
+    "t1": 32.5,
+    "line": "والكرنك يحوّل هالحركة لدوران… يوصل للعجلات."
+   }
+  ]
+ },
+ "bpm": 120,
+ "cues": [
+  {
+   "t": 0.508,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 1.7,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 3.1,
+   "type": "cap"
+  },
+  {
+   "t": 3.433,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 5.95,
+   "type": "label",
+   "k": 0
+  },
+  {
+   "t": 6.23,
+   "type": "label",
+   "k": 1
+  },
+  {
+   "t": 6.51,
+   "type": "label",
+   "k": 2
+  },
+  {
+   "t": 6.79,
+   "type": "label",
+   "k": 3
+  },
+  {
+   "t": 7.07,
+   "type": "label",
+   "k": 4
+  },
+  {
+   "t": 7.35,
+   "type": "label",
+   "k": 5
+  },
+  {
+   "t": 7.95,
+   "type": "cap"
+  },
+  {
+   "t": 8,
+   "type": "intake",
+   "until": 11
+  },
+  {
+   "t": 12.15,
+   "type": "cap"
+  },
+  {
+   "t": 12.2,
+   "type": "compress",
+   "until": 15.2
+  },
+  {
+   "t": 15.2,
+   "type": "fire",
+   "slow": true
+  },
+  {
+   "t": 16.35,
+   "type": "cap"
+  },
+  {
+   "t": 16.4,
+   "type": "power",
+   "until": 19.4
+  },
+  {
+   "t": 20.55,
+   "type": "cap"
+  },
+  {
+   "t": 20.6,
+   "type": "exhaust",
+   "until": 23.6
+  },
+  {
+   "t": 24.8,
+   "type": "rev",
+   "until": 29
+  },
+  {
+   "t": 24.85,
+   "type": "cap"
+  },
+  {
+   "t": 25.75,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 26.446,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 26.925,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 27.312,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 27.65,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 27.95,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 28.221,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 28.475,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 28.712,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 28.937,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 29,
+   "type": "cap"
+  },
+  {
+   "t": 29,
+   "type": "end"
+  },
+  {
+   "t": 29.283,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 29.683,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 30.083,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 30.483,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 30.883,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 31.283,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 31.683,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 32.083,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 32.483,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 32.883,
+   "type": "fire",
+   "slow": false
+  }
+ ]
+}
