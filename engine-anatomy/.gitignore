@@ -1,0 +1,4 @@
+out/*.wav
+out/frames/
+__pycache__/
+src/art.js
