@@ -1,0 +1,223 @@
+{
+ "id": "",
+ "prefix": "engine-anatomy",
+ "soundtrack": "soundtrack_engine.py",
+ "duration": 35,
+ "T": {
+  "hook": 0,
+  "open": 3.1,
+  "parts": 5.9,
+  "strokes": 9.6,
+  "fast": 26.4,
+  "wheels": 30.6
+ },
+ "bpm": 120,
+ "cues": [
+  {
+   "t": 0.517,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 1.729,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 3.1,
+   "type": "cap"
+  },
+  {
+   "t": 3.492,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 5.9,
+   "type": "cap"
+  },
+  {
+   "t": 6,
+   "type": "label",
+   "k": 0
+  },
+  {
+   "t": 6.58,
+   "type": "label",
+   "k": 1
+  },
+  {
+   "t": 7.16,
+   "type": "label",
+   "k": 2
+  },
+  {
+   "t": 7.74,
+   "type": "label",
+   "k": 3
+  },
+  {
+   "t": 8.32,
+   "type": "label",
+   "k": 4
+  },
+  {
+   "t": 8.9,
+   "type": "label",
+   "k": 5
+  },
+  {
+   "t": 9.55,
+   "type": "cap"
+  },
+  {
+   "t": 9.6,
+   "type": "intake",
+   "until": 12.6
+  },
+  {
+   "t": 13.75,
+   "type": "cap"
+  },
+  {
+   "t": 13.8,
+   "type": "compress",
+   "until": 16.8
+  },
+  {
+   "t": 16.8,
+   "type": "fire",
+   "slow": true
+  },
+  {
+   "t": 17.95,
+   "type": "cap"
+  },
+  {
+   "t": 18,
+   "type": "power",
+   "until": 21
+  },
+  {
+   "t": 22.15,
+   "type": "cap"
+  },
+  {
+   "t": 22.2,
+   "type": "exhaust",
+   "until": 25.200000000000003
+  },
+  {
+   "t": 26.4,
+   "type": "rev",
+   "until": 30.6
+  },
+  {
+   "t": 26.45,
+   "type": "cap"
+  },
+  {
+   "t": 27.35,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 28.046,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 28.525,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 28.929,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 29.329,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 29.729,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 30.129,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 30.529,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 30.6,
+   "type": "cap"
+  },
+  {
+   "t": 30.6,
+   "type": "end"
+  },
+  {
+   "t": 30.929,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 31.329,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 31.729,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 32.129,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 32.529,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 32.929,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 33.329,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 33.729,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 34.125,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 34.525,
+   "type": "fire",
+   "slow": false
+  },
+  {
+   "t": 34.925,
+   "type": "fire",
+   "slow": false
+  }
+ ]
+}
