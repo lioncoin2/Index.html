@@ -11,21 +11,57 @@
   },
   {
    "i": 1,
-   "text": "For most of history, machines did exactly what we told them. A calculator never surprised anyone.",
-   "sec": 6.613,
+   "text": "It sounds like science fiction. But some of the people who build today's most advanced AI say this is a risk we have to take seriously.",
+   "sec": 8.384,
    "file": "line-01.wav"
   },
   {
    "i": 2,
-   "text": "Modern AI is different. Nobody writes its rules. We grow it from data... and we only partly understand what grows.",
-   "sec": 7.467,
+   "text": "For most of history, machines did exactly what we told them.",
+   "sec": 4.181,
    "file": "line-02.wav"
   },
   {
    "i": 3,
+   "text": "A calculator never surprised anyone. A factory robot repeats the same movement, millions of times.",
+   "sec": 6.784,
+   "file": "line-03.wav"
+  },
+  {
+   "i": 4,
+   "text": "And if something went wrong, you could open the code, find the broken line, and fix it.",
+   "sec": 5.227,
+   "file": "line-04.wav"
+  },
+  {
+   "i": 5,
+   "text": "Modern AI is different. Nobody writes its rules, line by line.",
+   "sec": 4.843,
+   "file": "line-05.wav"
+  },
+  {
+   "i": 6,
+   "text": "Instead, we feed it enormous amounts of data. Text, images and code. And it adjusts billions of internal numbers, until it gets very good at predicting what comes next.",
+   "sec": 10.453,
+   "file": "line-06.wav"
+  },
+  {
+   "i": 7,
+   "text": "The result works remarkably well. But when we look inside, we mostly see numbers. We grow these systems... and we only partly understand what grows.",
+   "sec": 8.811,
+   "file": "line-07.wav"
+  },
+  {
+   "i": 8,
+   "text": "And now, these systems are starting to act on their own. Writing code, browsing the web, carrying out tasks for hours.",
+   "sec": 7.147,
+   "file": "line-08.wav"
+  },
+  {
+   "i": 9,
    "text": "So, did we cross a line? And if we did... what now?",
    "sec": 3.755,
-   "file": "line-03.wav"
+   "file": "line-09.wav"
   }
  ]
 }

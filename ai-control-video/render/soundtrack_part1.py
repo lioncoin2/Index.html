@@ -23,14 +23,14 @@ def heartbeat(add, t0, t1, bpm=60, level=0.3):
         t += 60 / bpm
 
 
-def build(cues, dur):
+def build(cues, dur, T):
     mix = Mix(dur)
     add = mix.add
     # bed: a slow minor drone that changes colour per scene
-    for t0, t1, notes in [(0, 9.0, [38, 45, 50, 53]), (9.0, 18.6, [41, 48, 53, 57]), (18.6, 29.0, [36, 43, 50, 51]), (29.0, dur, [38, 45, 50, 53])]:
+    for t0, t1, notes in [(0, T['s2'], [38, 45, 50, 53]), (T['s2'], T['s3'], [41, 48, 53, 57]), (T['s3'], T['s4'], [36, 43, 50, 51]), (T['s4'], dur, [38, 45, 50, 53])]:
         add('music', pad(notes, t1 - t0, cutoff=900, attack=1.2, release=1.5, cents=14), t0, 0.16)
-    heartbeat(add, 0.9, 8.6, 56, 0.22)
-    heartbeat(add, 29.2, 34.2, 64, 0.26)
+    heartbeat(add, 0.9, T['s2'] - 0.5, 56, 0.2)
+    heartbeat(add, T['s4'] + 0.2, T['title'] - 0.2, 64, 0.24)
     for cu in cues:
         t, ty = cu['t'], cu['type']
         if ty == 'slam':
@@ -61,6 +61,13 @@ def build(cues, dur):
             for k in range(n): add('sfx', blip(900 + 60 * (k % 9), 0.05, 0.02), t + k * 0.22, 0.04)
         elif ty == 'hit':
             add('drums', thump(55, 0.5, 0.15), t, 0.5); add('sfx', sub_drop(0.9), t, 0.2)
+        elif ty == 'servo':
+            tt = t
+            while tt < cu['until']:
+                add('sfx', noise_sweep(0.28, 600, 1800, q=3, shape='swell'), tt, 0.05); tt += 0.6
+        elif ty == 'buzz':
+            from soundtrack_v3 import buzzer
+            add('sfx', buzzer(), t, 0.14)
         elif ty == 'line':
             add('sfx', noise_sweep(1.0, 300, 6000, q=1.2, shape='rise'), t, 0.18)
     mix.bus('verb')
@@ -85,7 +92,7 @@ def build(cues, dur):
 
 def main():
     meta = json.load(open(sys.argv[1], encoding='utf-8'))
-    mix, duck = build(meta['cues'], meta['duration'])
+    mix, duck = build(meta['cues'], meta['duration'], meta['T'])
     x = master(mix, duck)
     wavfile.write(sys.argv[2], SR, (x.T * 32767).astype(np.int16))
     print(f'soundtrack → {sys.argv[2]}  ({x.shape[1] / SR:.2f}s)')
