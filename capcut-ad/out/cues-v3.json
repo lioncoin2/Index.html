@@ -1,0 +1,167 @@
+{
+ "id": "v3",
+ "prefix": "capcut-ad",
+ "soundtrack": "soundtrack_capcut3.py",
+ "duration": 20.5,
+ "T": {
+  "hook": 0,
+  "prob": 3,
+  "reveal": 7.5,
+  "burst": 8.6,
+  "offer": 12,
+  "cta": 16
+ },
+ "bpm": 120,
+ "cues": [
+  {
+   "t": 0.05,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 0.45,
+   "type": "knock"
+  },
+  {
+   "t": 0.8,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 1.25,
+   "type": "knock"
+  },
+  {
+   "t": 1.9,
+   "type": "pop"
+  },
+  {
+   "t": 2.05,
+   "type": "knock"
+  },
+  {
+   "t": 2.8,
+   "type": "whoosh"
+  },
+  {
+   "t": 3.15,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 3.9,
+   "type": "stamp"
+  },
+  {
+   "t": 3.9,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 4.9,
+   "type": "lock"
+  },
+  {
+   "t": 5.02,
+   "type": "lock"
+  },
+  {
+   "t": 5.14,
+   "type": "lock"
+  },
+  {
+   "t": 6,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 7.3,
+   "type": "whoosh"
+  },
+  {
+   "t": 7.7,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 7.9,
+   "type": "knock"
+  },
+  {
+   "t": 8.25,
+   "type": "knock"
+  },
+  {
+   "t": 8.4,
+   "type": "rise",
+   "until": 8.6
+  },
+  {
+   "t": 8.6,
+   "type": "drop"
+  },
+  {
+   "t": 8.85,
+   "type": "pop"
+  },
+  {
+   "t": 8.97,
+   "type": "pop"
+  },
+  {
+   "t": 9.09,
+   "type": "pop"
+  },
+  {
+   "t": 9.7,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 12.05,
+   "type": "slam",
+   "size": "mid"
+  },
+  {
+   "t": 12.6,
+   "type": "price"
+  },
+  {
+   "t": 13.8,
+   "type": "pop"
+  },
+  {
+   "t": 14.3,
+   "type": "pop"
+  },
+  {
+   "t": 14.8,
+   "type": "pop"
+  },
+  {
+   "t": 16.05,
+   "type": "slam",
+   "size": "big"
+  },
+  {
+   "t": 16.6,
+   "type": "btn"
+  },
+  {
+   "t": 16.9,
+   "type": "btn"
+  },
+  {
+   "t": 17.6,
+   "type": "pulse"
+  },
+  {
+   "t": 18.6,
+   "type": "pulse"
+  },
+  {
+   "t": 19.6,
+   "type": "pulse"
+  }
+ ]
+}
