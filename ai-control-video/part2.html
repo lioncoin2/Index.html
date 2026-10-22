@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Did We Lose Control? — Part 2</title>
+<link rel="stylesheet" href="../orin-ad/src/cinema.css">
+<style>
+@font-face { font-family: 'Outfit'; src: url(../orin-ad/assets/fonts/outfit-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; }
+:root { --bg: #1E1B4B; --cream: #FEF3C7; --orange: #FBBF24; --red: #FB7185; --cyan: #2DD4BF; --muted: #A5B4FC; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+#viewport { position: fixed; inset: 0; display: grid; place-items: center; }
+body.render #viewport { place-items: start; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; flex: none; background: radial-gradient(ellipse 90% 80% at 50% 45%, #3730A3 0%, #1E1B4B 70%); color: var(--cream); font-family: 'Outfit', sans-serif; }
+#stage, #stage * { will-change: auto !important; }
+.layer { position: absolute; inset: 0; }
+svg.layer { width: 1920px; height: 1080px; overflow: visible; }
+.scene { opacity: 0; }
+#title { position: absolute; left: 0; right: 0; top: 46px; text-align: center; font-weight: 900; font-size: 120px; letter-spacing: -.01em; color: #fff; -webkit-text-stroke: 10px #1E1B4B; paint-order: stroke fill; opacity: 0; }
+.chip { position: absolute; padding: 10px 26px 14px; border-radius: 40px; font-weight: 800; font-size: 40px; letter-spacing: .06em; opacity: 0; }
+.panelLabel { position: absolute; top: 60px; font-weight: 800; font-size: 34px; letter-spacing: .12em; color: var(--muted); }
+#code { position: absolute; left: 120px; top: 200px; width: 700px; font: 500 36px/1.65 'DejaVu Sans Mono', monospace; color: #C9D3FF; white-space: pre; }
+#code .k { color: var(--orange); } #code .f { color: var(--cyan); }
+#cardQ { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-weight: 900; font-size: 104px; color: #fff; opacity: 0; }
+#cardQ .r { color: var(--red); }
+#sub:empty { display: none; }
+#sub { position: absolute; left: 50%; transform: translateX(-50%); width: max-content; max-width: 1400px; padding: 10px 28px 14px; border-radius: 16px; background: rgba(5,6,16,.78); bottom: 48px; text-align: center; font-weight: 600; font-size: 40px; line-height: 1.35; color: #fff; text-shadow: 0 2px 0 #000, 0 0 18px rgba(0,0,0,.9); }
+#flash { background: #fff; opacity: 0; }
+#fixPanel { position: absolute; left: 560px; top: 250px; width: 800px; padding: 30px 40px; border-radius: 24px; background: #0F0D2E; border: 4px solid #4338CA; font: 500 34px/1.7 'DejaVu Sans Mono', monospace; color: #C7D2FE; white-space: pre; opacity: 0; }
+#fixPanel .bad { display: block; margin: 0 -40px; padding: 0 40px; }
+#matrix { position: absolute; left: 1000px; top: 150px; width: 880px; height: 640px; overflow: hidden; font: 500 30px/1.5 'DejaVu Sans Mono', monospace; color: rgba(125,211,252,.85); white-space: pre; opacity: 0; }
+#fade { background: #000; opacity: 1; }
+#controls { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 14px; background: rgba(20,20,24,.88); color: #eee; font: 13px/1 system-ui; }
+body.render #controls { display: none; }
+
+#chap { position: absolute; left: 0; right: 0; top: 330px; text-align: center; }
+#chap .n { font-weight: 900; font-size: 220px; line-height: 1; color: var(--orange); }
+#chap .t { font-weight: 900; font-size: 96px; color: #fff; }
+.rungLbl { position: absolute; font-weight: 900; font-size: 44px; letter-spacing: .06em; color: var(--cream); opacity: .35; }
+.card { position: absolute; padding: 28px 34px; border-radius: 28px; background: #0F0D2E; border: 5px solid #4338CA; font-weight: 700; font-size: 40px; line-height: 1.5; color: var(--cream); opacity: 0; }
+.task { display: block; opacity: .25; }
+.task b { color: #22C55E; }
+.dialLbl { position: absolute; top: 760px; width: 560px; text-align: center; font-weight: 900; font-size: 52px; letter-spacing: .08em; }
+.vcard { position: absolute; top: 300px; width: 470px; height: 300px; border-radius: 36px; display: grid; place-items: center; text-align: center; font-weight: 900; font-size: 54px; line-height: 1.15; color: #1E1B4B; border: 8px solid #1E1B4B; opacity: 0; }
+#lineTag { position: absolute; left: 0; right: 0; top: 700px; text-align: center; font-weight: 900; font-size: 84px; color: var(--red); opacity: 0; }
+</style>
+<script src="../orin-ad/assets/vendor/gsap.min.js"></script>
+<script src="../orin-ad/assets/vendor/CustomEase.min.js"></script>
+<script src="../orin-ad/src/cinema.js"></script>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="world" class="layer"><div id="rig" class="layer">
+  <div class="scene layer" id="sChap"><svg class="layer" id="chapSvg" viewBox="0 0 1920 1080"></svg><div id="chap"><div class="n">2</div><div class="t">What is <span style="color:var(--red)">the line</span>?</div></div></div>
+  <div class="scene layer" id="sLadder"><svg class="layer" id="ladderSvg" viewBox="0 0 1920 1080"></svg>
+    <div class="rungLbl" id="r0" style="right:1580px;text-align:right;top:780px">TOOL</div><div class="rungLbl" id="r1" style="right:1580px;text-align:right;top:580px">ASSISTANT</div><div class="rungLbl" id="r2" style="right:1580px;text-align:right;top:380px">AGENT</div><div class="rungLbl" id="r3" style="right:1580px;text-align:right;top:180px;color:var(--red)">???</div>
+    <div class="card" id="cTool" style="left:1000px;top:330px;width:760px"><span style="font-size:30px;color:var(--muted)">SPELL CHECK</span><br>I love <s style="color:var(--red)">teh</s> <span style="color:#22C55E">the</span> ocean.</div>
+    <div class="card" id="cAsk" style="left:1000px;top:280px;width:760px"><span style="color:var(--muted)">You:</span> What's the capital of Japan?<br><span style="color:var(--cyan)">AI:</span> Tokyo.<br><span style="font-size:32px;color:var(--orange)">→ you decide what to do next</span></div>
+    <div class="card" id="cAgent" style="left:1000px;top:230px;width:760px"><span style="font-size:30px;color:var(--muted)">GOAL: prepare my trip</span><span class="task" id="k0"><b>✓</b> Search flights</span><span class="task" id="k1"><b>✓</b> Book the cheapest one</span><span class="task" id="k2"><b>✓</b> Fix a bug in the booking script</span><span class="task" id="k3"><b>✓</b> Email the hotel</span><span class="task" id="k4"><b>✓</b> Pay the deposit</span></div>
+    <svg class="layer" id="noEyeSvg" viewBox="0 0 1920 1080"></svg></div>
+  <div class="scene layer" id="sDials"><svg class="layer" id="dialSvg" viewBox="0 0 1920 1080"></svg>
+    <div class="dialLbl" style="left:180px;color:var(--orange)">CAPABILITY</div><div class="dialLbl" style="left:1180px;color:var(--cyan)">CONTROL</div></div>
+  <div class="scene layer" id="sCar"><svg class="layer" id="carSvg" viewBox="0 0 1920 1080"></svg></div>
+  <div class="scene layer" id="sVenn">
+    <div class="vcard" id="v0" style="left:200px;background:var(--orange)">CAPABLE</div>
+    <div class="vcard" id="v1" style="left:725px;background:var(--cyan)">AUTONOMOUS</div>
+    <div class="vcard" id="v2" style="left:1250px;background:#C4B5FD">HARD TO<br>LOOK INSIDE</div>
+    <div id="lineTag">= THE LINE</div><svg class="layer" id="vennSvg" viewBox="0 0 1920 1080"></svg></div>
+  <div id="sub"></div>
+</div>
+<div class="vignette-cinematic layer"></div>
+<div id="grain" class="grain-layer layer"></div>
+<div id="flash" class="layer"></div>
+<div id="fade" class="layer"></div>
+</div>
+</div></div>
+<div id="controls"><button id="play">⏸</button><input id="scrub" type="range" min="0" max="90" step="0.001" value="0"><span id="tlabel"></span></div>
+<script src="src/vo-part2.js"></script>
+<script src="src/part2.js"></script>
+</body>
+</html>

@@ -18,6 +18,18 @@ LINES = {
         "And now, these systems are starting to act on their own. Writing code, browsing the web, carrying out tasks for hours.",
         "So, did we cross a line? And if we did... what now?",
     ],
+    'part2': [
+        "So what is this line, exactly? It isn't one dramatic moment, like in the movies.",
+        "Think of AI as climbing a ladder. On the first rung, it's a tool. Like a spell checker, it does one narrow job, only when you ask.",
+        "On the second rung, it's an assistant. You ask a question, it answers... and you decide what happens next.",
+        "On the third rung, it becomes an agent. You give it a goal, and it plans the steps, uses tools, and acts on its own. Sometimes for hours.",
+        "Booking a flight. Fixing a bug. Sending emails. Each step is small... but no human checks every single one.",
+        "Now picture two dials. One measures what AI can do. The other measures how well we can steer it.",
+        "For years, both dials moved slowly. Lately, the first one has been turning much faster than the second.",
+        "It's like a car whose engine keeps getting more powerful... while the steering and the brakes stay the same.",
+        "The danger isn't the speed itself. It's speed, without control.",
+        "So the line is this: the moment AI becomes capable, autonomous, and hard to look inside, all at the same time. And many researchers think we are getting closer.",
+    ],
 }
 VOICE, SPEED = 'am_onyx', 0.92
 

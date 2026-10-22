@@ -1,0 +1,67 @@
+{
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "sr": 24000,
+ "lines": [
+  {
+   "i": 0,
+   "text": "So what is this line, exactly? It isn't one dramatic moment, like in the movies.",
+   "sec": 5.44,
+   "file": "line-00.wav"
+  },
+  {
+   "i": 1,
+   "text": "Think of AI as climbing a ladder. On the first rung, it's a tool. Like a spell checker, it does one narrow job, only when you ask.",
+   "sec": 8.128,
+   "file": "line-01.wav"
+  },
+  {
+   "i": 2,
+   "text": "On the second rung, it's an assistant. You ask a question, it answers... and you decide what happens next.",
+   "sec": 6.144,
+   "file": "line-02.wav"
+  },
+  {
+   "i": 3,
+   "text": "On the third rung, it becomes an agent. You give it a goal, and it plans the steps, uses tools, and acts on its own. Sometimes for hours.",
+   "sec": 8.277,
+   "file": "line-03.wav"
+  },
+  {
+   "i": 4,
+   "text": "Booking a flight. Fixing a bug. Sending emails. Each step is small... but no human checks every single one.",
+   "sec": 6.891,
+   "file": "line-04.wav"
+  },
+  {
+   "i": 5,
+   "text": "Now picture two dials. One measures what AI can do. The other measures how well we can steer it.",
+   "sec": 6.485,
+   "file": "line-05.wav"
+  },
+  {
+   "i": 6,
+   "text": "For years, both dials moved slowly. Lately, the first one has been turning much faster than the second.",
+   "sec": 6.656,
+   "file": "line-06.wav"
+  },
+  {
+   "i": 7,
+   "text": "It's like a car whose engine keeps getting more powerful... while the steering and the brakes stay the same.",
+   "sec": 6.016,
+   "file": "line-07.wav"
+  },
+  {
+   "i": 8,
+   "text": "The danger isn't the speed itself. It's speed, without control.",
+   "sec": 4.373,
+   "file": "line-08.wav"
+  },
+  {
+   "i": 9,
+   "text": "So the line is this: the moment AI becomes capable, autonomous, and hard to look inside, all at the same time. And many researchers think we are getting closer.",
+   "sec": 10.155,
+   "file": "line-09.wav"
+  }
+ ]
+}
