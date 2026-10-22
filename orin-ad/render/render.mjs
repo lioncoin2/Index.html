@@ -17,6 +17,7 @@
  *   --shutter K     motion-blur sub-samples per frame, binomial-weighted (default 1 = off;
  *                   5 is a good cinematic default — see render/blend.mjs)
  *   --shutterAngle  exposure as a fraction of the frame, in degrees (default 180, classic film)
+ *   --size WxH      viewport, e.g. 1920x1080 for 16:9 (default 1080x1920)
  *   --no-audio      skip soundtrack generation and muxing
  *   --keep-frames   keep the PNG frames in out/frames
  *
@@ -38,7 +39,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 function args() {
   const a = process.argv.slice(2);
-  const o = { fps: 60, scale: 1, workers: 4, crf: 17, out: null, audio: true, keep: false, cuesOnly: false, page: 'index.html', shutter: 1, shutterAngle: 180 };
+  const o = { fps: 60, scale: 1, workers: 4, crf: 17, out: null, audio: true, keep: false, cuesOnly: false, page: 'index.html', shutter: 1, shutterAngle: 180, w: 1080, h: 1920 };
   for (let i = 0; i < a.length; i++) {
     const k = a[i], v = a[i + 1];
     if (k === '--fps') { o.fps = +v; i++; }
@@ -54,6 +55,7 @@ function args() {
     else if (k === '--page') { o.page = v; i++; }
     else if (k === '--shutter') { o.shutter = +v; i++; }
     else if (k === '--shutterAngle') { o.shutterAngle = +v; i++; }
+    else if (k === '--size') { [o.w, o.h] = v.split('x').map(Number); i++; }
     else { console.error('unknown option ' + k); process.exit(1); }
   }
   return o;
@@ -81,7 +83,7 @@ function run(cmd, argv) {
 }
 
 async function openPage(browser, o) {
-  const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: o.scale });
+  const page = await browser.newPage({ viewport: { width: o.w, height: o.h }, deviceScaleFactor: o.scale });
   page.on('pageerror', (e) => console.error('[page error]', e.message));
   await page.goto(pathToFileURL(path.resolve(ROOT, o.page)).href + '?render=1');
   await page.evaluate(() => window.ORIN.ready);
@@ -104,7 +106,7 @@ const meta = await first.evaluate(() => ({
 }));
 // each composition gets its own files: cues.json / cues-v2.json, soundtrack.wav / soundtrack-v2.wav …
 const sfx = meta.id ? `-${meta.id}` : '';
-o.out ??= path.join(OUT_DIR, `${meta.prefix}${sfx}-9x16-${o.fps}fps.mp4`);
+o.out ??= path.join(OUT_DIR, `${meta.prefix}${sfx}-${o.w > o.h ? '16x9' : '9x16'}-${o.fps}fps.mp4`);
 const cuesPath = path.join(OUT_DIR, `cues${sfx}.json`);
 fs.writeFileSync(cuesPath, JSON.stringify(meta, null, 1));
 console.log(`cues: ${meta.cues.length} events → ${path.relative(process.cwd(), cuesPath)}`);

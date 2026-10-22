@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Did We Lose Control? — Part 1</title>
+<link rel="stylesheet" href="../orin-ad/src/cinema.css">
+<style>
+@font-face { font-family: 'Outfit'; src: url(../orin-ad/assets/fonts/outfit-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; }
+:root { --bg: #0B1026; --cream: #FFF4E0; --orange: #FF6B35; --red: #FF2E4D; --cyan: #5CE1FF; --muted: #8A93B8; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+#viewport { position: fixed; inset: 0; display: grid; place-items: center; }
+body.render #viewport { place-items: start; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; flex: none; background: var(--bg); color: var(--cream); font-family: 'Outfit', sans-serif; }
+#stage, #stage * { will-change: auto !important; }
+.layer { position: absolute; inset: 0; }
+svg.layer { width: 1920px; height: 1080px; overflow: visible; }
+.scene { opacity: 0; }
+#title { position: absolute; left: 0; right: 0; top: 46px; text-align: center; font-weight: 900; font-size: 120px; letter-spacing: -.01em; color: #fff; -webkit-text-stroke: 10px #0B1026; paint-order: stroke fill; opacity: 0; }
+.chip { position: absolute; padding: 10px 26px 14px; border-radius: 40px; font-weight: 800; font-size: 40px; letter-spacing: .06em; opacity: 0; }
+.panelLabel { position: absolute; top: 70px; font-weight: 800; font-size: 34px; letter-spacing: .12em; color: var(--muted); }
+#code { position: absolute; left: 120px; top: 200px; width: 700px; font: 500 36px/1.65 'DejaVu Sans Mono', monospace; color: #C9D3FF; white-space: pre; }
+#code .k { color: var(--orange); } #code .f { color: var(--cyan); }
+#cardQ { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-weight: 900; font-size: 104px; color: #fff; opacity: 0; }
+#cardQ .r { color: var(--red); }
+#sub:empty { display: none; }
+#sub { position: absolute; left: 50%; transform: translateX(-50%); width: max-content; max-width: 1400px; padding: 10px 28px 14px; border-radius: 16px; background: rgba(5,6,16,.78); bottom: 48px; text-align: center; font-weight: 600; font-size: 40px; line-height: 1.35; color: #fff; text-shadow: 0 2px 0 #000, 0 0 18px rgba(0,0,0,.9); }
+#flash { background: #fff; opacity: 0; }
+#fade { background: #000; opacity: 1; }
+#controls { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 100; display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 14px; background: rgba(20,20,24,.88); color: #eee; font: 13px/1 system-ui; }
+body.render #controls { display: none; }
+</style>
+<script src="../orin-ad/assets/vendor/gsap.min.js"></script>
+<script src="../orin-ad/assets/vendor/CustomEase.min.js"></script>
+<script src="../orin-ad/src/cinema.js"></script>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="world" class="layer"><div id="rig" class="layer">
+  <!-- S1 + S4: the eye -->
+  <div class="scene layer" id="sEye"><svg class="layer" id="eyeSvg" viewBox="0 0 1920 1080"></svg><div id="title">WE LOST CONTROL?</div></div>
+  <!-- S2: obedient machines -->
+  <div class="scene layer" id="sBot"><svg class="layer" id="botSvg" viewBox="0 0 1920 1080"></svg>
+    <div class="chip" id="chipPred" style="left:50%;top:120px;transform:translateX(-50%);background:var(--cyan);color:#0B1026">PREDICTABLE</div></div>
+  <!-- S3: written vs grown -->
+  <div class="scene layer" id="sGrow"><svg class="layer" id="growSvg" viewBox="0 0 1920 1080"></svg>
+    <div class="panelLabel" style="left:120px">WRITTEN BY PEOPLE</div><div class="panelLabel" style="left:1080px">GROWN FROM DATA</div>
+    <div id="code"></div></div>
+  <!-- S4 title card -->
+  <div class="scene layer" id="sCard"><svg class="layer" id="lineSvg" viewBox="0 0 1920 1080"></svg><div id="cardQ">Did we just cross <span class="r">the line?</span></div></div>
+  <div id="sub"></div>
+</div>
+<div class="vignette-cinematic layer"></div>
+<div id="grain" class="grain-layer layer"></div>
+<div id="flash" class="layer"></div>
+<div id="fade" class="layer"></div>
+</div>
+</div></div>
+<div id="controls"><button id="play">⏸</button><input id="scrub" type="range" min="0" max="40" step="0.001" value="0"><span id="tlabel"></span></div>
+<script src="src/part1.js"></script>
+</body>
+</html>

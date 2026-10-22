@@ -8,7 +8,7 @@ Pace: VO ≈ 150 words/min. Times include 0.5 s transitions.
 
 | Part | Title | Scenes | Length |
 |---|---|---|---|
-| 1 | Cold open | 1–4 | 1:20 |
+| 1 | Cold open | 1–4 | 0:40 (built) |
 | 2 | What "the line" means | 5–9 | 2:00 |
 | 3 | How we got here | 10–15 | 2:30 |
 | 4 | Why AI is hard to control | 16–21 | 2:40 |
@@ -16,11 +16,11 @@ Pace: VO ≈ 150 words/min. Times include 0.5 s transitions.
 | 6 | The race | 28–31 | 1:40 |
 | 7 | What we can do | 32–37 | 2:20 |
 | 8 | Ending | 38–40 | 1:00 |
-| | **Total** | **40 scenes** | **≈ 16:00** |
+| | **Total** | **40 scenes** | **≈ 15:20** |
 
 ---
 
-## Part 1 · Cold open (1:20)
+## Part 1 · Cold open (0:40 — built: `part1.html`, voice: Kokoro `am_onyx`)
 
 | # | Time | Visual | Voice-over |
 |---|---|---|---|

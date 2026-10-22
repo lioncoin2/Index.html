@@ -1,0 +1,31 @@
+{
+ "voice": "am_onyx",
+ "speed": 0.92,
+ "sr": 24000,
+ "lines": [
+  {
+   "i": 0,
+   "text": "Imagine building something smarter than you... and then realising you can't switch it off.",
+   "sec": 5.483,
+   "file": "line-00.wav"
+  },
+  {
+   "i": 1,
+   "text": "For most of history, machines did exactly what we told them. A calculator never surprised anyone.",
+   "sec": 6.613,
+   "file": "line-01.wav"
+  },
+  {
+   "i": 2,
+   "text": "Modern AI is different. Nobody writes its rules. We grow it from data... and we only partly understand what grows.",
+   "sec": 7.467,
+   "file": "line-02.wav"
+  },
+  {
+   "i": 3,
+   "text": "So, did we cross a line? And if we did... what now?",
+   "sec": 3.755,
+   "file": "line-03.wav"
+  }
+ ]
+}
