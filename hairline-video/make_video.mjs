@@ -56,8 +56,9 @@ const orin = `<div id="cap"></div><div id="cap2"></div>
   }
   let cur = 0;
   function seek(t) {
-    const target = t * 1000;
-    if (target < cur - 1e-6) throw new Error('seek backwards: open a fresh page');
+    const target = Math.max(0, t * 1000);
+    if (target < cur - 20) throw new Error('seek backwards: open a fresh page');
+    if (target <= cur) { caption(Math.max(0, t)); return; }   // sub-frame step back (motion-blur samples): hold
     while (window.__now() + STEP <= target + 1e-6) { point(hand(window.__now() / 1000)); window.__advance(STEP); }
     cur = target; caption(t);
   }
