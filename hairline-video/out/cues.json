@@ -1,0 +1,42 @@
+{
+ "id": "",
+ "prefix": "hairline-morph",
+ "soundtrack": "soundtrack_morph.py",
+ "duration": 20,
+ "T": {},
+ "bpm": 90,
+ "cues": [
+  {
+   "t": 0.3,
+   "type": "cap"
+  },
+  {
+   "t": 2,
+   "type": "pop"
+  },
+  {
+   "t": 4.6,
+   "type": "whoosh"
+  },
+  {
+   "t": 4.9,
+   "type": "cap"
+  },
+  {
+   "t": 8.4,
+   "type": "settle"
+  },
+  {
+   "t": 11.1,
+   "type": "whoosh"
+  },
+  {
+   "t": 11.4,
+   "type": "cap"
+  },
+  {
+   "t": 15,
+   "type": "lock"
+  }
+ ]
+}
